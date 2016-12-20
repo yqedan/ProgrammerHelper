@@ -19,4 +19,8 @@ public class Topic {
     public ArrayList<Flashcard> getFlashcards() {
         return flashcards;
     }
+
+    public ArrayList<TriviaQuestion> getTriviaQuestions() {
+        return triviaQuestions;
+    }
 }

@@ -23,9 +23,10 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class FlashcardCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener{
-    private static final String TAG = FlashcardCategoriesActivity.class.getSimpleName();
-    @Bind(R.id.flashcardTopicListView) ListView mFlashcardTopicListView;
+public class TriviaCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener{
+
+    private static final String TAG = TriviaCategoriesActivity.class.getSimpleName();
+    @Bind(R.id.triviaTopicListView) ListView mTriviaTopicListView;
 
     private ArrayList<String> mTopicTitles = new ArrayList<>();
     private ArrayList<Topic> mTopics = new ArrayList<>();
@@ -33,9 +34,9 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_flashcard_categories);
+        setContentView(R.layout.activity_trivia_categories);
         ButterKnife.bind(this);
-        setTitle("Flashcards");
+        setTitle("Trivia Game");
         getTopics();
     }
 
@@ -48,9 +49,9 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
                     mTopics.add(snapshot.getValue(Topic.class));
                     mTopicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
                 }
-                ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
-                mFlashcardTopicListView.setAdapter(adapter);
-                mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
+                ArrayAdapter adapter = new ArrayAdapter(TriviaCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
+                mTriviaTopicListView.setAdapter(adapter);
+                mTriviaTopicListView.setOnItemClickListener(TriviaCategoriesActivity.this);
             }
 
             @Override
@@ -62,8 +63,8 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(FlashcardCategoriesActivity.this,FlashcardsActivity.class);
-        intent.putExtra("topic",Parcels.wrap(mTopics.get(position)));
+        Intent intent = new Intent(TriviaCategoriesActivity.this,TriviaActivity.class);
+        intent.putExtra("topic", Parcels.wrap(mTopics.get(position)));
         startActivity(intent);
     }
 }

@@ -20,7 +20,9 @@
         </activity>
         <activity android:name=".ui.CreateAccountActivity" />
         <activity android:name=".ui.FlashcardCategoriesActivity" />
-        <activity android:name=".ui.FlashcardsActivity"></activity>
+        <activity android:name=".ui.FlashcardsActivity" />
+        <activity android:name=".ui.TriviaCategoriesActivity" />
+        <activity android:name=".ui.TriviaActivity"></activity>
     </application>
 
 </manifest>

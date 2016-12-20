@@ -32,6 +32,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
     public void onClick(View v) {
         if (v == mQuizButton) {
             Log.d(TAG, "onClick: QuizButton");
+            Intent intent = new Intent(MainActivity.this,TriviaCategoriesActivity.class);
+            startActivity(intent);
         }
         else if (v == mTodoButton) {
             Log.d(TAG, "onClick: TodoButton");
