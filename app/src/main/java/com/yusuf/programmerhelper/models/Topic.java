@@ -1,11 +1,15 @@
 package com.yusuf.programmerhelper.models;
 
+import org.parceler.Parcel;
+
 import java.util.ArrayList;
 
+@Parcel
 public class Topic {
-    private String topicTitle;
-    private ArrayList<Flashcard> flashcards;
-    public Topic(){};
+    String topicTitle;
+    ArrayList<Flashcard> flashcards;
+
+    public Topic(){}
 
     public String getTopicTitle() {
         return topicTitle;

@@ -1,9 +1,13 @@
 package com.yusuf.programmerhelper.models;
 
+import org.parceler.Parcel;
+
+@Parcel
 public class Flashcard {
-    private String question;
-    private String answer;
-    public Flashcard(){};
+    String question;
+    String answer;
+
+    public Flashcard(){}
 
     public String getQuestion() {
         return question;

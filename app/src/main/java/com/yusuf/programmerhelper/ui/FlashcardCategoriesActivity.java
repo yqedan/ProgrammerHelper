@@ -1,8 +1,10 @@
 package com.yusuf.programmerhelper.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
+import android.view.View;
+import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
@@ -14,16 +16,19 @@ import com.google.firebase.database.ValueEventListener;
 import com.yusuf.programmerhelper.R;
 import com.yusuf.programmerhelper.models.Topic;
 
+import org.parceler.Parcels;
+
 import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class FlashcardCategoriesActivity extends AppCompatActivity {
+public class FlashcardCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener{
     private static final String TAG = FlashcardCategoriesActivity.class.getSimpleName();
+    @Bind(R.id.flashcardTopicListView) ListView mFlashcardTopicListView;
+
     private ArrayList<String> mTopicTitles = new ArrayList<>();
     private ArrayList<Topic> mTopics = new ArrayList<>();
-    @Bind(R.id.flashcardTopicListView) ListView mFlashcardTopicListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -44,6 +49,7 @@ public class FlashcardCategoriesActivity extends AppCompatActivity {
                 }
                 ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
                 mFlashcardTopicListView.setAdapter(adapter);
+                mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
             }
 
             @Override
@@ -51,5 +57,12 @@ public class FlashcardCategoriesActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+        Intent intent = new Intent(FlashcardCategoriesActivity.this,FlashcardsActivity.class);
+        intent.putExtra("topic",Parcels.wrap(mTopics.get(position)));
+        startActivity(intent);
     }
 }
