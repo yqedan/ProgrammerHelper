@@ -1,0 +1,166 @@
+{
+  "topics":[
+    {
+      "topicTitle":"Java",
+      "flashcards":[
+        {
+          "question":"What’s the purpose of Static methods and static variables?",
+          "answer":"When there is a requirement to share a method or a variable between multiple objects of a class instead of creating separate copies for each object, we use static keyword to make a method or variable shared for all objects."
+        },
+        {
+          "question":"What are the various access specifiers for Java classes?",
+          "answer":"In Java, access specifiers are the keywords used before a class name which defines the access scope. The types of access specifiers for classes are:\n1. Public : Class,Method,Field is accessible from anywhere.\n2. Protected:Method,Field can be accessed from the same class to which they belong or from the sub-classes,and from the class of same package,but not from outside.\n3. Default: Method,Field,class can be accessed only from the same package and not from outside of it’s native package.\n4. Private: Method,Field can be accessed from the same class to which they belong."
+        },
+        {
+          "question":"What is data encapsulation and what’s its significance?",
+          "answer":"Encapsulation is a concept in Object Oriented Programming for combining properties and methods in a single unit. Encapsulation helps programmers to follow a modular approach for software development as each object has its own set of methods and variables and serves its functions independent of other objects. Encapsulation also serves data hiding purpose."
+        },
+        {
+          "question":"What is the difference between continue and break statement?",
+          "answer":"Break and continue are two important keywords used in Loops. When a break keyword is used in a loop, loop is broken instantly while when continue keyword is used, current iteration is broken and loop continues with next iteration."
+        },
+        {
+          "question":"What is the difference between double and float variables in Java?",
+          "answer":"In java, float takes 4 bytes in memory while Double takes 8 bytes in memory. Float is single precision floating point decimal number while Double is double precision decimal number."
+        },
+        {
+          "question":" What’s the base class in Java from which all classes are derived?",
+          "answer":"java.lang.object"
+        },
+        {
+          "question":"What’s the difference between an Abstract Class and Interface in Java?",
+          "answer":"The primary difference between an abstract class and interface is that an interface can only possess declaration of public static methods with no concrete implementation while an abstract class can have members with any access specifiers (public, private etc) with or without concrete implementation. Another key difference in the use of abstract classes and interfaces is that a class which implements an interface must implement all the methods of the interface while a class which inherits from an abstract class doesn’t require implementation of all the methods of its super class. A class can implement multiple interfaces but it can extend only one abstract class."
+        },
+        {
+          "question":"How can we pass argument to a function by reference instead of pass by value?",
+          "answer":" In java, we can pass argument to a function only by value and not by reference."
+        },
+        {
+          "question":"Is it compulsory for a Try Block to be followed by a Catch Block in Java for Exception handling?",
+          "answer":"Try block needs to be followed by either Catch block or Finally block or both. Any exception thrown from try block needs to be either caught in the catch block or else any specific tasks to be performed before code abortion are put in the Finally block."
+        },
+        {
+          "question":"Can we override static methods of a class?",
+          "answer":"We cannot override static methods. Static methods belong to a class and not to individual objects and are resolved at the time of compilation (not at runtime).Even if we try to override static method,we will not get an complitaion error,nor the impact of overriding when running the code."
+        },
+        {
+          "question":"What is multi-threading?",
+          "answer":"Multi threading is a programming concept to run multiple tasks in a concurrent manner within a single program. Threads share same process stack and running in parallel. It  helps  in performance improvement of any program."
+        },
+        {
+          "question":"How garbage collection is done in Java?",
+          "answer":" In java, when an object is not referenced any more, garbage collection takes place and the object is destroyed automatically. For automatic garbage collection java calls either System.gc() method or Runtime.gc() method."
+        },
+        {
+          "question":"Can we call the constructor of a class more than once for an object?",
+          "answer":"Constructor is called automatically when we create an object using new keyword. It’s called only once for an object at the time of object creation and hence, we can’t invoke the constructor again for an object after its creation."
+        },
+        {
+          "question":"Can a variable be local and static at the same time?",
+          "answer":"No a variable can’t be static as well as local at the same time. Defining a local variable as static gives compilation error."
+        },
+        {
+          "question":"What’s the difference between comparison done by equals method and == operator?",
+          "answer":"In Java, equals() method is used to compare the contents of two string objects and returns true if the two have same value while == operator compares the references of two string objects."
+        },
+        {
+          "question":"Can a class in Java be inherited from more than one class?",
+          "answer":"In Java, a class can be derived from only one class and not from multiple classes. Multiple inheritances is not supported by Java."
+        },
+        {
+          "question":"Can variables be used in Java without initialization?",
+          "answer":"In Java, if a variable is used in a code without prior initialization by a valid value, program doesn’t compile and gives an error as no default value is assigned to variables in Java."
+        },
+        {
+          "question":"Can we call a non-static method from inside a static method?",
+          "answer":"Non-Static methods are owned by objects of a class and have object level scope and in order to call the non-Static methods from a static block (like from a static main method), an object of the class needs to be created first. Then using object reference, these methods can be invoked."
+        },
+        {
+          "question":"Can we use a default constructor of a class even if an explicit constructor is defined?",
+          "answer":"Java provides a default no argument constructor if no explicit constructor is defined in a Java class. But if an explicit constructor has been defined, default constructor can’t be invoked and developer can use only those constructors which are defined in the class."
+        },
+        {
+          "question":" How can we use primitive data types as objects?",
+          "answer":"Primitive data types like int can be handled as objects by the use of their respective wrapper classes. For example, Integer is a wrapper class for primitive data type int. We can apply different methods to a wrapper class, just like any other object."
+        },
+        {
+          "question":"What’s the benefit of using inheritance?",
+          "answer":"Key benefit of using inheritance is reusability of code as inheritance enables sub-classes to reuse the code of its super class. Polymorphism (Extensibility ) is another great benefit which allow new functionality to be introduced without effecting existing derived classes."
+        }
+      ]
+    },
+    {
+      "topicTitle":"JavaScript",
+      "flashcards":[
+        {
+          "question":"What is JavaScript?",
+          "answer":"JavaScript is a client-side as well as server side scripting language that can be inserted into HTML pages and is understood by web browsers. JavaScript is also an Object Oriented Programming language"
+        },
+        {
+          "question":"What are JavaScript types?",
+          "answer":"Number, String, Boolean, Function, Object, Null, Undefined"
+        },
+        {
+          "question":"What is ‘this’ keyword in JavaScript?",
+          "answer":"The \"this\" keyword refers to the object from where it was called."
+        },
+        {
+          "question":"What is === operator?",
+          "answer":"The === operator is called as strict equality operator which returns true when the two operands are having the same value without any type conversion."
+        },
+        {
+          "question":"What are global variables? How are these variable declared and what are the problems associated with using them?",
+          "answer":"Global variables are those that are available throughout the length of the code, that is, these have no scope. The var keyword is used to declare a local variable or object. If the var keyword is omitted, a global variable is declared.\nThe problems that are faced by using global variables are the clash of variable names of local and global scope. Also, it is difficult to debug and test the code that relies on global variables."
+        },
+        {
+          "question":"What would be the result of 3+2+”7″?",
+          "answer":"Since 3 and 2 are integers, they will be added numerically. And since 7 is a string, its concatenation will be done. So the result would be 57."
+        },
+        {
+          "question":"What do mean by NULL in Javascript?",
+          "answer":"The NULL value is used to represent no value or no object.  It implies no object or null string, no valid boolean value, no number and no array object."
+        },
+        {
+          "question":"What is an undefined value in JavaScript?",
+          "answer":"Undefined value means the\nVariable used in the code doesn’t exist\nVariable is not assigned to any value\nProperty doesn’t exist"
+        },
+        {
+          "question":"Explain what is pop()method in JavaScript?",
+          "answer":"The pop() method takes the last element off of the given array and returns it. The array on which is called is then altered."
+        },
+        {
+          "question":"What is the use of typeof operator?",
+          "answer":"Typeof’ is an operator which is used to return a string description of the type of a variable."
+        },
+        {
+          "question":"How are object properties assigned?",
+          "answer":"Properties are assigned to objects in the following way:\nobj[\"class\"] = 12;\nobj.class = 12;"
+        },
+        {
+          "question":"Is JavaScript case sensitive? Give an example?",
+          "answer":"Yes, JavaScript is case sensitive. For example, a function parseInt is not same as the function Parseint."
+        },
+        {
+          "question":"How are event handlers utilized in JavaScript?",
+          "answer":"Events are the actions that result from activities, such as clicking a link or filling a form, by the user. An event handler is required to manage proper execution of all these events. Event handlers are an extra attribute of the object. This attribute includes event’s name and the action taken if the event takes place."
+        },
+        {
+          "question":"Where can we download JQuery?",
+          "answer":"jQuery javascript can be downloaded from jQuery official website – www.jquery.com"
+        },
+        {
+          "question":"What are the advantages of jQuery?",
+          "answer":"jQuery can be written along with javascript\nCoding is simple, clear, reusable\nRemoval of writing more complex conditions and loops"
+        },
+        {
+          "question":"What is the use of jQuery each function?",
+          "answer":"jQuery each function is used to loop through each and every element of the target jQuery object."
+        },
+        {
+          "question":"What is the advantage of using minimized version of jQuery?",
+          "answer":"Efficiency of web page increases when minimized version of jQuery is used.min.js file will be more than 50% less than the normal js file. Reduction in the file size makes the web page faster."
+        }
+      ]
+    }
+  ]
+}
