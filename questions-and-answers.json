@@ -24,7 +24,7 @@
           "answer":"In java, float takes 4 bytes in memory while Double takes 8 bytes in memory. Float is single precision floating point decimal number while Double is double precision decimal number."
         },
         {
-          "question":" What’s the base class in Java from which all classes are derived?",
+          "question":"What’s the base class in Java from which all classes are derived?",
           "answer":"java.lang.object"
         },
         {
@@ -33,7 +33,7 @@
         },
         {
           "question":"How can we pass argument to a function by reference instead of pass by value?",
-          "answer":" In java, we can pass argument to a function only by value and not by reference."
+          "answer":"In java, we can pass argument to a function only by value and not by reference."
         },
         {
           "question":"Is it compulsory for a Try Block to be followed by a Catch Block in Java for Exception handling?",
@@ -41,15 +41,15 @@
         },
         {
           "question":"Can we override static methods of a class?",
-          "answer":"We cannot override static methods. Static methods belong to a class and not to individual objects and are resolved at the time of compilation (not at runtime).Even if we try to override static method,we will not get an complitaion error,nor the impact of overriding when running the code."
+          "answer":"We cannot override static methods. Static methods belong to a class and not to individual objects and are resolved at the time of compilation (not at runtime).Even if we try to override static method, we will not get an complitaion error,nor the impact of overriding when running the code."
         },
         {
           "question":"What is multi-threading?",
           "answer":"Multi threading is a programming concept to run multiple tasks in a concurrent manner within a single program. Threads share same process stack and running in parallel. It  helps  in performance improvement of any program."
         },
         {
-          "question":"How garbage collection is done in Java?",
-          "answer":" In java, when an object is not referenced any more, garbage collection takes place and the object is destroyed automatically. For automatic garbage collection java calls either System.gc() method or Runtime.gc() method."
+          "question":"How is garbage collection done in Java?",
+          "answer":"In java, when an object is not referenced any more, garbage collection takes place and the object is destroyed automatically. For automatic garbage collection java calls either System.gc() method or Runtime.gc() method."
         },
         {
           "question":"Can we call the constructor of a class more than once for an object?",
