@@ -41,6 +41,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mFlashcard.setText(flashcards.get(count).getQuestion());
         mFlashcard.setOnClickListener(this);
         mBack.setOnClickListener(this);
+        mFlashcard.setBackgroundColor(0xfff8bbd0);
     }
 
     @Override
@@ -68,6 +69,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
                 mFlashcard.setGravity(Gravity.CENTER);
                 mQAndA.setText(" ");
                 mFlashcard.setText("Round Over");
+                mFlashcard.setBackgroundColor(0xffffffff);
                 mRoundOver = true;
             }
         }
@@ -79,6 +81,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         String answer = flashcards.get(count).getAnswer();
         mFlashcard.setText(answer);
         setGravityBasedOnCharCount(answer.length());
+        mFlashcard.setBackgroundColor(0xfffff59d);
     }
 
     private void setViewsToQuestion(){
@@ -87,6 +90,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         String question = flashcards.get(count).getQuestion();
         mFlashcard.setText(question);
         setGravityBasedOnCharCount(question.length());
+        mFlashcard.setBackgroundColor(0xfff8bbd0);
     }
 
     private void setGravityBasedOnCharCount(int count){
