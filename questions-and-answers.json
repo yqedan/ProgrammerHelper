@@ -125,12 +125,12 @@
           "answer":"Undefined value means the\nVariable used in the code doesn’t exist\nVariable is not assigned to any value\nProperty doesn’t exist"
         },
         {
-          "question":"Explain what is pop()method in JavaScript?",
+          "question":"Explain what is pop() method in JavaScript?",
           "answer":"The pop() method takes the last element off of the given array and returns it. The array on which is called is then altered."
         },
         {
           "question":"What is the use of typeof operator?",
-          "answer":"Typeof’ is an operator which is used to return a string description of the type of a variable."
+          "answer":"\"typeof\" is an operator which is used to return a string description of the type of a variable."
         },
         {
           "question":"How are object properties assigned?",

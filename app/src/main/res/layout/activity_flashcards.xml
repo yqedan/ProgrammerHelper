@@ -92,13 +92,29 @@
         android:layout_width="0dp"
         android:id="@+id/view5" />
 
-    <View
+    <LinearLayout
+        android:orientation="vertical"
         android:layout_column="1"
         android:layout_row="2"
         android:layout_columnWeight="1"
         android:layout_rowWeight="1"
         android:layout_height="20dp"
         android:layout_width="20dp"
-        android:id="@+id/view6" />
+        android:id="@+id/view6" >
+        <View android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="3">
+
+        </View>
+        <Button
+            android:id="@+id/back"
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:text="Back"
+            android:layout_weight="1">
+
+        </Button>
+
+    </LinearLayout>
 
 </GridLayout>
