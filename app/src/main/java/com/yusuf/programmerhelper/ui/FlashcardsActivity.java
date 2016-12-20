@@ -48,69 +48,52 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         if (v == mBack) {
             if (mRoundOver == true) {
                 mRoundOver = false;
-                mQuestionVisible = false;
-                mQAndA.setText("Answer");
-                String answer = flashcards.get(count).getAnswer();
-                mFlashcard.setText(answer);
-                if (answer.length() > 120) {
-                    mFlashcard.setGravity(Gravity.NO_GRAVITY);
-                }else{
-                    mFlashcard.setGravity(Gravity.CENTER);
-                }
+                setViewsToAnswer();
             }else if(mQuestionVisible == false){
-                mQuestionVisible = true;
-                String question = flashcards.get(count).getQuestion();
-                mFlashcard.setText(question);
-                if (question.length() > 120) {
-                    mFlashcard.setGravity(Gravity.NO_GRAVITY);
-                }else{
-                    mFlashcard.setGravity(Gravity.CENTER);
-                }
-                mQAndA.setText("Question");
+                setViewsToQuestion();
             }else if(count > 0) {
                 count--;
-                mQuestionVisible = false;
-                String answer = flashcards.get(count).getAnswer();
-                mFlashcard.setText(answer);
-                if (answer.length() > 120) {
-                    mFlashcard.setGravity(Gravity.NO_GRAVITY);
-                }else{
-                    mFlashcard.setGravity(Gravity.CENTER);
-                }
-                mQAndA.setText("Answer");
+                setViewsToAnswer();
             }
         }
         if (v == mFlashcard) {
             if (mRoundOver == true) {
                 return;
-            }
-            if (mQuestionVisible == true) {
-                mQuestionVisible = false;
-                String answer = flashcards.get(count).getAnswer();
-                mFlashcard.setText(answer);
-                if (answer.length() > 120) {
-                    mFlashcard.setGravity(Gravity.NO_GRAVITY);
-                }else{
-                    mFlashcard.setGravity(Gravity.CENTER);
-                }
-                mQAndA.setText("Answer");
+            }else if (mQuestionVisible == true) {
+                setViewsToAnswer();
             }else if(count < (flashcards.size() - 1)){
                 count++;
-                mQuestionVisible = true;
-                String question = flashcards.get(count).getQuestion();
-                mFlashcard.setText(question);
-                mQAndA.setText("Question");
-                if (question.length() > 120) {
-                    mFlashcard.setGravity(Gravity.NO_GRAVITY);
-                }else{
-                    mFlashcard.setGravity(Gravity.CENTER);
-                }
+                setViewsToQuestion();
             }else{
                 mFlashcard.setGravity(Gravity.CENTER);
-                mQAndA.setText("");
+                mQAndA.setText(" ");
                 mFlashcard.setText("Round Over");
                 mRoundOver = true;
             }
+        }
+    }
+
+    private void setViewsToAnswer(){
+        mQuestionVisible = false;
+        mQAndA.setText("Answer");
+        String answer = flashcards.get(count).getAnswer();
+        mFlashcard.setText(answer);
+        setGravityBasedOnCharCount(answer.length());
+    }
+
+    private void setViewsToQuestion(){
+        mQuestionVisible = true;
+        mQAndA.setText("Question");
+        String question = flashcards.get(count).getQuestion();
+        mFlashcard.setText(question);
+        setGravityBasedOnCharCount(question.length());
+    }
+
+    private void setGravityBasedOnCharCount(int count){
+        if (count > 120) {
+            mFlashcard.setGravity(Gravity.NO_GRAVITY);
+        }else{
+            mFlashcard.setGravity(Gravity.CENTER);
         }
     }
 }
