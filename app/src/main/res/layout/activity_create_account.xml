@@ -7,14 +7,25 @@
     tools:context="com.yusuf.programmerhelper.ui.CreateAccountActivity"
     android:background="@color/primary_light">
 
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Create Account"
+        android:textColor="@color/primary_text"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:layout_above="@+id/linearLayout"
+        android:layout_centerHorizontal="true" />
+
     <LinearLayout
         android:orientation="vertical"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:padding="30dp"
+        android:id="@+id/linearLayout"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true">
 
         <EditText
             android:id="@+id/nameEditText"
@@ -78,9 +89,9 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Sign up"
-            android:background="@color/colorAccent"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/primary_text" />
+            android:textColor="@color/colorAccent"
+            android:background="@color/primary_text"
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -94,15 +105,5 @@
             android:layout_gravity="center_horizontal" />
 
     </LinearLayout>
-
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Create Account"
-        android:textColor="@color/primary_text"
-        android:textSize="30dp"
-        android:textStyle="bold"
-        android:layout_above="@+id/linearLayout"
-        android:layout_centerHorizontal="true" />
 
 </RelativeLayout>

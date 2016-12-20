@@ -50,9 +50,9 @@
             android:layout_height="wrap_content"
             android:padding="10dp"
             android:text="Log in"
-            android:background="@color/colorAccent"
-            android:layout_marginTop="15dp"
-            android:textColor="@color/primary_text" />
+            android:textColor="@color/colorAccent"
+            android:background="@color/primary_text"
+            android:layout_marginTop="15dp" />
 
         <TextView
             android:layout_width="wrap_content"

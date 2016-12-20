@@ -4,7 +4,8 @@
     android:id="@+id/activity_flashcard_categories"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yusuf.programmerhelper.ui.FlashcardCategoriesActivity">
+    tools:context="com.yusuf.programmerhelper.ui.FlashcardCategoriesActivity"
+    android:background="@color/colorAccentLight">
 
     <ListView
         android:layout_width="match_parent"

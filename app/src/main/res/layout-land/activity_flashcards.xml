@@ -9,7 +9,7 @@
     android:paddingRight="20dp"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    android:background="@color/primary_light"
+    android:background="@color/colorAccentLight"
     tools:context="com.yusuf.programmerhelper.ui.FlashcardsActivity">
 
     <TextView
@@ -40,6 +40,8 @@
         android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Back" />
+        android:text="Back"
+        android:textColor="@color/colorAccent"
+        android:background="@color/primary_text" />
 
 </LinearLayout>
