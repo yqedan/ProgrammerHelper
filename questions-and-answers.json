@@ -2,6 +2,114 @@
   "topics":[
     {
       "topicTitle":"Java",
+      "triviaQuestions":[
+        {
+          "question": "Objects are stored on the stack.",
+          "choices":[
+            "True",
+            "False"
+          ],
+          "answer": 1,
+          "explanation": "Objects are allocated memory in heap memory space."
+        },
+        {
+          "question": "What is the size of short variable?",
+          "choices":[
+            "8 bit",
+            "16 bit",
+            "32 bit",
+            "64 bit"
+          ],
+          "answer": 1,
+          "explanation": "The short data type is represented by 16-bit signed two's complement integer"
+        },
+        {
+          "question": "What is the default value of a short variable?",
+          "choices":[
+            "0.0",
+            "0",
+            "null",
+            "not defined"
+          ],
+          "answer": 1,
+          "explanation": "A short variable has default value of 0 if defined as an instance or static variable."
+        },
+        {
+          "question": "Which of the following is true about public access modifier?",
+          "choices":[
+            "Variables, methods and constructors which are declared public can be accessed by any class.",
+            "Variables, methods and constructors which are declared public can be accessed by any class lying in same package.",
+            "Variables, methods and constructors which are declared public in the superclass can be accessed only by its child class.",
+            "None of the above."
+          ],
+          "answer": 0,
+          "explanation": "Public access modifier is used to make variables, methods and constructors accessible to any class."
+        },
+        {
+          "question": "What is an immutable object?",
+          "choices":[
+            "An immutable object can be changed once it is created.",
+            "An immutable object can't be changed once it is created.",
+            "An immutable object is an instance of an abstract class.",
+            "None of the above."
+          ],
+          "answer": 1,
+          "explanation": "An immutable object can't be changed once it is created. String objects are immutable."
+        },
+        {
+          "question": "What is the JRE?",
+          "choices":[
+            "JRE is a java based GUI application.",
+            "JRE is an application development framework.",
+            "JRE is an implementation of the Java Virtual Machine which executes Java programs.",
+            "None of the above."
+          ],
+          "answer": 2,
+          "explanation": "Java Runtime Environment is an implementation of the Java Virtual Machine which executes Java programs. It provides the minimum requirements for executing a Java application."
+        },
+        {
+          "question": "Method Overriding is an example of",
+          "choices":[
+            "Static Binding.",
+            "Dynamic Binding.",
+            "Both of the above.",
+            "None of the above."
+          ],
+          "answer": 1,
+          "explanation": "Method Overriding is an example of dynamic Binding."
+        },
+        {
+          "question": "What is synchronization?",
+          "choices":[
+            "Synchronization is the capability to control the access of multiple threads to shared resources.",
+            "Synchronization is the process of writing the state of an object to another object.",
+            "Synchronization is the process of writing the state of an object to byte stream.",
+            "None of the above."
+          ],
+          "answer": 0,
+          "explanation": "Synchronization is the capability to control the access of multiple threads to shared resources. The synchronized keyword in java provides locking which ensures mutual exclusive access of shared resource and prevent data race."
+        },
+        {
+          "question": "Can try statements be nested?",
+          "choices":[
+            "True",
+            "False"
+          ],
+          "answer": 0,
+          "explanation": "Yes, try statements can be nested."
+        },
+        {
+          "question": "Which of the following is a marker interface?",
+          "choices":[
+            "serializable",
+            "comparable",
+            "cloneable",
+            "none of the above."
+          ],
+          "answer": 1,
+          "explanation": "Yes, try statements can be nested."
+        }
+      ],
       "flashcards":[
         {
           "question":"What’s the purpose of Static methods and static variables?",
@@ -91,6 +199,118 @@
     },
     {
       "topicTitle":"JavaScript",
+      "triviaQuestions":[
+        {
+          "question": "Which of the following is true about variable naming conventions in JavaScript?",
+          "choices":[
+            "You should not use any of the JavaScript reserved keyword as variable name.",
+            "JavaScript variable names should not start with a numeral (0-9).",
+            "Both of the above.",
+            "None of the above."
+          ],
+          "answer": 2,
+          "explanation": "Both of the above options are correct."
+        },
+        {
+          "question": "Which of the following is the correct syntax to redirect a url using JavaScript?",
+          "choices":[
+            "document.location='http://www.newlocation.com';",
+            "browser.location='http://www.newlocation.com';",
+            "navigator.location='http://www.newlocation.com';",
+            "window.location='http://www.newlocation.com';"
+          ],
+          "answer": 3,
+          "explanation": "window.location='http://www.newlocation.com'; is the correct option."
+        },
+        {
+          "question": "Which built-in method calls a function for each element in the array?",
+          "choices":[
+            "while()",
+            "loop()",
+            "forEach()",
+            "None of the above."
+          ],
+          "answer": 2,
+          "explanation": "forEach() method calls a function for each element in the array."
+        },
+        {
+          "question": "Which built-in method returns the calling string value converted to lower case?",
+          "choices":[
+            "toLowerCase()",
+            "toLower()",
+            "changeCase(case)",
+            "None of the above."
+          ],
+          "answer": 0,
+          "explanation": "toLowerCase() method returns the calling string value converted to lower case."
+        },
+        {
+          "question": "Which of the following function of Number object defines how many total digits to display of a number?",
+          "choices":[
+            "toExponential()",
+            "toFixed()",
+            "toLocaleString()",
+            "toPrecision()"
+          ],
+          "answer": 3,
+          "explanation": "toPrecision() − Defines how many total digits (including digits to the left and right of the decimal) to display of a number."
+        },
+        {
+          "question": "Which of the following function of String object returns the index within the calling String object of the first occurrence of the specified value?",
+          "choices":[
+            "substr()",
+            "search()",
+            "lastIndexOf()",
+            "indexOf()"
+          ],
+          "answer": 3,
+          "explanation": "indexOf() − Returns the index within the calling String object of the first occurrence of the specified value, or -1 if not found."
+        },
+        {
+          "question": "Which of the following function of String object returns the calling string value converted to lower case?",
+          "choices":[
+            "toLocaleLowerCase()",
+            "toLowerCase()",
+            "toString()",
+            "substring()"
+          ],
+          "answer": 1,
+          "explanation": "toLowerCase() − Returns the calling string value converted to lower case."
+        },
+        {
+          "question": "Which of the following function of String object creates an HTML hypertext link that requests another URL?",
+          "choices":[
+            "link()",
+            "sub()",
+            "sup()",
+            "small()"
+          ],
+          "answer": 0,
+          "explanation": "link() − Creates an HTML hypertext link that requests another URL."
+        },
+        {
+          "question": "Which of the following function of Array object applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value?",
+          "choices":[
+            "pop()",
+            "push()",
+            "reduce()",
+            "reduceRight()"
+          ],
+          "answer": 2,
+          "explanation": "reduce() − Applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value."
+        },
+        {
+          "question": "Which of the following function of Array object extracts a section of an array and returns a new array?",
+          "choices":[
+            "reverse()",
+            "shift()",
+            "slice()",
+            "some()"
+          ],
+          "answer": 2,
+          "explanation": "Which of the following function of Array object extracts a section of an array and returns a new array?"
+        }
+      ],
       "flashcards":[
         {
           "question":"What is JavaScript?",

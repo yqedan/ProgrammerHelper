@@ -8,6 +8,7 @@ import java.util.ArrayList;
 public class Topic {
     String topicTitle;
     ArrayList<Flashcard> flashcards;
+    ArrayList<TriviaQuestion> triviaQuestions;
 
     public Topic(){}
 
