@@ -42,6 +42,21 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         Topic topic = Parcels.unwrap(getIntent().getParcelableExtra("topic"));
         setTitle(topic.getTopicTitle());
         triviaQuestions = topic.getTriviaQuestions();
+        //Reorganize data for randomization of options
+        for(TriviaQuestion triviaQuestion : triviaQuestions){
+            ArrayList<String> choices = triviaQuestion.getChoices();
+            ArrayList<TriviaQuestion.ChoiceWithAnswer> choiceWithAnswers = triviaQuestion.getChoiceWithAnswers();
+            int answer = triviaQuestion.getAnswer();
+            for(int i = 0;i < choices.size();i++){
+                TriviaQuestion.ChoiceWithAnswer choiceWithAnswer;
+                if(answer == i){
+                    choiceWithAnswer = new TriviaQuestion.ChoiceWithAnswer(true,choices.get(i));
+                }else{
+                    choiceWithAnswer = new TriviaQuestion.ChoiceWithAnswer(false,choices.get(i));
+                }
+                choiceWithAnswers.add(choiceWithAnswer);
+            }
+        }
         Collections.shuffle(triviaQuestions);
         setFields();
         mChoice1.setOnClickListener(this);
@@ -63,8 +78,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
                     mStatusTextView.setText("Your score is " + Math.round((score.doubleValue() / triviaQuestions.size()) * 100) + "%");
                 }
             }
-        }
-        else {
+        } else {
             if (v == mChoice1) {
                 setFieldsAfterAnswer(v, 0);
             }
@@ -93,7 +107,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         if (triviaQuestions.get(count).getChoices().size() > 2) {
             mChoice3.setText("C: " + triviaQuestions.get(count).getChoices().get(2));
             mChoice4.setText("D: " + triviaQuestions.get(count).getChoices().get(3));
-        }else{
+        } else{
             mChoice3.setText("");
             mChoice4.setText("");
         }
@@ -104,7 +118,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
             mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
             score++;
             v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-        }else{
+        } else{
             mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
             int answer = triviaQuestions.get(count).getAnswer();
             v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
