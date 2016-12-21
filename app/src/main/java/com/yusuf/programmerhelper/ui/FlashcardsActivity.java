@@ -1,6 +1,7 @@
 package com.yusuf.programmerhelper.ui;
 
 import android.os.Bundle;
+import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
@@ -41,7 +42,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mFlashcard.setText(flashcards.get(count).getQuestion());
         mFlashcard.setOnClickListener(this);
         mBack.setOnClickListener(this);
-        mFlashcard.setBackgroundColor(0xfff8bbd0);
+        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
     }
 
     @Override
@@ -69,7 +70,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
                 mFlashcard.setGravity(Gravity.CENTER);
                 mQAndA.setText(" ");
                 mFlashcard.setText("Round Over");
-                mFlashcard.setBackgroundColor(0xffffffff);
+                mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.icons, null));
                 mRoundOver = true;
             }
         }
@@ -81,7 +82,8 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         String answer = flashcards.get(count).getAnswer();
         mFlashcard.setText(answer);
         setGravityBasedOnCharCount(answer.length());
-        mFlashcard.setBackgroundColor(0xfffff59d);
+
+        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
     }
 
     private void setViewsToQuestion(){
@@ -90,7 +92,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         String question = flashcards.get(count).getQuestion();
         mFlashcard.setText(question);
         setGravityBasedOnCharCount(question.length());
-        mFlashcard.setBackgroundColor(0xfff8bbd0);
+        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
     }
 
     private void setGravityBasedOnCharCount(int count){

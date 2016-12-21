@@ -12,30 +12,30 @@
     tools:context="com.yusuf.programmerhelper.ui.TriviaActivity">
 
     <TextView
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight="1"
+        android:layout_height="wrap_content"
+        android:layout_weight=".5"
         android:gravity="center"
         android:textSize="16dp"
         android:text="What is the meaning of life?"
         android:id="@+id/question"/>
 
     <TextView
-        android:layout_margin="10dp"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
-        android:layout_weight=".5"
+        android:layout_height="wrap_content"
+        android:layout_weight="1"
         android:gravity="center"
         android:textSize="16dp"
         android:text="Incorrect, the correct answer is C"
         android:id="@+id/status"/>
 
     <Button
-        android:background="@color/colorAccentLight"
-        android:layout_margin="10dp"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="16dp"
@@ -43,10 +43,10 @@
         android:id="@+id/choice1"/>
 
     <Button
-        android:background="@color/colorAccentLight"
-        android:layout_margin="10dp"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="16dp"
@@ -54,10 +54,10 @@
         android:id="@+id/choice2"/>
 
     <Button
-        android:background="@color/colorAccentLight"
-        android:layout_margin="10dp"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="16dp"
@@ -65,10 +65,10 @@
         android:id="@+id/choice3"/>
 
     <Button
-        android:background="@color/colorAccentLight"
-        android:layout_margin="10dp"
+        android:background="@color/lightYellow"
+        android:layout_margin="5dp"
         android:layout_width="match_parent"
-        android:layout_height="0dp"
+        android:layout_height="wrap_content"
         android:layout_weight="1"
         android:gravity="center"
         android:textSize="16dp"

@@ -106,8 +106,83 @@
             "cloneable",
             "none of the above."
           ],
+          "answer": 0,
+          "explanation": "Serializable is a marker interface."
+        },
+        {
+          "question": "What is the size of byte variable?",
+          "choices":[
+            "8 bit",
+            "16 bit",
+            "32 bit",
+            "64 bit"
+          ],
+          "answer": 0,
+          "explanation": "The byte data type is represented by an 8-bit signed two's complement integer.\nMinimum value: -128\nMaximum value: 127"
+        },
+        {
+          "question": "Which of the following is true about private access modifier?",
+          "choices":[
+            "Variables, methods and constructors which are declared private can be accessed only by the members of the same class.",
+            "Variables, methods and constructors which are declared private can be accessed by any class lying in same package.",
+            "Variables, methods and constructors which are declared private in the superclass can be accessed only by its child class.",
+            "None of the above."
+          ],
+          "answer": 0,
+          "explanation": "Private access modifier is used to restrict access to variables, methods and constructors to member of same class only."
+        },
+        {
+          "question": "What is local variable?",
+          "choices":[
+            "Variables defined inside methods, constructors or blocks are called local variables.",
+            "Variables defined outside methods, constructors or blocks are called local variables.",
+            "Static variables defined outside methods, constructors or blocks are called local variables.",
+            "None of the above."
+          ],
+          "answer": 0,
+          "explanation": "Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and it will be destroyed when the method has completed."
+        },
+        {
+          "question": "What is Serialization?",
+          "choices":[
+            "Serialization is the process of writing the state of an object to another object.",
+            "Serialization is the process of writing the state of an object to a byte stream.",
+            "Both of the above.",
+            "None of the above."
+          ],
           "answer": 1,
-          "explanation": "Yes, try statements can be nested."
+          "explanation": "Serialization is the process of writing the state of an object to a byte stream."
+        },
+        {
+          "question": "Which arithmetic operations can result in the throwing of an ArithmeticException?",
+          "choices":[
+            "/ , %",
+            "* , +",
+            "! , -",
+            ">>, <<"
+          ],
+          "answer": 0,
+          "explanation": "Integer / and % can result in the throwing of an ArithmeticException."
+        },
+        {
+          "question": "Static functions can be accessed using null reference.",
+          "choices":[
+            "True",
+            "False"
+          ],
+          "answer": 1,
+          "explanation": "True, Static functions can be accessed via class name or via null reference."
+        },
+        {
+          "question": "What invokes a thread's run() method?",
+          "choices":[
+            "JVM invokes the thread's run() method when the thread is initially executed.",
+            "Main application running the thread.",
+            "start() method of the thread class.",
+            "None of the above."
+          ],
+          "answer": 0,
+          "explanation": "After a thread is started, via its start() method of the Thread class, the JVM invokes the thread's run() method when the thread is initially executed."
         }
       ],
       "flashcards":[
