@@ -53,128 +53,33 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
 
     @Override
     public void onClick(View v) {
-        if (v == mStatusTextView){
-            if (answered) {
+        if (answered) {
+            if (v == mStatusTextView) {
                 if (count < (triviaQuestions.size() - 1)) {
                     count++;
                     answered = false;
                     setFields();
-                }else{
-                    mStatusTextView.setText("Your score is " + Math.round( ( score.doubleValue() / triviaQuestions.size() ) * 100) + "%" );
+                } else {
+                    mStatusTextView.setText("Your score is " + Math.round((score.doubleValue() / triviaQuestions.size()) * 100) + "%");
                 }
             }
         }
-        if (!answered) {
+        else {
             if (v == mChoice1) {
-                if(triviaQuestions.get(count).getAnswer() == 0){
-                    mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
-                    score++;
-                    mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                }else{
-                    mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
-                    int answer = triviaQuestions.get(count).getAnswer();
-                    mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
-                    if (answer == 0){
-                        mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 1){
-                        mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if( answer == 2){
-                        mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 3){
-                        mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                    }
-                }
-                answered = true;
+                setFieldsAfterAnswer(v, 0);
             }
             if (v == mChoice2) {
-                if(triviaQuestions.get(count).getAnswer() == 1){
-                    mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
-                    score++;
-                    mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                }else{
-                    mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
-                    int answer = triviaQuestions.get(count).getAnswer();
-                    mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
-                    if (answer == 0){
-                        mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 1){
-                        mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if( answer == 2){
-                        mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 3){
-                        mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                    }
-                }
-                answered = true;
+                setFieldsAfterAnswer(v, 1);
             }
             if (v == mChoice3) {
-                if(triviaQuestions.get(count).getAnswer() == 2){
-                    mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
-                    score++;
-                    mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                }else{
-                    mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
-                    int answer = triviaQuestions.get(count).getAnswer();
-                    mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
-                    if (answer == 0){
-                        mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 1){
-                        mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if( answer == 2){
-                        mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 3){
-                        mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                    }
-                }
-                answered = true;
+                setFieldsAfterAnswer(v, 2);
             }
             if (v == mChoice4) {
-                if(triviaQuestions.get(count).getAnswer() == 3){
-                    mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
-                    score++;
-                    mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                }else{
-                    mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
-                    int answer = triviaQuestions.get(count).getAnswer();
-                    mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
-                    if (answer == 0){
-                        mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 1){
-                        mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if( answer == 2){
-                        mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-
-                    }
-                    if (answer == 3){
-                        mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-                    }
-                }
-                answered = true;
+                setFieldsAfterAnswer(v, 3);
             }
         }
     }
+
     private void setFields(){
         mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
         mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
@@ -192,5 +97,30 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
             mChoice3.setText("");
             mChoice4.setText("");
         }
+    }
+
+    private void setFieldsAfterAnswer(View v, int option){
+        if(triviaQuestions.get(count).getAnswer() == option){
+            mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
+            score++;
+            v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
+        }else{
+            mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
+            int answer = triviaQuestions.get(count).getAnswer();
+            v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
+            if (answer == 0){
+                mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
+            }
+            if (answer == 1){
+                mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
+            }
+            if( answer == 2){
+                mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
+            }
+            if (answer == 3){
+                mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
+            }
+        }
+        answered = true;
     }
 }
