@@ -41,6 +41,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
     private int count = 0;
     private Integer score = 0;
     private boolean answered = false;
+    private Topic topic;
 
 
     @Override
@@ -48,7 +49,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
         ButterKnife.bind(this);
-        Topic topic = Parcels.unwrap(getIntent().getParcelableExtra("topic"));
+        topic = Parcels.unwrap(getIntent().getParcelableExtra("topic"));
         setTitle(topic.getTopicTitle());
         triviaQuestions = topic.getTriviaQuestions();
         //Reorganize data for randomization of options
@@ -109,13 +110,14 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             User currentUser = dataSnapshot.getValue(User.class);
-                            if (currentUser.getHighScore() < percentageScore) {
+                            Long highscore = currentUser.getHighScores().get(topic.getTopicTitle());
+                            if (highscore < percentageScore) {
                                 mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% New Record!");
-                                currentUser.setHighScore(percentageScore);
+                                currentUser.setHighScores(topic.getTopicTitle(),percentageScore);
                                 ref.setValue(currentUser);
                             }
                             else{
-                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% Your current high score is " + currentUser.getHighScore() + "%") ;
+                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% Your current high score is " + highscore + "%") ;
                             }
                         }
 

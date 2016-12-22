@@ -169,7 +169,7 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
                     Log.d(TAG, user.getDisplayName());
                     FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
                     String uid = user.getUid();
-                    FirebaseDatabase.getInstance().getReference("users").child(uid).setValue(new User(mName,0L));
+                    FirebaseDatabase.getInstance().getReference("users").child(uid).setValue(new User(mName));
                 }
             }
         });
