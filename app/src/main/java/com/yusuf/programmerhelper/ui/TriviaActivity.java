@@ -27,6 +27,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
     @Bind(R.id.choice2) Button mChoice2;
     @Bind(R.id.choice3) Button mChoice3;
     @Bind(R.id.choice4) Button mChoice4;
+    @Bind(R.id.next) Button mNext;
 
     private ArrayList<TriviaQuestion> triviaQuestions;
     private int count = 0;
@@ -67,18 +68,25 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         mChoice3.setOnClickListener(this);
         mChoice4.setOnClickListener(this);
         mStatusTextView.setOnClickListener(this);
+        mNext.setOnClickListener(this);
     }
 
     @Override
     public void onClick(View v) {
         if (answered) {
-            if (v == mStatusTextView) {
+            if (v == mStatusTextView || v == mNext) {
                 if (count < (triviaQuestions.size() - 1)) {
                     count++;
                     answered = false;
                     setFields();
                 } else {
-                    mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() +" questions correct. Your scored a " + Math.round((score.doubleValue() / triviaQuestions.size()) * 100) + "%");
+                    mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() +" questions correct. Your scored a(n) " + Math.round((score.doubleValue() / triviaQuestions.size()) * 100) + "%");
+                    mNext.setVisibility(View.INVISIBLE);
+                    mChoice1.setVisibility(View.INVISIBLE);
+                    mChoice2.setVisibility(View.INVISIBLE);
+                    mChoice3.setVisibility(View.INVISIBLE);
+                    mChoice4.setVisibility(View.INVISIBLE);
+                    mQuestionTextView.setVisibility(View.INVISIBLE);
                 }
             }
         } else {
@@ -98,6 +106,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setFields(){
+        mNext.setVisibility(View.INVISIBLE);
         mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
         mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
         mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
@@ -147,5 +156,6 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
         answered = true;
+        mNext.setVisibility(View.VISIBLE);
     }
 }
