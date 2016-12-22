@@ -18,7 +18,9 @@ import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.auth.UserProfileChangeRequest;
+import com.google.firebase.database.FirebaseDatabase;
 import com.yusuf.programmerhelper.R;
+import com.yusuf.programmerhelper.models.User;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -165,6 +167,9 @@ public class CreateAccountActivity extends AppCompatActivity implements View.OnC
             public void onComplete(@NonNull Task<Void> task) {
                 if (task.isSuccessful()) {
                     Log.d(TAG, user.getDisplayName());
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = user.getUid();
+                    FirebaseDatabase.getInstance().getReference("users").child(uid).setValue(new User(mName,0L));
                 }
             }
         });

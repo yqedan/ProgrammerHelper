@@ -7,9 +7,17 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
 
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.yusuf.programmerhelper.R;
 import com.yusuf.programmerhelper.models.Topic;
 import com.yusuf.programmerhelper.models.TriviaQuestion;
+import com.yusuf.programmerhelper.models.User;
 
 import org.parceler.Parcels;
 
@@ -84,13 +92,38 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
                     answered = false;
                     setFields();
                 } else {
-                    mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() +" questions correct. Your scored a(n) " + Math.round((score.doubleValue() / triviaQuestions.size()) * 100) + "%");
+                    final long percentageScore = Math.round((score.doubleValue() / triviaQuestions.size()) * 100);
                     mNext.setVisibility(View.INVISIBLE);
                     mChoice1.setVisibility(View.INVISIBLE);
                     mChoice2.setVisibility(View.INVISIBLE);
                     mChoice3.setVisibility(View.INVISIBLE);
                     mChoice4.setVisibility(View.INVISIBLE);
                     mQuestionTextView.setVisibility(View.INVISIBLE);
+
+                    FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
+                    String uid = user.getUid();
+
+                    final DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(uid);
+
+                    ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                        @Override
+                        public void onDataChange(DataSnapshot dataSnapshot) {
+                            User currentUser = dataSnapshot.getValue(User.class);
+                            if (currentUser.getHighScore() < percentageScore) {
+                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% New Record!");
+                                currentUser.setHighScore(percentageScore);
+                                ref.setValue(currentUser);
+                            }
+                            else{
+                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% Your current high score is " + currentUser.getHighScore() + "%") ;
+                            }
+                        }
+
+                        @Override
+                        public void onCancelled(DatabaseError databaseError) {
+
+                        }
+                    });
                 }
             }
         } else {
@@ -123,9 +156,13 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         if (triviaQuestions.get(count).getChoices().size() > 2) {
             mChoice3.setText("C: " + triviaQuestions.get(count).getChoiceWithAnswers().get(2).getAnswer());
             mChoice4.setText("D: " + triviaQuestions.get(count).getChoiceWithAnswers().get(3).getAnswer());
+            mChoice3.setVisibility(View.VISIBLE);
+            mChoice4.setVisibility(View.VISIBLE);
         } else{
             mChoice3.setText("");
             mChoice4.setText("");
+            mChoice3.setVisibility(View.INVISIBLE);
+            mChoice4.setVisibility(View.INVISIBLE);
         }
     }
 
