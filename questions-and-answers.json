@@ -170,7 +170,7 @@
             "True",
             "False"
           ],
-          "answer": 1,
+          "answer": 0,
           "explanation": "True, Static functions can be accessed via class name or via null reference."
         },
         {

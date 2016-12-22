@@ -58,6 +58,9 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
             }
         }
         Collections.shuffle(triviaQuestions);
+        for(TriviaQuestion triviaQuestion : triviaQuestions){
+            Collections.shuffle(triviaQuestion.getChoiceWithAnswers());
+        }
         setFields();
         mChoice1.setOnClickListener(this);
         mChoice2.setOnClickListener(this);
@@ -75,7 +78,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
                     answered = false;
                     setFields();
                 } else {
-                    mStatusTextView.setText("Your score is " + Math.round((score.doubleValue() / triviaQuestions.size()) * 100) + "%");
+                    mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() +" questions correct. Your scored a " + Math.round((score.doubleValue() / triviaQuestions.size()) * 100) + "%");
                 }
             }
         } else {
@@ -102,11 +105,11 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
 
         mQuestionTextView.setText(triviaQuestions.get(count).getQuestion());
         mStatusTextView.setText("");
-        mChoice1.setText("A: " + triviaQuestions.get(count).getChoices().get(0));
-        mChoice2.setText("B: " + triviaQuestions.get(count).getChoices().get(1));
+        mChoice1.setText("A: " + triviaQuestions.get(count).getChoiceWithAnswers().get(0).getAnswer());
+        mChoice2.setText("B: " + triviaQuestions.get(count).getChoiceWithAnswers().get(1).getAnswer());
         if (triviaQuestions.get(count).getChoices().size() > 2) {
-            mChoice3.setText("C: " + triviaQuestions.get(count).getChoices().get(2));
-            mChoice4.setText("D: " + triviaQuestions.get(count).getChoices().get(3));
+            mChoice3.setText("C: " + triviaQuestions.get(count).getChoiceWithAnswers().get(2).getAnswer());
+            mChoice4.setText("D: " + triviaQuestions.get(count).getChoiceWithAnswers().get(3).getAnswer());
         } else{
             mChoice3.setText("");
             mChoice4.setText("");
@@ -114,14 +117,22 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
     }
 
     private void setFieldsAfterAnswer(View v, int option){
-        if(triviaQuestions.get(count).getAnswer() == option){
+        if(triviaQuestions.get(count).getChoiceWithAnswers().get(option).isCorrectAnswer()){
             mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
             score++;
             v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
         } else{
             mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
-            int answer = triviaQuestions.get(count).getAnswer();
+            ArrayList<TriviaQuestion.ChoiceWithAnswer> choicesWithAnswers = triviaQuestions.get(count).getChoiceWithAnswers();
+            int answer = -1;
+            for(int i = 0; i < choicesWithAnswers.size();i++){
+                if(choicesWithAnswers.get(i).isCorrectAnswer()){
+                    answer = i;
+                    break;
+                }
+            }
             v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
+
             if (answer == 0){
                 mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
             }
