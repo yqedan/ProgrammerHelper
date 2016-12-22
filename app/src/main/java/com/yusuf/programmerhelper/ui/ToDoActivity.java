@@ -6,21 +6,28 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
 import com.yusuf.programmerhelper.R;
+import com.yusuf.programmerhelper.models.Task;
+
+import java.util.ArrayList;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ToDoActivity extends AppCompatActivity {
-    String[] mTasks = {"Clean up Github", "Create a LinkedIn Profile", "Work on Resume", "Work on a Cover Letter", "Apply for Jobs", "Study using this amazing app", "Go to the Interview", "Win the Interview!"};
-    @Bind(R.id.ToDoList) ListView mToDoList;
+    private String[] mTitles = {"Clean up GitHub", "Create a LinkedIn profile", "Work on your resume", "Work on your cover letter", "Apply for Jobs", "Study using this amazing app", "Go to the Interview", "Win the Interview!"};
+    private ArrayList<Task> mToDoList = new ArrayList<>();
+    @Bind(R.id.ToDoList) ListView mToDoListView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_to_do);
         ButterKnife.bind(this);
-        ArrayAdapter adapter = new ArrayAdapter(ToDoActivity.this, android.R.layout.simple_list_item_1, mTasks);
-        mToDoList.setAdapter(adapter);
-        setTitle("To Do List");
+//        for (int i = 0; i < mTitles.length; i++) {
+//            mToDoList.add(new Task(mTitles[i]));
+//        }
+        ArrayAdapter adapter = new ArrayAdapter(ToDoActivity.this, android.R.layout.simple_list_item_1, mTitles);
+        mToDoListView.setAdapter(adapter);
+        setTitle("To-do List");
     }
 }

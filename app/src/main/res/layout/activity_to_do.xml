@@ -7,10 +7,10 @@
     tools:context="com.yusuf.programmerhelper.ui.ToDoActivity">
 
     <ListView
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:layout_alignParentTop="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/ToDoList"/>
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:layout_alignParentTop="true"
+    android:layout_centerHorizontal="true"
+    android:id="@+id/ToDoList"/>
 
 </RelativeLayout>
