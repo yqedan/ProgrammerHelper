@@ -63,6 +63,10 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
             Collections.shuffle(triviaQuestion.getChoiceWithAnswers());
         }
         setFields();
+        mChoice1.setTransformationMethod(null);
+        mChoice2.setTransformationMethod(null);
+        mChoice3.setTransformationMethod(null);
+        mChoice4.setTransformationMethod(null);
         mChoice1.setOnClickListener(this);
         mChoice2.setOnClickListener(this);
         mChoice3.setOnClickListener(this);

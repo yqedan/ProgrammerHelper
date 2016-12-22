@@ -96,6 +96,8 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         }
         else if (v == mTodoButton) {
             Log.d(TAG, "onClick: TodoButton");
+            Intent intent = new Intent(MainActivity.this,ToDoActivity.class);
+            startActivity(intent);
         }
         else if (v == mFlashcardButton) {
             Log.d(TAG, "onClick: FlashcardButton");
