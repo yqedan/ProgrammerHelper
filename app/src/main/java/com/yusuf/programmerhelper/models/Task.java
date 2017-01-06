@@ -20,4 +20,8 @@ public class Task {
     public void setComplete() {
         this.complete = true;
     }
+
+    public void setIncomplete() {
+        this.complete = false;
+    }
 }
