@@ -56,6 +56,11 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ToDoLi
         public void bindTask(Task task){
             mCheckedTextView.setText(task.getTitle());
             mCheckedTextView.setChecked(task.isComplete());
+            if (task.isComplete()) {
+                mCheckedTextView.setCheckMarkDrawable(R.drawable.ic_done_black_24dp);
+            }else{
+                mCheckedTextView.setCheckMarkDrawable(null);
+            }
         }
 
         @Override
@@ -65,10 +70,11 @@ public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ToDoLi
                 mCheckedTextView.toggle();
                 if (mCheckedTextView.isChecked()) {
                     mCheckedTextView.setCheckMarkDrawable(R.drawable.ic_done_black_24dp);
+                    mToDoList.get(itemPosition).setComplete();
                 }else{
                     mCheckedTextView.setCheckMarkDrawable(null);
+                    mToDoList.get(itemPosition).setIncomplete();
                 }
-                //mToDoList.get(itemPosition).setComplete();
             }
         }
     }

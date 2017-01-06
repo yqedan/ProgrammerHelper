@@ -4,6 +4,8 @@ public class Task {
     private String title;
     private boolean complete;
 
+    public Task(){}
+
     public Task(String title) {
         this.title = title;
         this.complete = false;
