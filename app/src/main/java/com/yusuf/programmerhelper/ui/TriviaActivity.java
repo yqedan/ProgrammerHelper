@@ -23,6 +23,7 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.HashMap;
 
 import butterknife.Bind;
 import butterknife.ButterKnife;
@@ -110,14 +111,17 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
                         @Override
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             User currentUser = dataSnapshot.getValue(User.class);
-                            Long highscore = currentUser.getHighScores().get(topic.getTopicTitle());
-                            if (highscore < percentageScore) {
+                            Long highScore = null;
+                            HashMap<String,Long> highScores = currentUser.getHighScores();
+                            if (highScores != null) {
+                                highScore = highScores.get(topic.getTopicTitle());
+                            }
+                            if (highScore == null || highScore < percentageScore) {
                                 mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% New Record!");
                                 currentUser.setHighScores(topic.getTopicTitle(),percentageScore);
                                 ref.setValue(currentUser);
-                            }
-                            else{
-                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% Your current high score is " + highscore + "%") ;
+                            } else {
+                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% Your current high score is " + highScore + "%") ;
                             }
                         }
 

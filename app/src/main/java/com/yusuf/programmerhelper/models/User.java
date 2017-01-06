@@ -12,10 +12,6 @@ public class User {
 
     public User(String name) {
         this.name = name;
-        this.highScores = new HashMap<>();
-        //TODO this works for now but will break as we add more subjects
-        this.highScores.put("Java",0L);
-        this.highScores.put("JavaScript",0L);
         // hard-coded starter to-do list
         this.tasks = new ArrayList<>();
         this.tasks.add(new Task("Clean up GitHub"));
@@ -30,7 +26,14 @@ public class User {
         return name;
     }
 
+    public ArrayList<Task> getTasks() {
+        return tasks;
+    }
+
     public void setHighScores(String key, Long value) {
+        if (this.highScores == null) {
+            this.highScores = new HashMap<>();
+        }
         this.highScores.put(key, value);
     }
 
