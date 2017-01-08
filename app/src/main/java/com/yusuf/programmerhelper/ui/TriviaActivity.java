@@ -44,7 +44,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
     private boolean answered = false;
     private Topic topic;
 
-
+    //TODO work on saving state when device is rotated
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

@@ -7,10 +7,17 @@
     tools:context="com.yusuf.programmerhelper.ui.FlashcardCategoriesActivity"
     android:background="@color/colorAccentLight">
 
+    <Button
+        android:text="Add Topic"
+        android:id="@+id/flashcardAddTopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content" />
+
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/flashcardTopicListView"
+        android:layout_below="@id/flashcardAddTopic"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

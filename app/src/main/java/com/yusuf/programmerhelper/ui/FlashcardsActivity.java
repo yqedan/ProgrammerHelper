@@ -30,6 +30,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     private boolean mQuestionVisible = true;
     private boolean mRoundOver = false;
 
+    //TODO work on saving state when device is rotated
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);

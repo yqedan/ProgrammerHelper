@@ -12,6 +12,10 @@ public class Topic {
 
     public Topic(){}
 
+    public Topic(String topicTitle) {
+        this.topicTitle = topicTitle;
+    }
+
     public String getTopicTitle() {
         return topicTitle;
     }
@@ -22,5 +26,9 @@ public class Topic {
 
     public ArrayList<TriviaQuestion> getTriviaQuestions() {
         return triviaQuestions;
+    }
+
+    public void addFlashcard(String question, String answer){
+        this.flashcards.add(new Flashcard(question,answer));
     }
 }

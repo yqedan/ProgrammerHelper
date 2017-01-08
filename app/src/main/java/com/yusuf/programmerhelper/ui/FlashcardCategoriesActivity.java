@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.ListView;
 
 import com.google.firebase.database.DataSnapshot;
@@ -23,23 +24,27 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class FlashcardCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener{
+public class FlashcardCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener, View.OnClickListener{
     private static final String TAG = FlashcardCategoriesActivity.class.getSimpleName();
     @Bind(R.id.flashcardTopicListView) ListView mFlashcardTopicListView;
+    @Bind(R.id.flashcardAddTopic) Button addTopicButton;
 
     private ArrayList<String> mTopicTitles = new ArrayList<>();
     private ArrayList<Topic> mTopics = new ArrayList<>();
 
+    //TODO add ability for user to save their own flashcards to their profile
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcard_categories);
         ButterKnife.bind(this);
+        addTopicButton.setOnClickListener(this);
         setTitle("Flashcards");
         getTopics();
     }
 
     private void getTopics(){
+        //TODO add snapshot read of user created flashcards
         final DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
         topicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -64,6 +69,12 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(FlashcardCategoriesActivity.this,FlashcardsActivity.class);
         intent.putExtra("topic",Parcels.wrap(mTopics.get(position)));
+        startActivity(intent);
+    }
+
+    @Override
+    public void onClick(View v) {
+        Intent intent = new Intent(FlashcardCategoriesActivity.this, NewTopicActivity.class);
         startActivity(intent);
     }
 }
