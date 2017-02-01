@@ -9,6 +9,7 @@ import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
 
+import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
@@ -44,8 +45,8 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     }
 
     private void getTopics(){
-        //TODO add snapshot read of user created flashcards
         final DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
+        // Read the built in topics
         topicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
@@ -53,9 +54,30 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
                     mTopics.add(snapshot.getValue(Topic.class));
                     mTopicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
                 }
-                ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
-                mFlashcardTopicListView.setAdapter(adapter);
-                mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
+                String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+                final DatabaseReference topicReference = FirebaseDatabase.getInstance()
+                        .getReference("users")
+                        .child(uid)
+                        .child("topics");
+                // Next Read the user created topics
+                topicReference.addListenerForSingleValueEvent(new ValueEventListener() {
+                    @Override
+                    public void onDataChange(DataSnapshot dataSnapshot) {
+                        for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
+                            mTopics.add(snapshot.getValue(Topic.class));
+                            mTopicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
+                        }
+                        ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
+                        mFlashcardTopicListView.setAdapter(adapter);
+                        mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
+                    }
+
+                    @Override
+                    public void onCancelled(DatabaseError databaseError) {
+
+                    }
+
+                });
             }
 
             @Override

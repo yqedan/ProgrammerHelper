@@ -11,13 +11,19 @@
         android:text="Add Topic"
         android:id="@+id/flashcardAddTopic"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:textColor="@color/colorAccent"
+        android:background="@color/primary_text"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true" />
 
     <ListView
+        android:layout_alignParentTop="true"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:id="@+id/flashcardTopicListView"
-        android:layout_below="@id/flashcardAddTopic"
+        android:layout_above="@id/flashcardAddTopic"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true" />
 

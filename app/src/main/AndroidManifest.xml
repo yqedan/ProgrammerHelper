@@ -40,7 +40,11 @@
         <activity
             android:name=".ui.ToDoActivity"
             android:screenOrientation="portrait" />
-        <activity android:name=".ui.NewTopicActivity"></activity>
+        <activity android:name=".ui.NewTopicActivity">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yusuf.programmerhelper.ui.FlashcardCategoriesActivity" />
+        </activity>
     </application>
 
 </manifest>
