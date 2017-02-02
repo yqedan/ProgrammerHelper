@@ -8,6 +8,55 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.yusuf.programmerhelper.ui.NewFlashcardActivity">
+    tools:context="com.yusuf.programmerhelper.ui.NewFlashcardActivity"
+    android:background="@color/primary_light">
+
+    <TextView
+        android:id="@+id/new_flashcard_title"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:text="Enter the new flashcard details"
+        android:textColor="@color/primary_text"
+        android:textSize="20dp"
+        android:textStyle="bold"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="20dp"
+        />
+
+    <EditText
+        android:id="@+id/flashcard_question"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/new_flashcard_title"
+        android:background="@android:color/white"
+        android:hint="Question"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/secondary_text"
+        android:textSize="20sp" />
+
+    <EditText
+        android:id="@+id/flashcard_answer"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@id/flashcard_question"
+        android:background="@android:color/white"
+        android:hint="Answer"
+        android:padding="10dp"
+        android:layout_margin="20dp"
+        android:textColor="@color/primary_text"
+        android:textColorHint="@color/secondary_text"
+        android:textSize="20sp" />
+
+    <Button
+        android:id="@+id/new_flashcard_button"
+        android:text="Submit"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:textColor="@color/colorAccent"
+        android:background="@color/primary_text"/>
 
 </RelativeLayout>

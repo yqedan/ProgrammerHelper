@@ -21,8 +21,10 @@ import java.util.Collections;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
+import static com.yusuf.programmerhelper.R.id.flashcard;
+
 public class FlashcardsActivity extends AppCompatActivity implements View.OnClickListener{
-    @Bind(R.id.flashcard) TextView mFlashcard;
+    @Bind(flashcard) TextView mFlashcard;
     @Bind(R.id.qanda) TextView mQAndA;
     @Bind(R.id.back) Button mBack;
     @Bind(R.id.start) Button mStart;
@@ -90,8 +92,15 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         }
         if (v == mAddFlashcard) {
             Intent intent = new Intent(FlashcardsActivity.this, NewFlashcardActivity.class);
-            startActivity(intent);
+            intent.putExtra("topicId",mTopic.getPushId());
+            intent.putExtra("flashcards",Parcels.wrap(flashcards));
+            startActivityForResult(intent, 1);
         }
+    }
+
+    @Override
+    protected void onActivityResult (int requestCode, int resultCode, Intent intent) {
+        flashcards = Parcels.unwrap(intent.getParcelableExtra("flashcards"));
     }
 
     private void start(){

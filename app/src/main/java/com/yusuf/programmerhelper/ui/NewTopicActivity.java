@@ -17,7 +17,7 @@ import butterknife.ButterKnife;
 
 public class NewTopicActivity extends AppCompatActivity implements View.OnClickListener{
 
-    @Bind(R.id.new_topic_button) Button newTopicButton;
+    @Bind(R.id.new_topic_button) Button mNewTopicButton;
     @Bind(R.id.topic_name) EditText mTopicName;
 
     @Override
@@ -26,7 +26,7 @@ public class NewTopicActivity extends AppCompatActivity implements View.OnClickL
         setContentView(R.layout.activity_new_topic);
         ButterKnife.bind(this);
         setTitle("New Topic");
-        newTopicButton.setOnClickListener(this);
+        mNewTopicButton.setOnClickListener(this);
     }
 
     private void newTopic(){
