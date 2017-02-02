@@ -50,7 +50,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia);
         ButterKnife.bind(this);
-        topic = Parcels.unwrap(getIntent().getParcelableExtra("topic"));
+        topic = Parcels.unwrap(getIntent().getParcelableExtra("mTopic"));
         setTitle(topic.getTopicTitle());
         triviaQuestions = topic.getTriviaQuestions();
         //Reorganize data for randomization of options

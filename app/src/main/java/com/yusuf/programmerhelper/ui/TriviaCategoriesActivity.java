@@ -64,7 +64,7 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(TriviaCategoriesActivity.this,TriviaActivity.class);
-        intent.putExtra("topic", Parcels.wrap(mTopics.get(position)));
+        intent.putExtra("mTopic", Parcels.wrap(mTopics.get(position)));
         startActivity(intent);
     }
 }

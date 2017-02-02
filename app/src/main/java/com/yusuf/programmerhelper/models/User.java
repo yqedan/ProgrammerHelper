@@ -7,7 +7,6 @@ public class User {
     private String name;
     private HashMap<String,Long> highScores;
     private ArrayList<Task> tasks;
-    private ArrayList<Topic> userCreatedTopics;
 
     public User(){}
 
@@ -35,21 +34,10 @@ public class User {
         return tasks;
     }
 
-    public ArrayList<Topic> getUserCreatedTopics() {
-        return userCreatedTopics;
-    }
-
     public void setHighScores(String key, Long value) {
         if (this.highScores == null) {
             this.highScores = new HashMap<>();
         }
         this.highScores.put(key, value);
-    }
-
-    public void addTopic(String topicTitle) {
-        if (this.userCreatedTopics == null) {
-            this.userCreatedTopics = new ArrayList<>();
-        }
-        this.userCreatedTopics.add(new Topic(topicTitle));
     }
 }

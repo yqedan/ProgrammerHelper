@@ -1,5 +1,6 @@
 package com.yusuf.programmerhelper.ui;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
@@ -24,11 +25,15 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.flashcard) TextView mFlashcard;
     @Bind(R.id.qanda) TextView mQAndA;
     @Bind(R.id.back) Button mBack;
+    @Bind(R.id.start) Button mStart;
+    @Bind(R.id.add_flashcard) Button mAddFlashcard;
+    @Bind(R.id.no_flashcards_message) TextView mNoFlashcards;
     private static final String TAG = FlashcardsActivity.class.getSimpleName();
     private ArrayList<Flashcard> flashcards;
     private int count = 0;
     private boolean mQuestionVisible = true;
     private boolean mRoundOver = false;
+    public Topic mTopic;
 
     //TODO work on saving state when device is rotated
     @Override
@@ -36,14 +41,19 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_flashcards);
         ButterKnife.bind(this);
-        Topic topic = Parcels.unwrap(getIntent().getParcelableExtra("topic"));
-        setTitle(topic.getTopicTitle());
-        flashcards = topic.getFlashcards();
-        Collections.shuffle(flashcards);
-        mFlashcard.setText(flashcards.get(count).getQuestion());
+        mTopic = Parcels.unwrap(getIntent().getParcelableExtra("topic"));
+        setTitle(mTopic.getTopicTitle());
+        flashcards = mTopic.getFlashcards();
         mFlashcard.setOnClickListener(this);
         mBack.setOnClickListener(this);
-        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
+        mStart.setOnClickListener(this);
+        mAddFlashcard.setOnClickListener(this);
+        if(mTopic.getPushId() == null){ //Is it not a user created mTopic?
+            start();
+        } else if (flashcards != null) { //Are there any flashcards?
+            mStart.setVisibility(View.VISIBLE);
+            mNoFlashcards.setVisibility(View.GONE);
+        }
     }
 
     @Override
@@ -75,6 +85,24 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
                 mRoundOver = true;
             }
         }
+        if (v == mStart) {
+            start();
+        }
+        if (v == mAddFlashcard) {
+            Intent intent = new Intent(FlashcardsActivity.this, NewFlashcardActivity.class);
+            startActivity(intent);
+        }
+    }
+
+    private void start(){
+        Collections.shuffle(flashcards);
+        mFlashcard.setText(flashcards.get(count).getQuestion());
+        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
+        mStart.setVisibility(View.INVISIBLE);
+        mAddFlashcard.setVisibility(View.INVISIBLE);
+        mFlashcard.setVisibility(View.VISIBLE);
+        mBack.setVisibility(View.VISIBLE);
+        mQAndA.setVisibility(View.VISIBLE);
     }
 
     private void setViewsToAnswer(){
@@ -83,7 +111,6 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         String answer = flashcards.get(count).getAnswer();
         mFlashcard.setText(answer);
         setGravityBasedOnCharCount(answer.length());
-
         mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
     }
 

@@ -29,11 +29,8 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     private static final String TAG = FlashcardCategoriesActivity.class.getSimpleName();
     @Bind(R.id.flashcardTopicListView) ListView mFlashcardTopicListView;
     @Bind(R.id.flashcardAddTopic) Button addTopicButton;
+    private ArrayList<Topic> mTopics;
 
-    private ArrayList<String> mTopicTitles = new ArrayList<>();
-    private ArrayList<Topic> mTopics = new ArrayList<>();
-
-    //TODO add ability for user to save their own flashcards to their profile
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -41,18 +38,25 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
         ButterKnife.bind(this);
         addTopicButton.setOnClickListener(this);
         setTitle("Flashcards");
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
         getTopics();
     }
 
     private void getTopics(){
+        final ArrayList<Topic> topics = new ArrayList<>();
+        final ArrayList<String> topicTitles = new ArrayList<>();
         final DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
         // Read the built in topics
         topicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    mTopics.add(snapshot.getValue(Topic.class));
-                    mTopicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
+                    topics.add(snapshot.getValue(Topic.class));
+                    topicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
                 }
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
                 final DatabaseReference topicReference = FirebaseDatabase.getInstance()
@@ -64,10 +68,11 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            mTopics.add(snapshot.getValue(Topic.class));
-                            mTopicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
+                            topics.add(snapshot.getValue(Topic.class));
+                            topicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
                         }
-                        ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
+                        mTopics = topics;
+                        ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, topicTitles);
                         mFlashcardTopicListView.setAdapter(adapter);
                         mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
                     }
