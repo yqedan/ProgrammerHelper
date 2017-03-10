@@ -13,7 +13,7 @@ import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yusuf.programmerhelper.R;
-import com.yusuf.programmerhelper.adapters.ToDoListAdapter;
+import com.yusuf.programmerhelper.adapters.TodoListAdapter;
 import com.yusuf.programmerhelper.models.Task;
 
 import java.util.ArrayList;
@@ -24,7 +24,7 @@ import butterknife.ButterKnife;
 public class ToDoActivity extends AppCompatActivity {
     public static final String TAG = ToDoActivity.class.getSimpleName();
     private ArrayList<Task> mToDoList;
-    private ToDoListAdapter mAdapter;
+    private TodoListAdapter mAdapter;
     @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     @Override
@@ -49,7 +49,7 @@ public class ToDoActivity extends AppCompatActivity {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
                     mToDoList.add(snapshot.getValue(Task.class));
                 }
-                mAdapter = new ToDoListAdapter(getApplicationContext(), mToDoList);
+                mAdapter = new TodoListAdapter(getApplicationContext(), mToDoList);
                 mRecyclerView.setAdapter(mAdapter);
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ToDoActivity.this);
                 mRecyclerView.setLayoutManager(layoutManager);

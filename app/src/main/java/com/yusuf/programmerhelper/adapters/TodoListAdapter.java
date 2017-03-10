@@ -15,11 +15,11 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ToDoListAdapter extends RecyclerView.Adapter<ToDoListAdapter.ToDoListViewHolder>{
+public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ToDoListViewHolder>{
     private ArrayList<Task> mToDoList = new ArrayList<>();
     private Context mContext;
 
-    public ToDoListAdapter(Context context, ArrayList<Task> toDoList) {
+    public TodoListAdapter(Context context, ArrayList<Task> toDoList) {
         mContext = context;
         mToDoList = toDoList;
     }
