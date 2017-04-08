@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -55,6 +56,8 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         } else if (flashcards != null) { //Are there any flashcards?
             mStart.setVisibility(View.VISIBLE);
             mNoFlashcards.setVisibility(View.GONE);
+        } else {
+
         }
     }
 
@@ -101,6 +104,8 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent intent) {
         flashcards = Parcels.unwrap(intent.getParcelableExtra("flashcards"));
+        mStart.setVisibility(View.VISIBLE);
+        mNoFlashcards.setVisibility(View.GONE);
     }
 
     private void start(){

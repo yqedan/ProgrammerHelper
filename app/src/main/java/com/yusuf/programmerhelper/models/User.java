@@ -18,6 +18,7 @@ public class User {
         this.tasks.add(new Task("Create a LinkedIn profile"));
         this.tasks.add(new Task("Work on your resume"));
         this.tasks.add(new Task("Work on your cover letter"));
+        this.tasks.add(new Task("Apply for jobs to get an interview"));
         this.tasks.add(new Task("Study using this app"));
         this.tasks.add(new Task("Complete the Interview"));
     }
