@@ -1,5 +1,6 @@
 package com.yusuf.programmerhelper.ui;
 
+import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -8,7 +9,8 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.ListView;
-
+import butterknife.Bind;
+import butterknife.ButterKnife;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -17,19 +19,16 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
 import com.yusuf.programmerhelper.R;
 import com.yusuf.programmerhelper.models.Topic;
-
-import org.parceler.Parcels;
-
 import java.util.ArrayList;
-
-import butterknife.Bind;
-import butterknife.ButterKnife;
+import org.parceler.Parcels;
 
 public class FlashcardCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener, View.OnClickListener{
     private static final String TAG = FlashcardCategoriesActivity.class.getSimpleName();
     @Bind(R.id.flashcardTopicListView) ListView mFlashcardTopicListView;
     @Bind(R.id.flashcardAddTopic) Button addTopicButton;
     private ArrayList<Topic> mTopics;
+    private ProgressDialog mProgressDialog;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -43,6 +42,11 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     @Override
     public void onResume(){
         super.onResume();
+        mProgressDialog = new ProgressDialog(this);
+        mProgressDialog.setTitle("Loading...");
+        mProgressDialog.setMessage("Fetching Data...");
+        mProgressDialog.setCancelable(false);
+        mProgressDialog.show();
         getTopics();
     }
 
@@ -75,6 +79,7 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
                         ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, topicTitles);
                         mFlashcardTopicListView.setAdapter(adapter);
                         mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
+                        mProgressDialog.dismiss();
                     }
 
                     @Override
