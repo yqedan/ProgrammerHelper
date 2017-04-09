@@ -4,24 +4,26 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.support.v7.app.AppCompatActivity;
-import android.util.Log;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-
+import butterknife.Bind;
+import butterknife.ButterKnife;
+import com.google.firebase.auth.FirebaseAuth;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
 import com.yusuf.programmerhelper.R;
 import com.yusuf.programmerhelper.models.Flashcard;
 import com.yusuf.programmerhelper.models.Topic;
-
-import org.parceler.Parcels;
-
 import java.util.ArrayList;
 import java.util.Collections;
+import org.parceler.Parcels;
 
-import butterknife.Bind;
-import butterknife.ButterKnife;
-
+import static com.yusuf.programmerhelper.R.id.deleteTopic;
 import static com.yusuf.programmerhelper.R.id.flashcard;
 
 public class FlashcardsActivity extends AppCompatActivity implements View.OnClickListener{
@@ -30,6 +32,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     @Bind(R.id.back) Button mBack;
     @Bind(R.id.start) Button mStart;
     @Bind(R.id.add_flashcard) Button mAddFlashcard;
+    @Bind(deleteTopic) Button mDeleteTopic;
     @Bind(R.id.no_flashcards_message) TextView mNoFlashcards;
     private static final String TAG = FlashcardsActivity.class.getSimpleName();
     private ArrayList<Flashcard> flashcards;
@@ -51,13 +54,12 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mBack.setOnClickListener(this);
         mStart.setOnClickListener(this);
         mAddFlashcard.setOnClickListener(this);
+        mDeleteTopic.setOnClickListener(this);
         if(mTopic.getPushId() == null){ //Is it not a user created mTopic?
             start();
         } else if (flashcards != null) { //Are there any flashcards?
             mStart.setVisibility(View.VISIBLE);
             mNoFlashcards.setVisibility(View.GONE);
-        } else {
-
         }
     }
 
@@ -99,6 +101,23 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
             intent.putExtra("flashcards",Parcels.wrap(flashcards));
             startActivityForResult(intent, 1);
         }
+        if(v == mDeleteTopic){
+            String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
+            final DatabaseReference ref = FirebaseDatabase.getInstance()
+                .getReference("users")
+                .child(uid)
+                .child("topics");
+            ref.addListenerForSingleValueEvent(new ValueEventListener() {
+                @Override public void onDataChange(DataSnapshot dataSnapshot) {
+                    ref.child(mTopic.getPushId()).removeValue();
+                    finish();
+                }
+
+                @Override public void onCancelled(DatabaseError databaseError) {
+
+                }
+            });
+        }
     }
 
     @Override
@@ -117,6 +136,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mFlashcard.setVisibility(View.VISIBLE);
         mBack.setVisibility(View.VISIBLE);
         mQAndA.setVisibility(View.VISIBLE);
+        mDeleteTopic.setVisibility(View.GONE);
     }
 
     private void setViewsToAnswer(){

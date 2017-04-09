@@ -73,4 +73,11 @@
         android:background="@color/primary_text"
         android:visibility="invisible"/>
 
+    <Button
+        android:id="@+id/deleteTopic"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Delete topic"
+        android:textColor="@color/colorAccent"
+        android:background="@color/primary_text"/>
 </LinearLayout>
