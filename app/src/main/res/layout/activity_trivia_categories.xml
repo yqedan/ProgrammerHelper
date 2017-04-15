@@ -4,9 +4,7 @@
     android:id="@+id/activity_trivia_categories"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yusuf.programmerhelper.ui.TriviaCategoriesActivity"
-    android:background="@color/colorAccentLight">
-
+    tools:context="com.yusuf.programmerhelper.ui.TriviaCategoriesActivity" >
     <ListView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"

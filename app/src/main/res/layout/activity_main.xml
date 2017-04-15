@@ -8,7 +8,6 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    android:background="@color/colorAccentLight"
     tools:context="com.yusuf.programmerhelper.ui.MainActivity">
 
     <TextView
@@ -16,53 +15,40 @@
         android:layout_height="wrap_content"
         android:gravity="center"
         android:textSize="25sp"
-        android:text="Welcome to the all inclusive application to help aspiring developers!\n\n Please select an option below!"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:text="Welcome Programmer Helper. Please select an option below."
         android:background="@color/primary_light"
-        android:padding="10dp"/>
+        android:padding="10dp" />
 
     <Button
-        android:text="Trivia Game"
-        android:textColor="@color/colorAccent"
-        android:background="@color/primary_text"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:text="Multiple Choice Game"
         android:id="@+id/quiz"
         android:layout_marginBottom="20dp"
         android:layout_above="@+id/todo"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/primary_text"
+        android:background="@color/colorPrimary" />
 
     <Button
         android:text="To do list"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/todo"
         android:layout_marginBottom="20dp"
         android:layout_above="@+id/flashcards"
-        android:textColor="@color/colorAccent"
-        android:background="@color/primary_text"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/primary_text"
+        android:background="@color/colorPrimary" />
 
     <Button
         android:text="Flashcards"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
         android:id="@+id/flashcards"
-        android:textColor="@color/colorAccent"
-        android:background="@color/primary_text"
         android:layout_alignParentBottom="true"
-        android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="10dp"
+        android:textColor="@color/primary_text"
+        android:background="@color/colorPrimary" />
 
 </RelativeLayout>

@@ -4,16 +4,14 @@
     android:id="@+id/activity_flashcard_categories"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yusuf.programmerhelper.ui.FlashcardCategoriesActivity"
-    android:background="@color/colorAccentLight">
-
+    tools:context="com.yusuf.programmerhelper.ui.FlashcardCategoriesActivity" >
     <Button
         android:text="Add Topic"
         android:id="@+id/flashcardAddTopic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/colorAccent"
-        android:background="@color/primary_text"
+        android:textColor="@color/primary_text"
+        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true" />

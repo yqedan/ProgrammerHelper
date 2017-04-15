@@ -45,25 +45,26 @@
 
 
         <Button
-            android:id="@+id/passwordLoginButton"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:padding="10dp"
-            android:text="Log in"
-            android:textColor="@color/colorAccent"
-            android:background="@color/primary_text"
-            android:layout_marginTop="15dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="20dp"
             android:textColor="@color/primary_text"
-            android:textStyle="bold"
-            android:textSize="15sp"
-            android:text="Don't have an account? Sign up here!"
-            android:id="@+id/registerTextView"
-            android:layout_gravity="center_horizontal" />
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="15dp"
+            android:text="Login"
+            android:id="@+id/passwordLoginButton"
+            />
+
+        <Button
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:padding="10dp"
+            android:textColor="@color/primary_text"
+            android:background="@color/colorPrimary"
+            android:layout_marginTop="15dp"
+            android:text="SIGN UP"
+            android:id="@+id/registerButton" />
+
 
     </LinearLayout>
 

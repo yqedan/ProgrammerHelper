@@ -27,7 +27,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     @Bind(R.id.passwordLoginButton) Button mPasswordLoginButton;
     @Bind(R.id.emailEditText) EditText mEmailEditText;
     @Bind(R.id.passwordEditText) EditText mPasswordEditText;
-    @Bind(R.id.registerTextView) TextView mRegisterTextView;
+    @Bind(R.id.registerButton) TextView mRegisterButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -58,7 +58,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         };
 
         mPasswordLoginButton.setOnClickListener(this);
-        mRegisterTextView.setOnClickListener(this);
+        mRegisterButton.setOnClickListener(this);
 
         createAuthProgressDialog();
     }
@@ -79,7 +79,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
     @Override
     public void onClick(View view) {
-        if (view == mRegisterTextView) {
+        if (view == mRegisterButton) {
             Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
             startActivity(intent);
             finish();

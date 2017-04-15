@@ -56,6 +56,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mAddFlashcard.setOnClickListener(this);
         mDeleteTopic.setOnClickListener(this);
         if(mTopic.getPushId() == null){ //Is it not a user created mTopic?
+            mNoFlashcards.setVisibility(View.GONE);
             start();
         } else if (flashcards != null) { //Are there any flashcards?
             mStart.setVisibility(View.VISIBLE);
