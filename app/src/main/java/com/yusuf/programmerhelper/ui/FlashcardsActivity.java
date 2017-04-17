@@ -111,6 +111,9 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
                 @Override public void onDataChange(DataSnapshot dataSnapshot) {
                     ref.child(mTopic.getPushId()).removeValue();
+                    Intent intent = new Intent();
+                    intent.putExtra("topic", Parcels.wrap(mTopic));
+                    setResult(1,intent);
                     finish();
                 }
 
@@ -124,8 +127,19 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     @Override
     protected void onActivityResult (int requestCode, int resultCode, Intent intent) {
         flashcards = Parcels.unwrap(intent.getParcelableExtra("flashcards"));
+        Flashcard flashcard = Parcels.unwrap(intent.getParcelableExtra("flashcard"));
+        mTopic.addFlashcard(flashcard);
         mStart.setVisibility(View.VISIBLE);
         mNoFlashcards.setVisibility(View.GONE);
+    }
+
+    @Override
+    public void onBackPressed(){
+        //update any changes to the topic in case the user added or removed flashcards
+        Intent intent = new Intent();
+        intent.putExtra("topic", Parcels.wrap(mTopic));
+        setResult(3,intent);
+        finish();
     }
 
     private void start(){

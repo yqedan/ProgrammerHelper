@@ -34,7 +34,18 @@ public class Topic {
         return pushId;
     }
 
-    public void addFlashcard(String question, String answer){
-        this.flashcards.add(new Flashcard(question,answer));
+    public void addFlashcard(Flashcard flashcard){
+        if(flashcards == null){
+            flashcards = new ArrayList<>();
+        }
+        this.flashcards.add(flashcard);
+    }
+
+    @Override
+    public boolean equals(Object obj){
+        if(obj instanceof Topic){
+            return ((Topic) obj).getPushId().equals(this.getPushId());
+        }
+        return false;
     }
 }

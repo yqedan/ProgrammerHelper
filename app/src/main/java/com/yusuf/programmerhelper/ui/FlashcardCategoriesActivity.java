@@ -28,6 +28,7 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     @Bind(R.id.flashcardTopicListView) ListView mFlashcardTopicListView;
     @Bind(R.id.flashcardAddTopic) Button addTopicButton;
     private ArrayList<Topic> mTopics;
+    private ArrayList<String> mTopicTitles;
     private ProgressDialog mProgressDialog;
 
 
@@ -37,7 +38,7 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
         setContentView(R.layout.activity_flashcard_categories);
         ButterKnife.bind(this);
         addTopicButton.setOnClickListener(this);
-        setTitle("Flashcards");
+        setTitle("Flashcard topics");
         displayTopicsAndProgress();
     }
 
@@ -82,6 +83,7 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
                             topics.add(snapshot.getValue(Topic.class));
                             topicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
                         }
+                        mTopicTitles = topicTitles;
                         mTopics = topics;
                         ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, topicTitles);
                         mFlashcardTopicListView.setAdapter(adapter);
@@ -104,11 +106,16 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
         });
     }
 
+    private void refreshList(){
+        ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
+        mFlashcardTopicListView.setAdapter(adapter);
+    }
+
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
         Intent intent = new Intent(FlashcardCategoriesActivity.this,FlashcardsActivity.class);
         intent.putExtra("topic",Parcels.wrap(mTopics.get(position)));
-        startActivity(intent);
+        startActivityForResult(intent,position);
     }
 
     @Override
@@ -119,6 +126,23 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
-        displayTopicsAndProgress();
+        //request code is equal to the topic position that was clicked on
+        Topic topic = Parcels.unwrap(data.getParcelableExtra("topic"));
+        if (resultCode == 1){ //a topic was deleted from database
+            if(topic.equals(mTopics.get(requestCode))){ //check equality to be sure
+                mTopics.remove(requestCode); //even though user cant see them we need to delete to ensure data is consistent
+                mTopicTitles.remove(requestCode);
+            }
+            refreshList();
+        }else if(resultCode == 2){ //a topic was added to database
+            mTopics.add(topic);
+            mTopicTitles.add(topic.getTopicTitle());
+            refreshList();
+        }else if(resultCode == 3 ){ //if user presses the back button we refresh the topic in case flashcards were edited
+            if(topic.equals(mTopics.get(requestCode))) { //check equality to be sure
+                mTopics.set(requestCode,topic);
+                mTopicTitles.set(requestCode,topic.getTopicTitle()); //just in case we add a feature to edit topic name
+            }
+        }
     }
 }

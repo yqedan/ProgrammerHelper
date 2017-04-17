@@ -35,7 +35,7 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_categories);
         ButterKnife.bind(this);
-        setTitle("Multiple Choice Game");
+        setTitle("Multiple Choice Topics");
         displayTopicsAndProgress();
     }
 

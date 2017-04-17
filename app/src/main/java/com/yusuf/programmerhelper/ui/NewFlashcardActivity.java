@@ -55,6 +55,7 @@ public class NewFlashcardActivity extends AppCompatActivity implements View.OnCl
 
         intent = new Intent();
         intent.putExtra("flashcards",Parcels.wrap(flashcards));
+        intent.putExtra("flashcard",Parcels.wrap(flashcard));
         setResult(RESULT_OK, intent);
         finish();
     }
