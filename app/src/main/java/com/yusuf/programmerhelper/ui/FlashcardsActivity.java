@@ -136,10 +136,14 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     @Override
     public void onBackPressed(){
         //update any changes to the topic in case the user added or removed flashcards
-        Intent intent = new Intent();
-        intent.putExtra("topic", Parcels.wrap(mTopic));
-        setResult(3,intent);
-        finish();
+        if(mTopic.getPushId() != null) {//is this a user created topic?
+            Intent intent = new Intent();
+            intent.putExtra("topic", Parcels.wrap(mTopic));
+            setResult(3, intent);
+            finish();
+        }else{
+            finish();
+        }
     }
 
     private void start(){

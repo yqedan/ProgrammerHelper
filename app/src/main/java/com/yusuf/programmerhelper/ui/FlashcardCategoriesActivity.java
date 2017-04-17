@@ -127,16 +127,19 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         //request code is equal to the topic position that was clicked on
-        Topic topic = Parcels.unwrap(data.getParcelableExtra("topic"));
-        if (resultCode == 1){ //a topic was deleted from database
+        Topic topic = null;
+        if(resultCode != 0) { //no result returned, user hit back button on new topic activity, non-user created topic was navigated from with back button
+            topic = Parcels.unwrap(data.getParcelableExtra("topic"));
+        }
+        if(resultCode == 1){ // a topic was deleted from database
             if(topic.equals(mTopics.get(requestCode))){ //check equality to be sure
                 mTopics.remove(requestCode); //even though user cant see them we need to delete to ensure data is consistent
                 mTopicTitles.remove(requestCode);
             }
-        }else if(resultCode == 2){ //a topic was added to database
+        }else if(resultCode == 2){ // a topic was added to database
             mTopics.add(topic);
             mTopicTitles.add(topic.getTopicTitle());
-        }else if(resultCode == 3 ){ //if user presses the back button we refresh the topic in case flashcards were edited
+        }else if(resultCode == 3 ){ // if user presses the back button we refresh the topic in case flashcards were edited
             if(topic.equals(mTopics.get(requestCode))) { //check equality to be sure
                 mTopics.set(requestCode,topic);
                 mTopicTitles.set(requestCode,topic.getTopicTitle()); //just in case we add a feature to edit topic name
