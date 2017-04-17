@@ -1,26 +1,21 @@
 package com.yusuf.programmerhelper.adapters;
 
-import android.content.Context;
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.CheckedTextView;
-
-import com.yusuf.programmerhelper.R;
-import com.yusuf.programmerhelper.models.Task;
-
-import java.util.ArrayList;
-
+import android.widget.ImageView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
+import com.yusuf.programmerhelper.R;
+import com.yusuf.programmerhelper.models.Task;
+import java.util.ArrayList;
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ToDoListViewHolder>{
     private ArrayList<Task> mToDoList = new ArrayList<>();
-    private Context mContext;
 
-    public TodoListAdapter(Context context, ArrayList<Task> toDoList) {
-        mContext = context;
+    public TodoListAdapter(ArrayList<Task> toDoList) {
         mToDoList = toDoList;
     }
 
@@ -43,36 +38,34 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ToDoLi
 
     public class ToDoListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
         @Bind(R.id.checkedTextView) CheckedTextView mCheckedTextView;
-
-        private Context mContext;
+        @Bind(R.id.checkBoxImageView) ImageView mCheckBoxImageView;
 
         public ToDoListViewHolder(View itemView) {
             super(itemView);
             ButterKnife.bind(this,itemView);
-            mContext = itemView.getContext();
-            mCheckedTextView.setOnClickListener(this);
+            itemView.setOnClickListener(this);
         }
 
         public void bindTask(Task task){
             mCheckedTextView.setText(task.getTitle());
             mCheckedTextView.setChecked(task.isComplete());
             if (task.isComplete()) {
-                mCheckedTextView.setCheckMarkDrawable(R.drawable.ic_done_black_24dp);
+                mCheckBoxImageView.setImageResource(R.drawable.ic_check_box_black_24dp);
             }else{
-                mCheckedTextView.setCheckMarkDrawable(null);
+                mCheckBoxImageView.setImageResource(R.drawable.ic_check_box_outline_blank_black_24dp);
             }
         }
 
         @Override
         public void onClick(View v) {
-            if (v == mCheckedTextView){
+            if (v == itemView){
                 int itemPosition = getLayoutPosition();
                 mCheckedTextView.toggle();
                 if (mCheckedTextView.isChecked()) {
-                    mCheckedTextView.setCheckMarkDrawable(R.drawable.ic_done_black_24dp);
+                    mCheckBoxImageView.setImageResource(R.drawable.ic_check_box_black_24dp);
                     mToDoList.get(itemPosition).setComplete();
                 }else{
-                    mCheckedTextView.setCheckMarkDrawable(null);
+                    mCheckBoxImageView.setImageResource(R.drawable.ic_check_box_outline_blank_black_24dp);
                     mToDoList.get(itemPosition).setIncomplete();
                 }
             }

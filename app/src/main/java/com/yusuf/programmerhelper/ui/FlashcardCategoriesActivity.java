@@ -3,6 +3,7 @@ package com.yusuf.programmerhelper.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -37,16 +38,22 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
         ButterKnife.bind(this);
         addTopicButton.setOnClickListener(this);
         setTitle("Flashcards");
+        displayTopicsAndProgress();
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-        mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setTitle("Loading...");
-        mProgressDialog.setMessage("Fetching Data...");
-        mProgressDialog.setCancelable(false);
-        mProgressDialog.show();
+    private void displayTopicsAndProgress(){
+        //only show progress if nothing loads within 2 seconds
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                if(mTopics == null) {
+                    mProgressDialog = new ProgressDialog(FlashcardCategoriesActivity.this);
+                    mProgressDialog.setTitle("Loading...");
+                    mProgressDialog.setMessage("Fetching Data...");
+                    mProgressDialog.setCancelable(false);
+                    mProgressDialog.show();
+                }
+            }
+        },2000);
         getTopics();
     }
 
@@ -79,7 +86,7 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
                         ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, topicTitles);
                         mFlashcardTopicListView.setAdapter(adapter);
                         mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
-                        mProgressDialog.dismiss();
+                        if(mProgressDialog != null) mProgressDialog.dismiss();
                     }
 
                     @Override
@@ -107,6 +114,11 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
     @Override
     public void onClick(View v) {
         Intent intent = new Intent(FlashcardCategoriesActivity.this, NewTopicActivity.class);
-        startActivity(intent);
+        startActivityForResult(intent,1);
+    }
+
+    @Override
+    protected void onActivityResult(int requestCode, int resultCode, Intent data) {
+        displayTopicsAndProgress();
     }
 }

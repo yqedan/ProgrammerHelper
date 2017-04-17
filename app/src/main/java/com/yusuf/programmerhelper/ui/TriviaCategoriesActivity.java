@@ -3,6 +3,7 @@ package com.yusuf.programmerhelper.ui;
 import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
@@ -34,12 +35,23 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_trivia_categories);
         ButterKnife.bind(this);
-        setTitle("Trivia Game");
-        mProgressDialog = new ProgressDialog(this);
-        mProgressDialog.setTitle("Loading...");
-        mProgressDialog.setMessage("Fetching Data...");
-        mProgressDialog.setCancelable(false);
-        mProgressDialog.show();
+        setTitle("Multiple Choice Game");
+        displayTopicsAndProgress();
+    }
+
+    private void displayTopicsAndProgress(){
+        //only show progress if nothing loads within 2 seconds
+        new Handler().postDelayed(new Runnable() {
+            @Override public void run() {
+                if(mTopics == null) {
+                    mProgressDialog = new ProgressDialog(TriviaCategoriesActivity.this);
+                    mProgressDialog.setTitle("Loading...");
+                    mProgressDialog.setMessage("Fetching Data...");
+                    mProgressDialog.setCancelable(false);
+                    mProgressDialog.show();
+                }
+            }
+        },2000);
         getTopics();
     }
 
@@ -55,7 +67,7 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
                 ArrayAdapter adapter = new ArrayAdapter(TriviaCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
                 mTriviaTopicListView.setAdapter(adapter);
                 mTriviaTopicListView.setOnItemClickListener(TriviaCategoriesActivity.this);
-                mProgressDialog.dismiss();
+                if(mProgressDialog != null) mProgressDialog.dismiss();
             }
 
             @Override
