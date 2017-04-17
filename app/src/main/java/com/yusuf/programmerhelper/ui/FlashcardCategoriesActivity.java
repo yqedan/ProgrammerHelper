@@ -133,16 +133,15 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
                 mTopics.remove(requestCode); //even though user cant see them we need to delete to ensure data is consistent
                 mTopicTitles.remove(requestCode);
             }
-            refreshList();
         }else if(resultCode == 2){ //a topic was added to database
             mTopics.add(topic);
             mTopicTitles.add(topic.getTopicTitle());
-            refreshList();
         }else if(resultCode == 3 ){ //if user presses the back button we refresh the topic in case flashcards were edited
             if(topic.equals(mTopics.get(requestCode))) { //check equality to be sure
                 mTopics.set(requestCode,topic);
                 mTopicTitles.set(requestCode,topic.getTopicTitle()); //just in case we add a feature to edit topic name
             }
         }
+        refreshList();
     }
 }
