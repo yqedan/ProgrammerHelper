@@ -8,16 +8,34 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
+    android:background="@color/primary_light"
     tools:context="com.yusuf.programmerhelper.ui.MainActivity">
+
+    <ImageView
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_centerHorizontal="true"
+        android:gravity="center"
+        android:src="@drawable/appicon"
+        android:id="@+id/image"
+        android:padding="20dp"/>
 
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
-        android:textSize="25sp"
-        android:text="Welcome Programmer Helper. Please select an option below."
-        android:background="@color/primary_light"
-        android:padding="10dp" />
+        android:textColor="@color/primary_text"
+        android:textSize="30dp"
+        android:textStyle="bold"
+        android:text="Please select an option below."
+        android:padding="10dp"
+        android:layout_alignParentRight="true"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentStart="true"
+        android:id="@+id/welcome"
+        android:layout_below="@+id/image"
+        />
 
     <Button
         android:text="Multiple Choice Game"

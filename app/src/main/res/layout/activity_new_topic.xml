@@ -5,6 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
+    android:padding="30dp"
     tools:context="com.yusuf.programmerhelper.ui.NewTopicActivity"
     android:background="@color/primary_light">
     <TextView
@@ -15,8 +16,10 @@
         android:textColor="@color/primary_text"
         android:textSize="20dp"
         android:textStyle="bold"
-        android:layout_centerHorizontal="true"
         android:layout_marginTop="20dp"
+        android:layout_marginBottom="20dp"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
         />
 
     <EditText
@@ -27,7 +30,6 @@
         android:background="@android:color/white"
         android:hint="Name"
         android:padding="10dp"
-        android:layout_margin="20dp"
         android:textColor="@color/primary_text"
         android:textColorHint="@color/secondary_text"
         android:textSize="20sp" />
@@ -39,7 +41,6 @@
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:id="@+id/new_topic_button"
-        android:textColor="@color/colorAccent"
-        android:background="@color/primary_text"/>
-
+        android:textColor="@color/primary_text"
+        android:background="@color/colorPrimary" />
 </RelativeLayout>

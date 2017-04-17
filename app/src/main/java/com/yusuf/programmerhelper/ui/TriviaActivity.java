@@ -117,11 +117,11 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
                                 highScore = highScores.get(topic.getTopicTitle());
                             }
                             if (highScore == null || highScore < percentageScore) {
-                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% New Record!");
+                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored " + percentageScore + "% New Record!");
                                 currentUser.setHighScores(topic.getTopicTitle(),percentageScore);
                                 ref.setValue(currentUser);
                             } else {
-                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored a(n) " + percentageScore + "% Your current high score is " + highScore + "%") ;
+                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored " + percentageScore + "% Your current high score is " + highScore + "%") ;
                             }
                         }
 

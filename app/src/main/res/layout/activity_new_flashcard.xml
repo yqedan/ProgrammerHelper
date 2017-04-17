@@ -4,50 +4,56 @@
     android:id="@+id/activity_new_flashcard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:paddingBottom="@dimen/activity_vertical_margin"
-    android:paddingLeft="@dimen/activity_horizontal_margin"
-    android:paddingRight="@dimen/activity_horizontal_margin"
-    android:paddingTop="@dimen/activity_vertical_margin"
+    android:padding="30dp"
     tools:context="com.yusuf.programmerhelper.ui.NewFlashcardActivity"
     android:background="@color/primary_light">
-
     <TextView
         android:id="@+id/new_flashcard_title"
-        android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
         android:text="Enter the new flashcard details"
+        android:layout_above="@+id/newFlashcardForm"
+        android:layout_marginBottom="20dp"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
         android:textStyle="bold"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="20dp"
-        />
+        android:gravity="center" />
 
-    <EditText
-        android:id="@+id/flashcard_question"
-        android:layout_width="match_parent"
+    <LinearLayout
         android:layout_height="wrap_content"
-        android:layout_below="@id/new_flashcard_title"
-        android:background="@android:color/white"
-        android:hint="Question"
-        android:padding="10dp"
-        android:layout_margin="20dp"
-        android:textColor="@color/primary_text"
-        android:textColorHint="@color/secondary_text"
-        android:textSize="20sp" />
+        android:layout_width="match_parent"
+        android:id="@+id/newFlashcardForm"
+        android:orientation="vertical"
+        android:layout_centerVertical="true">
 
-    <EditText
-        android:id="@+id/flashcard_answer"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_below="@id/flashcard_question"
-        android:background="@android:color/white"
-        android:hint="Answer"
-        android:padding="10dp"
-        android:layout_margin="20dp"
-        android:textColor="@color/primary_text"
-        android:textColorHint="@color/secondary_text"
-        android:textSize="20sp" />
+        <EditText
+            android:id="@+id/flashcard_question"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_below="@id/new_flashcard_title"
+            android:background="@android:color/white"
+            android:hint="Question"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/secondary_text"
+            android:textSize="20sp" />
+
+        <EditText
+            android:id="@+id/flashcard_answer"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@android:color/white"
+            android:hint="Answer"
+            android:padding="10dp"
+            android:layout_marginBottom="10dp"
+            android:textColor="@color/primary_text"
+            android:textColorHint="@color/secondary_text"
+            android:textSize="20sp" />
+
+
+    </LinearLayout>
 
     <Button
         android:id="@+id/new_flashcard_button"
@@ -56,7 +62,6 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/colorAccent"
-        android:background="@color/primary_text"/>
-
+        android:textColor="@color/primary_text"
+        android:background="@color/colorPrimary" />
 </RelativeLayout>
