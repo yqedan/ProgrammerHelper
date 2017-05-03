@@ -6,7 +6,7 @@
     android:layout_height="match_parent"
     android:orientation="vertical"
     android:padding="30dp"
-    tools:context="com.yusuf.programmerhelper.ui.NewTopicActivity"
+    tools:context="com.yusufqedan.programmerhelper.ui.NewTopicActivity"
     android:background="@color/primary_light">
     <TextView
         android:id="@+id/new_topic_title"

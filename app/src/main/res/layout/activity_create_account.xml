@@ -4,7 +4,7 @@
     android:id="@+id/activity_create_account"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yusuf.programmerhelper.ui.CreateAccountActivity"
+    tools:context="com.yusufqedan.programmerhelper.ui.CreateAccountActivity"
     android:padding="30dp"
     android:background="@color/primary_light">
 

@@ -1,4 +1,4 @@
-package com.yusuf.programmerhelper.ui;
+package com.yusufqedan.programmerhelper.ui;
 
 import android.app.ProgressDialog;
 import android.os.Bundle;
@@ -6,8 +6,7 @@ import android.os.Handler;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.google.firebase.database.DataSnapshot;
@@ -15,17 +14,23 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.yusuf.programmerhelper.R;
-import com.yusuf.programmerhelper.adapters.TodoListAdapter;
-import com.yusuf.programmerhelper.models.Task;
+import com.yusufqedan.programmerhelper.R;
+import com.yusufqedan.programmerhelper.adapters.TodoListAdapter;
+import com.yusufqedan.programmerhelper.models.Task;
+
 import java.util.ArrayList;
 
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
 public class ToDoActivity extends AppCompatActivity {
-    public static final String TAG = ToDoActivity.class.getSimpleName();
+    //private static final String TAG = ToDoActivity.class.getSimpleName();
+    @Bind(R.id.recyclerView)
+    RecyclerView mRecyclerView;
+
     private ArrayList<Task> mToDoList;
     private TodoListAdapter mAdapter;
     private ProgressDialog mProgressDialog;
-    @Bind(R.id.recyclerView) RecyclerView mRecyclerView;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,8 +39,9 @@ public class ToDoActivity extends AppCompatActivity {
         ButterKnife.bind(this);
         //only show progress if nothing loads within 2 seconds
         new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                if(mToDoList == null) {
+            @Override
+            public void run() {
+                if (mToDoList == null) {
                     mProgressDialog = new ProgressDialog(ToDoActivity.this);
                     mProgressDialog.setTitle("Loading...");
                     mProgressDialog.setMessage("Fetching Data...");
@@ -43,12 +49,12 @@ public class ToDoActivity extends AppCompatActivity {
                     mProgressDialog.show();
                 }
             }
-        },2000);
+        }, 2000);
 
         getTasks();
     }
 
-    private void getTasks(){
+    private void getTasks() {
         FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
         String uid = user.getUid();
 
@@ -66,7 +72,7 @@ public class ToDoActivity extends AppCompatActivity {
                 RecyclerView.LayoutManager layoutManager = new LinearLayoutManager(ToDoActivity.this);
                 mRecyclerView.setLayoutManager(layoutManager);
                 mRecyclerView.setHasFixedSize(true);
-                if(mProgressDialog != null) mProgressDialog.dismiss();
+                if (mProgressDialog != null) mProgressDialog.dismiss();
             }
 
             @Override
@@ -77,8 +83,8 @@ public class ToDoActivity extends AppCompatActivity {
     }
 
     @Override
-    protected void onPause(){
-        if(mToDoList != null){ //ensure we have read database at least once
+    protected void onPause() {
+        if (mToDoList != null) { //ensure we have read database at least once
             FirebaseUser user = FirebaseAuth.getInstance().getCurrentUser();
             String uid = user.getUid();
             DatabaseReference ref = FirebaseDatabase.getInstance().getReference("users").child(uid).child("tasks");

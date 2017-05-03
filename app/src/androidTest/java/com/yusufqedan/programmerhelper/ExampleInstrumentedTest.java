@@ -1,4 +1,4 @@
-package com.yusuf.programmerhelper;
+package com.yusufqedan.programmerhelper;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

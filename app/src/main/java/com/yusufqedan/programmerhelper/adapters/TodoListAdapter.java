@@ -1,4 +1,4 @@
-package com.yusuf.programmerhelper.adapters;
+package com.yusufqedan.programmerhelper.adapters;
 
 import android.support.v7.widget.RecyclerView;
 import android.view.LayoutInflater;
@@ -8,8 +8,8 @@ import android.widget.CheckedTextView;
 import android.widget.ImageView;
 import butterknife.Bind;
 import butterknife.ButterKnife;
-import com.yusuf.programmerhelper.R;
-import com.yusuf.programmerhelper.models.Task;
+import com.yusufqedan.programmerhelper.R;
+import com.yusufqedan.programmerhelper.models.Task;
 import java.util.ArrayList;
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ToDoListViewHolder>{

@@ -1,4 +1,4 @@
-package com.yusuf.programmerhelper.ui;
+package com.yusufqedan.programmerhelper.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -8,40 +8,51 @@ import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.yusuf.programmerhelper.R;
-import com.yusuf.programmerhelper.models.Flashcard;
-import com.yusuf.programmerhelper.models.Topic;
-import java.util.ArrayList;
-import java.util.Collections;
+import com.yusufqedan.programmerhelper.R;
+import com.yusufqedan.programmerhelper.models.Flashcard;
+import com.yusufqedan.programmerhelper.models.Topic;
+
 import org.parceler.Parcels;
 
-import static com.yusuf.programmerhelper.R.id.deleteTopic;
-import static com.yusuf.programmerhelper.R.id.flashcard;
+import java.util.ArrayList;
+import java.util.Collections;
 
-public class FlashcardsActivity extends AppCompatActivity implements View.OnClickListener{
-    @Bind(flashcard) TextView mFlashcard;
-    @Bind(R.id.qanda) TextView mQAndA;
-    @Bind(R.id.back) Button mBack;
-    @Bind(R.id.start) Button mStart;
-    @Bind(R.id.add_flashcard) Button mAddFlashcard;
-    @Bind(deleteTopic) Button mDeleteTopic;
-    @Bind(R.id.no_flashcards_message) TextView mNoFlashcards;
-    private static final String TAG = FlashcardsActivity.class.getSimpleName();
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+import static com.yusufqedan.programmerhelper.R.id.deleteTopic;
+import static com.yusufqedan.programmerhelper.R.id.flashcard;
+
+public class FlashcardsActivity extends AppCompatActivity implements View.OnClickListener {
+    //private static final String TAG = FlashcardsActivity.class.getSimpleName();
+    @Bind(flashcard)
+    TextView mFlashcard;
+    @Bind(R.id.qanda)
+    TextView mQAndA;
+    @Bind(R.id.back)
+    Button mBack;
+    @Bind(R.id.start)
+    Button mStart;
+    @Bind(R.id.add_flashcard)
+    Button mAddFlashcard;
+    @Bind(deleteTopic)
+    Button mDeleteTopic;
+    @Bind(R.id.no_flashcards_message)
+    TextView mNoFlashcards;
+
     private ArrayList<Flashcard> flashcards;
     private int count = 0;
     private boolean mQuestionVisible = true;
     private boolean mRoundOver = false;
-    public Topic mTopic;
+    private Topic mTopic;
 
-    //TODO work on saving state when device is rotated
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -55,7 +66,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mStart.setOnClickListener(this);
         mAddFlashcard.setOnClickListener(this);
         mDeleteTopic.setOnClickListener(this);
-        if(mTopic.getPushId() == null){ //Is it not a user created mTopic?
+        if (mTopic.getPushId() == null) { //Is it not a user created mTopic?
             mNoFlashcards.setVisibility(View.GONE);
             start();
         } else if (flashcards != null) { //Are there any flashcards?
@@ -70,9 +81,9 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
             if (mRoundOver == true) {
                 mRoundOver = false;
                 setViewsToAnswer();
-            }else if(mQuestionVisible == false){
+            } else if (mQuestionVisible == false) {
                 setViewsToQuestion();
-            }else if(count > 0) {
+            } else if (count > 0) {
                 count--;
                 setViewsToAnswer();
             }
@@ -80,12 +91,12 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         if (v == mFlashcard) {
             if (mRoundOver == true) {
                 return;
-            }else if (mQuestionVisible == true) {
+            } else if (mQuestionVisible == true) {
                 setViewsToAnswer();
-            }else if(count < (flashcards.size() - 1)){
+            } else if (count < (flashcards.size() - 1)) {
                 count++;
                 setViewsToQuestion();
-            }else{
+            } else {
                 mFlashcard.setGravity(Gravity.CENTER);
                 mQAndA.setText(" ");
                 mFlashcard.setText("Round Over");
@@ -98,26 +109,28 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         }
         if (v == mAddFlashcard) {
             Intent intent = new Intent(FlashcardsActivity.this, NewFlashcardActivity.class);
-            intent.putExtra("topicId",mTopic.getPushId());
-            intent.putExtra("flashcards",Parcels.wrap(flashcards));
+            intent.putExtra("topicId", mTopic.getPushId());
+            intent.putExtra("flashcards", Parcels.wrap(flashcards));
             startActivityForResult(intent, 1);
         }
-        if(v == mDeleteTopic){
+        if (v == mDeleteTopic) {
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             final DatabaseReference ref = FirebaseDatabase.getInstance()
-                .getReference("users")
-                .child(uid)
-                .child("topics");
+                    .getReference("users")
+                    .child(uid)
+                    .child("topics");
             ref.addListenerForSingleValueEvent(new ValueEventListener() {
-                @Override public void onDataChange(DataSnapshot dataSnapshot) {
+                @Override
+                public void onDataChange(DataSnapshot dataSnapshot) {
                     ref.child(mTopic.getPushId()).removeValue();
                     Intent intent = new Intent();
                     intent.putExtra("topic", Parcels.wrap(mTopic));
-                    setResult(1,intent);
+                    setResult(1, intent);
                     finish();
                 }
 
-                @Override public void onCancelled(DatabaseError databaseError) {
+                @Override
+                public void onCancelled(DatabaseError databaseError) {
 
                 }
             });
@@ -125,7 +138,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    protected void onActivityResult (int requestCode, int resultCode, Intent intent) {
+    protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
         flashcards = Parcels.unwrap(intent.getParcelableExtra("flashcards"));
         Flashcard flashcard = Parcels.unwrap(intent.getParcelableExtra("flashcard"));
         mTopic.addFlashcard(flashcard);
@@ -134,19 +147,19 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
     }
 
     @Override
-    public void onBackPressed(){
+    public void onBackPressed() {
         //update any changes to the topic in case the user added or removed flashcards
-        if(mTopic.getPushId() != null) {//is this a user created topic?
+        if (mTopic.getPushId() != null) {//is this a user created topic?
             Intent intent = new Intent();
             intent.putExtra("topic", Parcels.wrap(mTopic));
             setResult(3, intent);
             finish();
-        }else{
+        } else {
             finish();
         }
     }
 
-    private void start(){
+    private void start() {
         Collections.shuffle(flashcards);
         mFlashcard.setText(flashcards.get(count).getQuestion());
         mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
@@ -158,7 +171,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mDeleteTopic.setVisibility(View.GONE);
     }
 
-    private void setViewsToAnswer(){
+    private void setViewsToAnswer() {
         mQuestionVisible = false;
         mQAndA.setText("Answer");
         String answer = flashcards.get(count).getAnswer();
@@ -167,7 +180,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
     }
 
-    private void setViewsToQuestion(){
+    private void setViewsToQuestion() {
         mQuestionVisible = true;
         mQAndA.setText("Question");
         String question = flashcards.get(count).getQuestion();
@@ -176,10 +189,10 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
         mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
     }
 
-    private void setGravityBasedOnCharCount(int count){
+    private void setGravityBasedOnCharCount(int count) {
         if (count > 120) {
             mFlashcard.setGravity(Gravity.NO_GRAVITY);
-        }else{
+        } else {
             mFlashcard.setGravity(Gravity.CENTER);
         }
     }

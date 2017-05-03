@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.yusuf.programmerhelper">
+    package="com.yusufqedan.programmerhelper">
 
     <uses-permission android:name="android.permission.INTERNET" />
 
@@ -11,10 +11,10 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.MainActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.MainActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.LoginActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.LoginActivity"
             android:theme="@style/AppNoActionBarTheme"
             android:screenOrientation="portrait">
             <intent-filter>
@@ -24,30 +24,30 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".ui.CreateAccountActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.CreateAccountActivity"
             android:theme="@style/AppNoActionBarTheme"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.FlashcardCategoriesActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.FlashcardCategoriesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.FlashcardsActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.FlashcardsActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.TriviaCategoriesActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.TriviaCategoriesActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.TriviaActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.TriviaActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.ToDoActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.ToDoActivity"
             android:theme="@style/AppNoActionBarTheme"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.NewTopicActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.NewTopicActivity"
             android:screenOrientation="portrait" />
         <activity
-            android:name=".ui.NewFlashcardActivity"
+            android:name="com.yusufqedan.programmerhelper.ui.NewFlashcardActivity"
             android:screenOrientation="portrait" />
     </application>
 

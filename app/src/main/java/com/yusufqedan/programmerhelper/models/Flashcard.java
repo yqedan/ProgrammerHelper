@@ -1,4 +1,4 @@
-package com.yusuf.programmerhelper.models;
+package com.yusufqedan.programmerhelper.models;
 
 import org.parceler.Parcel;
 

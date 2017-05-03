@@ -4,7 +4,7 @@
     android:id="@+id/activity_login"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yusuf.programmerhelper.ui.LoginActivity"
+    tools:context="com.yusufqedan.programmerhelper.ui.LoginActivity"
     android:background="@color/primary_light">
 
     <LinearLayout

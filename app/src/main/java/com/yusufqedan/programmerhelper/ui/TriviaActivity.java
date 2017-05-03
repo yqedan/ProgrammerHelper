@@ -1,4 +1,4 @@
-package com.yusuf.programmerhelper.ui;
+package com.yusufqedan.programmerhelper.ui;
 
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
@@ -14,10 +14,10 @@ import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.yusuf.programmerhelper.R;
-import com.yusuf.programmerhelper.models.Topic;
-import com.yusuf.programmerhelper.models.TriviaQuestion;
-import com.yusuf.programmerhelper.models.User;
+import com.yusufqedan.programmerhelper.R;
+import com.yusufqedan.programmerhelper.models.Topic;
+import com.yusufqedan.programmerhelper.models.TriviaQuestion;
+import com.yusufqedan.programmerhelper.models.User;
 
 import org.parceler.Parcels;
 
@@ -28,15 +28,22 @@ import java.util.HashMap;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TriviaActivity extends AppCompatActivity implements View.OnClickListener{
-    private static final String TAG = TriviaActivity.class.getSimpleName();
-    @Bind(R.id.question) TextView mQuestionTextView;
-    @Bind(R.id.status) TextView mStatusTextView;
-    @Bind(R.id.choice1) Button mChoice1;
-    @Bind(R.id.choice2) Button mChoice2;
-    @Bind(R.id.choice3) Button mChoice3;
-    @Bind(R.id.choice4) Button mChoice4;
-    @Bind(R.id.next) Button mNext;
+public class TriviaActivity extends AppCompatActivity implements View.OnClickListener {
+    //private static final String TAG = TriviaActivity.class.getSimpleName();
+    @Bind(R.id.question)
+    TextView mQuestionTextView;
+    @Bind(R.id.status)
+    TextView mStatusTextView;
+    @Bind(R.id.choice1)
+    Button mChoice1;
+    @Bind(R.id.choice2)
+    Button mChoice2;
+    @Bind(R.id.choice3)
+    Button mChoice3;
+    @Bind(R.id.choice4)
+    Button mChoice4;
+    @Bind(R.id.next)
+    Button mNext;
 
     private ArrayList<TriviaQuestion> triviaQuestions;
     private int count = 0;
@@ -44,7 +51,6 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
     private boolean answered = false;
     private Topic topic;
 
-    //TODO work on saving state when device is rotated
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -54,22 +60,22 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         setTitle(topic.getTopicTitle());
         triviaQuestions = topic.getTriviaQuestions();
         //Reorganize data for randomization of options
-        for(TriviaQuestion triviaQuestion : triviaQuestions){
+        for (TriviaQuestion triviaQuestion : triviaQuestions) {
             ArrayList<String> choices = triviaQuestion.getChoices();
             ArrayList<TriviaQuestion.ChoiceWithAnswer> choiceWithAnswers = triviaQuestion.getChoiceWithAnswers();
             int answer = triviaQuestion.getAnswer();
-            for(int i = 0;i < choices.size();i++){
+            for (int i = 0; i < choices.size(); i++) {
                 TriviaQuestion.ChoiceWithAnswer choiceWithAnswer;
-                if(answer == i){
-                    choiceWithAnswer = new TriviaQuestion.ChoiceWithAnswer(true,choices.get(i));
-                }else{
-                    choiceWithAnswer = new TriviaQuestion.ChoiceWithAnswer(false,choices.get(i));
+                if (answer == i) {
+                    choiceWithAnswer = new TriviaQuestion.ChoiceWithAnswer(true, choices.get(i));
+                } else {
+                    choiceWithAnswer = new TriviaQuestion.ChoiceWithAnswer(false, choices.get(i));
                 }
                 choiceWithAnswers.add(choiceWithAnswer);
             }
         }
         Collections.shuffle(triviaQuestions);
-        for(TriviaQuestion triviaQuestion : triviaQuestions){
+        for (TriviaQuestion triviaQuestion : triviaQuestions) {
             Collections.shuffle(triviaQuestion.getChoiceWithAnswers());
         }
         setFields();
@@ -112,16 +118,16 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
                         public void onDataChange(DataSnapshot dataSnapshot) {
                             User currentUser = dataSnapshot.getValue(User.class);
                             Long highScore = null;
-                            HashMap<String,Long> highScores = currentUser.getHighScores();
+                            HashMap<String, Long> highScores = currentUser.getHighScores();
                             if (highScores != null) {
                                 highScore = highScores.get(topic.getTopicTitle());
                             }
                             if (highScore == null || highScore < percentageScore) {
                                 mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored " + percentageScore + "% New Record!");
-                                currentUser.setHighScores(topic.getTopicTitle(),percentageScore);
+                                currentUser.setHighScores(topic.getTopicTitle(), percentageScore);
                                 ref.setValue(currentUser);
                             } else {
-                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored " + percentageScore + "% Your current high score is " + highScore + "%") ;
+                                mStatusTextView.setText("You answered " + score + " out of " + triviaQuestions.size() + " questions correct. Your scored " + percentageScore + "% Your current high score is " + highScore + "%");
                             }
                         }
 
@@ -148,7 +154,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void setFields(){
+    private void setFields() {
         mNext.setVisibility(View.INVISIBLE);
         mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
         mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
@@ -164,7 +170,7 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
             mChoice4.setText("D: " + triviaQuestions.get(count).getChoiceWithAnswers().get(3).getAnswer());
             mChoice3.setVisibility(View.VISIBLE);
             mChoice4.setVisibility(View.VISIBLE);
-        } else{
+        } else {
             mChoice3.setText("");
             mChoice4.setText("");
             mChoice3.setVisibility(View.INVISIBLE);
@@ -172,33 +178,33 @@ public class TriviaActivity extends AppCompatActivity implements View.OnClickLis
         }
     }
 
-    private void setFieldsAfterAnswer(View v, int option){
-        if(triviaQuestions.get(count).getChoiceWithAnswers().get(option).isCorrectAnswer()){
+    private void setFieldsAfterAnswer(View v, int option) {
+        if (triviaQuestions.get(count).getChoiceWithAnswers().get(option).isCorrectAnswer()) {
             mStatusTextView.setText("Correct: " + triviaQuestions.get(count).getExplanation());
             score++;
             v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
-        } else{
+        } else {
             mStatusTextView.setText("Incorrect: " + triviaQuestions.get(count).getExplanation());
             ArrayList<TriviaQuestion.ChoiceWithAnswer> choicesWithAnswers = triviaQuestions.get(count).getChoiceWithAnswers();
             int answer = -1;
-            for(int i = 0; i < choicesWithAnswers.size();i++){
-                if(choicesWithAnswers.get(i).isCorrectAnswer()){
+            for (int i = 0; i < choicesWithAnswers.size(); i++) {
+                if (choicesWithAnswers.get(i).isCorrectAnswer()) {
                     answer = i;
                     break;
                 }
             }
             v.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
 
-            if (answer == 0){
+            if (answer == 0) {
                 mChoice1.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
             }
-            if (answer == 1){
+            if (answer == 1) {
                 mChoice2.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
             }
-            if( answer == 2){
+            if (answer == 2) {
                 mChoice3.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
             }
-            if (answer == 3){
+            if (answer == 3) {
                 mChoice4.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.colorAccentLight, null));
             }
         }

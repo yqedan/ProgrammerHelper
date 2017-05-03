@@ -1,4 +1,4 @@
-package com.yusuf.programmerhelper.ui;
+package com.yusufqedan.programmerhelper.ui;
 
 import android.app.ProgressDialog;
 import android.content.Intent;
@@ -9,22 +9,26 @@ import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import butterknife.Bind;
-import butterknife.ButterKnife;
+
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-import com.yusuf.programmerhelper.R;
-import com.yusuf.programmerhelper.models.Topic;
-import java.util.ArrayList;
+import com.yusufqedan.programmerhelper.R;
+import com.yusufqedan.programmerhelper.models.Topic;
+
 import org.parceler.Parcels;
 
-public class TriviaCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener{
+import java.util.ArrayList;
 
-    private static final String TAG = TriviaCategoriesActivity.class.getSimpleName();
-    @Bind(R.id.triviaTopicListView) ListView mTriviaTopicListView;
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class TriviaCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener {
+    //private static final String TAG = TriviaCategoriesActivity.class.getSimpleName();
+    @Bind(R.id.triviaTopicListView)
+    ListView mTriviaTopicListView;
 
     private ArrayList<String> mTopicTitles = new ArrayList<>();
     private ArrayList<Topic> mTopics = new ArrayList<>();
@@ -39,11 +43,12 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
         displayTopicsAndProgress();
     }
 
-    private void displayTopicsAndProgress(){
+    private void displayTopicsAndProgress() {
         //only show progress if nothing loads within 2 seconds
         new Handler().postDelayed(new Runnable() {
-            @Override public void run() {
-                if(mTopics == null) {
+            @Override
+            public void run() {
+                if (mTopics == null) {
                     mProgressDialog = new ProgressDialog(TriviaCategoriesActivity.this);
                     mProgressDialog.setTitle("Loading...");
                     mProgressDialog.setMessage("Fetching Data...");
@@ -51,11 +56,11 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
                     mProgressDialog.show();
                 }
             }
-        },2000);
+        }, 2000);
         getTopics();
     }
 
-    private void getTopics(){
+    private void getTopics() {
         final DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
         topicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -67,7 +72,7 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
                 ArrayAdapter adapter = new ArrayAdapter(TriviaCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
                 mTriviaTopicListView.setAdapter(adapter);
                 mTriviaTopicListView.setOnItemClickListener(TriviaCategoriesActivity.this);
-                if(mProgressDialog != null) mProgressDialog.dismiss();
+                if (mProgressDialog != null) mProgressDialog.dismiss();
             }
 
             @Override
@@ -79,7 +84,7 @@ public class TriviaCategoriesActivity extends AppCompatActivity implements ListV
 
     @Override
     public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
-        Intent intent = new Intent(TriviaCategoriesActivity.this,TriviaActivity.class);
+        Intent intent = new Intent(TriviaCategoriesActivity.this, TriviaActivity.class);
         intent.putExtra("mTopic", Parcels.wrap(mTopics.get(position)));
         startActivity(intent);
     }

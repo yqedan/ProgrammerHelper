@@ -9,7 +9,7 @@
     android:paddingRight="@dimen/activity_vertical_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
     android:orientation="vertical"
-    tools:context="com.yusuf.programmerhelper.ui.FlashcardsActivity">
+    tools:context="com.yusufqedan.programmerhelper.ui.FlashcardsActivity">
 
     <TextView
         android:layout_width="wrap_content"
