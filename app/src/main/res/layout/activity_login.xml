@@ -15,9 +15,9 @@
         android:paddingRight="30dp"
         android:paddingBottom="30dp"
         android:paddingTop="10dp"
+        android:id="@+id/linearLayout"
         android:layout_centerVertical="true"
-        android:layout_centerHorizontal="true"
-        android:id="@+id/linearLayout">
+        android:layout_alignParentStart="true">
 
         <EditText
             android:id="@+id/emailEditText"
@@ -46,7 +46,6 @@
             android:textColorHint="@color/secondary_text"
             android:textSize="20sp" />
 
-
         <Button
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
@@ -58,19 +57,33 @@
             android:id="@+id/passwordLoginButton"
             />
 
-        <Button
+        <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:padding="10dp"
-            android:textColor="@color/primary_text"
-            android:background="@color/colorPrimary"
-            android:layout_marginTop="15dp"
-            android:text="SIGN UP"
-            android:id="@+id/registerButton" />
-
-
+            android:orientation="horizontal"
+            android:layout_marginTop="15dp">
+            <Button
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/primary_text"
+                android:background="@color/colorPrimary"
+                android:layout_marginRight="7.5dp"
+                android:text="SIGN UP"
+                android:id="@+id/registerButton" />
+            <Button
+                android:layout_weight="1"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:textColor="@color/primary_text"
+                android:background="@color/colorPrimary"
+                android:layout_marginLeft="7.5dp"
+                android:text="RESET PASSWORD"
+                android:id="@+id/resetPasswordButton" />
+        </LinearLayout>
     </LinearLayout>
-
 
     <TextView
         android:layout_width="wrap_content"

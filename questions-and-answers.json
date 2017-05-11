@@ -411,8 +411,8 @@
         "answer":"Since 3 and 2 are integers, they will be added numerically. And since 7 is a string, its concatenation will be done. So the result would be 57."
       },
       {
-        "question":"What do mean by NULL in Javascript?",
-        "answer":"The NULL value is used to represent no value or no object.  It implies no object or null string, no valid boolean value, no number and no array object."
+        "question":"What does the value null mean in Javascript?",
+        "answer":"The null value is used to represent no value or no object.  It implies no object or null string, no valid boolean value, no number and no array object."
       },
       {
         "question":"What is an undefined value in JavaScript?",

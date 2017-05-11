@@ -5,13 +5,14 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
+import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
-import android.widget.TextView;
 import android.widget.Toast;
 
 import com.google.android.gms.tasks.OnCompleteListener;
+import com.google.android.gms.tasks.RuntimeExecutionException;
 import com.google.android.gms.tasks.Task;
 import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
@@ -22,15 +23,17 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends AppCompatActivity implements View.OnClickListener {
-    //private static final String TAG = LoginActivity.class.getSimpleName();
-    @Bind(R.id.passwordLoginButton)
-    Button mPasswordLoginButton;
+    private static final String TAG = LoginActivity.class.getSimpleName();
     @Bind(R.id.emailEditText)
     EditText mEmailEditText;
     @Bind(R.id.passwordEditText)
     EditText mPasswordEditText;
+    @Bind(R.id.passwordLoginButton)
+    Button mPasswordLoginButton;
     @Bind(R.id.registerButton)
-    TextView mRegisterButton;
+    Button mRegisterButton;
+    @Bind(R.id.resetPasswordButton)
+    Button mResetPasswordButton;
 
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
@@ -61,6 +64,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
 
         mPasswordLoginButton.setOnClickListener(this);
         mRegisterButton.setOnClickListener(this);
+        mResetPasswordButton.setOnClickListener(this);
 
         createAuthProgressDialog();
     }
@@ -89,6 +93,30 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (view == mPasswordLoginButton) {
             loginWithPassword();
         }
+        if (view == mResetPasswordButton) {
+            Log.d(TAG,"reset password pressed");
+            String email = mEmailEditText.getText().toString().trim();
+            if(email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches()){
+                mAuth.sendPasswordResetEmail(email).addOnCompleteListener(this,new OnCompleteListener<Void>(){
+                    @Override
+                    public void onComplete(@NonNull Task<Void> task) {
+                        Log.d(TAG, "onComplete");
+                        try{
+                            task.getResult();
+                            Toast.makeText(LoginActivity.this, "Password reset email sent", Toast.LENGTH_SHORT).show();
+                        }catch(RuntimeExecutionException e){
+                            Toast.makeText(LoginActivity.this, "No user found with that email", Toast.LENGTH_SHORT).show();
+                        }
+                    }
+                });
+            }else{
+                if(email.equals("")){
+                    mEmailEditText.setError("Please enter your email");
+                }else{
+                    mEmailEditText.setError("Please enter a valid email");
+                }
+            }
+        }
     }
 
     private void createAuthProgressDialog() {
@@ -101,8 +129,12 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
     private void loginWithPassword() {
         String email = mEmailEditText.getText().toString().trim();
         String password = mPasswordEditText.getText().toString().trim();
-        if (email.equals("")) {
-            mEmailEditText.setError("Please enter your email");
+        if(email != null && android.util.Patterns.EMAIL_ADDRESS.matcher(email).matches() == false){
+            if (email.equals("")) {
+                mEmailEditText.setError("Please enter your email");
+            }else{
+                mEmailEditText.setError("Please enter a valid email");
+            }
             return;
         }
         if (password.equals("")) {
