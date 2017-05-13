@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name="com.yusufqedan.programmerhelper.ui.MainActivity"
+            android:theme="@style/AppNoActionBarTheme"
             android:screenOrientation="portrait" />
         <activity
             android:name="com.yusufqedan.programmerhelper.ui.LoginActivity"

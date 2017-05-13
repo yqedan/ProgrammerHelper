@@ -114,6 +114,7 @@ public class FlashcardsActivity extends AppCompatActivity implements View.OnClic
             startActivityForResult(intent, 1);
         }
         if (v == mDeleteTopic) {
+            //todo add confirmation message before deleting topic
             String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
             final DatabaseReference ref = FirebaseDatabase.getInstance()
                     .getReference("users")
