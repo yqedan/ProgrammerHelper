@@ -1,12 +1,12 @@
 package com.yusufqedan.programmerhelper.ui;
 
+import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
 import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
-import android.support.v4.app.FragmentManager;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
 import android.support.v7.app.AppCompatActivity;
@@ -32,29 +32,35 @@ public class MainActivity extends AppCompatActivity {
     private FirebaseAuth mAuth;
     private FirebaseAuth.AuthStateListener mAuthListener;
     private ActionBarDrawerToggle drawerToggle;
-    private String welcomeMessage;
+    private Fragment[] tabs = {null, null};
+    private FirebaseUser mUser;
+    private int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-
-        welcomeMessage = "Home";
         setSupportActionBar(toolbar);
         setupDrawerContent(nvDrawer);
         drawerToggle = setupDrawerToggle();
         mDrawer.addDrawerListener(drawerToggle);
-        selectDrawerItem(null);
 
         mAuth = FirebaseAuth.getInstance();
+        final Context context = this;
         mAuthListener = new FirebaseAuth.AuthStateListener() {
             @Override
             public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    welcomeMessage = "Welcome, " + user.getDisplayName() + "!";
-                    getSupportActionBar().setTitle(welcomeMessage);
+                mUser = firebaseAuth.getCurrentUser();
+                if (mUser != null) {
+                    if (tabs[0] == null) {
+                        tabs[0] = MainFragment.newInstance(context, mUser.getDisplayName());
+                    }
+                    if (tabs[1] == null) {
+                        tabs[1] = SettingsFragment.newInstance(context);
+                    }
+                    getSupportActionBar().setTitle("");
+                    getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[position]).commit();
                 }
             }
         };
@@ -114,34 +120,25 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
-        // Create a new fragment and specify the fragment to show based on nav item clicked
-        Fragment fragment;
-        if (menuItem == null) {
-            fragment = MainFragment.newInstance(this);
-        } else {
-            switch (menuItem.getItemId()) {
-                case R.id.nav_home_fragment:
-                    fragment = MainFragment.newInstance(this);
-                    getSupportActionBar().setTitle(welcomeMessage);
-                    break;
-                case R.id.nav_settings_fragment:
-                    fragment = SettingsFragment.newInstance();
-                    getSupportActionBar().setTitle("Settings");
-                    break;
-                case R.id.nav_logout:
-                    logout();
-                    return;
-                default:
-                    fragment = MainFragment.newInstance(this);
-            }
+        switch (menuItem.getItemId()) {
+            case R.id.nav_home_fragment:
+                getSupportActionBar().setTitle("");
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[0]).commit();
+                position = 0;
+                break;
+            case R.id.nav_settings_fragment:
+                getSupportActionBar().setTitle("Settings");
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[1]).commit();
+                position = 1;
+                break;
+            case R.id.nav_logout:
+                logout();
+                return;
+            default:
+                //never should go here
+                return;
         }
-
-        // Insert the fragment by replacing any existing fragment
-        FragmentManager fragmentManager = getSupportFragmentManager();
-        fragmentManager.beginTransaction().replace(R.id.flContent, fragment).commit();
-        if (menuItem != null) {
-            menuItem.setChecked(true);
-        }
+        menuItem.setChecked(true);
         mDrawer.closeDrawers();
     }
 

@@ -44,7 +44,7 @@ public class FlashcardCategoriesActivity extends AppCompatActivity implements Li
         setContentView(R.layout.activity_flashcard_categories);
         ButterKnife.bind(this);
         addTopicButton.setOnClickListener(this);
-        setTitle("Flashcard topics");
+        setTitle("Flashcard Topics");
         displayTopicsAndProgress();
     }
 

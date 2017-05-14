@@ -9,6 +9,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
+import android.widget.TextView;
 
 import com.yusufqedan.programmerhelper.R;
 
@@ -22,17 +23,21 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     Button mTodoButton;
     @Bind(R.id.flashcards)
     Button mFlashcardButton;
+    @Bind(R.id.welcome)
+    TextView mWelcomeText;
     private static Context mContext;
+    private static String mUserName;
 
     public MainFragment() {
         // Required empty public constructor
     }
 
-    public static MainFragment newInstance(Context context) {
+    public static MainFragment newInstance(Context context, String userName) {
         mContext = context;
         Bundle args = new Bundle();
         MainFragment fragment = new MainFragment();
         fragment.setArguments(args);
+        mUserName = userName;
         return fragment;
     }
 
@@ -41,6 +46,7 @@ public class MainFragment extends Fragment implements View.OnClickListener {
                              Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.fragment_main, container, false);
         ButterKnife.bind(this, view);
+        mWelcomeText.setText("Welcome " + mUserName + "!");
         mQuizButton.setOnClickListener(this);
         mTodoButton.setOnClickListener(this);
         mFlashcardButton.setOnClickListener(this);

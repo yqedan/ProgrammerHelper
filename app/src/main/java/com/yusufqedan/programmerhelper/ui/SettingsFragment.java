@@ -1,30 +1,58 @@
 package com.yusufqedan.programmerhelper.ui;
 
 
+import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import com.yusufqedan.programmerhelper.R;
 
-public class SettingsFragment extends Fragment {
+import butterknife.Bind;
+import butterknife.ButterKnife;
+
+public class SettingsFragment extends Fragment implements ListView.OnItemClickListener {
+    @Bind(R.id.settings_list)
+    ListView mSettingsList;
+    private String[] mSettingsListItems = {"Change Password", "Theme"};
+    private static Context mContext;
 
     public SettingsFragment() {
         // Required empty public constructor
     }
 
-    public static SettingsFragment newInstance() {
+    public static SettingsFragment newInstance(Context context) {
         Bundle args = new Bundle();
         SettingsFragment fragment = new SettingsFragment();
         fragment.setArguments(args);
+        mContext = context;
         return fragment;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        return inflater.inflate(R.layout.fragment_settings, container, false);
+        View view = inflater.inflate(R.layout.fragment_settings, container, false);
+        ButterKnife.bind(this, view);
+        ArrayAdapter adapter = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, mSettingsListItems);
+        mSettingsList.setAdapter(adapter);
+        mSettingsList.setOnItemClickListener(this);
+        return view;
+    }
+
+    @Override
+    public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+
+        if (position == 0) { //Change Password
+            startActivity(new Intent(mContext, ChangePasswordActivity.class));
+        } else if (position == 1) { //Theme
+            //Log.d(TAG, "onItemClick: Theme");
+        }
     }
 }
