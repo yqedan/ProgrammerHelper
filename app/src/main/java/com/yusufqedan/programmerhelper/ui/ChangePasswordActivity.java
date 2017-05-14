@@ -19,7 +19,7 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener {
-    private static final String TAG = ChangePasswordActivity.class.getSimpleName();
+    //private static final String TAG = ChangePasswordActivity.class.getSimpleName();
     @Bind(R.id.currentPasswordEditText)
     EditText mCurrentPassword;
     @Bind(R.id.newPasswordEditText)
@@ -65,7 +65,7 @@ public class ChangePasswordActivity extends AppCompatActivity implements View.On
             return;
         }
 
-        if(isValidPassword(newPassword,confirmNewPassword)) {
+        if (isValidPassword(newPassword, confirmNewPassword)) {
             mAuth.signInWithEmailAndPassword(email, currentPassword).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
                 @Override
                 public void onComplete(@NonNull Task<AuthResult> task) {

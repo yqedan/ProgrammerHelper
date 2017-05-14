@@ -18,10 +18,10 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class SettingsFragment extends Fragment implements ListView.OnItemClickListener {
+    private static Context mContext;
     @Bind(R.id.settings_list)
     ListView mSettingsList;
     private String[] mSettingsListItems = {"Change Password", "Theme"};
-    private static Context mContext;
 
     public SettingsFragment() {
         // Required empty public constructor

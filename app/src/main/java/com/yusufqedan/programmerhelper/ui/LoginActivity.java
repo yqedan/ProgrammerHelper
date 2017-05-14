@@ -89,7 +89,6 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
         if (view == mRegisterButton) {
             Intent intent = new Intent(LoginActivity.this, CreateAccountActivity.class);
             startActivity(intent);
-            finish();
         }
         if (view == mPasswordLoginButton) {
             loginWithPassword();
@@ -160,7 +159,7 @@ public class LoginActivity extends AppCompatActivity implements View.OnClickList
                 .show();
     }
 
-    private void resetPassword(String email){
+    private void resetPassword(String email) {
         mAuth.sendPasswordResetEmail(email).addOnCompleteListener(this, new OnCompleteListener<Void>() {
             @Override
             public void onComplete(@NonNull Task<Void> task) {

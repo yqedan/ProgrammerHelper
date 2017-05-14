@@ -12,7 +12,8 @@ public class TriviaQuestion {
     String explanation;
     int answer;
 
-    public  TriviaQuestion(){}
+    public TriviaQuestion() {
+    }
 
     public ArrayList<String> getChoices() {
         return choices;
@@ -35,11 +36,12 @@ public class TriviaQuestion {
     }
 
     @Parcel
-    public static class ChoiceWithAnswer{
+    public static class ChoiceWithAnswer {
         String answer;
         boolean isCorrectAnswer;
 
-        public ChoiceWithAnswer(){}
+        public ChoiceWithAnswer() {
+        }
 
         public ChoiceWithAnswer(boolean isCorrectAnswer, String answer) {
             this.isCorrectAnswer = isCorrectAnswer;

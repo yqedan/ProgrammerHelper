@@ -5,10 +5,11 @@ import java.util.HashMap;
 
 public class User {
     private String name;
-    private HashMap<String,Long> highScores;
+    private HashMap<String, Long> highScores;
     private ArrayList<Task> tasks;
 
-    public User(){}
+    public User() {
+    }
 
     public User(String name) {
         this.name = name;

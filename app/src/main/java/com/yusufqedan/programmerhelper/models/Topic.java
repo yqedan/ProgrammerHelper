@@ -11,7 +11,8 @@ public class Topic {
     ArrayList<TriviaQuestion> triviaQuestions;
     String pushId;
 
-    public Topic(){}
+    public Topic() {
+    }
 
     public Topic(String topicTitle, String pushId) {
         this.topicTitle = topicTitle;
@@ -34,16 +35,16 @@ public class Topic {
         return pushId;
     }
 
-    public void addFlashcard(Flashcard flashcard){
-        if(flashcards == null){
+    public void addFlashcard(Flashcard flashcard) {
+        if (flashcards == null) {
             flashcards = new ArrayList<>();
         }
         this.flashcards.add(flashcard);
     }
 
     @Override
-    public boolean equals(Object obj){
-        if(obj instanceof Topic){
+    public boolean equals(Object obj) {
+        if (obj instanceof Topic) {
             return ((Topic) obj).getPushId().equals(this.getPushId());
         }
         return false;

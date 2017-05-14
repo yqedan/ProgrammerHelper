@@ -17,6 +17,8 @@ import butterknife.Bind;
 import butterknife.ButterKnife;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
+    private static Context mContext;
+    private static String mUserName;
     @Bind(R.id.quiz)
     Button mQuizButton;
     @Bind(R.id.todo)
@@ -25,8 +27,6 @@ public class MainFragment extends Fragment implements View.OnClickListener {
     Button mFlashcardButton;
     @Bind(R.id.welcome)
     TextView mWelcomeText;
-    private static Context mContext;
-    private static String mUserName;
 
     public MainFragment() {
         // Required empty public constructor

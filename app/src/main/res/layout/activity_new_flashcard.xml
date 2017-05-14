@@ -4,38 +4,39 @@
     android:id="@+id/activity_new_flashcard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/primary_light"
     android:padding="30dp"
-    tools:context="com.yusufqedan.programmerhelper.ui.NewFlashcardActivity"
-    android:background="@color/primary_light">
+    tools:context="com.yusufqedan.programmerhelper.ui.NewFlashcardActivity">
+
     <TextView
         android:id="@+id/new_flashcard_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="Enter the new flashcard details"
         android:layout_above="@+id/newFlashcardForm"
+        android:layout_centerHorizontal="true"
         android:layout_marginBottom="20dp"
+        android:gravity="center"
+        android:text="Enter the new flashcard details"
         android:textColor="@color/primary_text"
         android:textSize="20dp"
-        android:textStyle="bold"
-        android:layout_centerHorizontal="true"
-        android:gravity="center" />
+        android:textStyle="bold" />
 
     <LinearLayout
-        android:layout_height="wrap_content"
-        android:layout_width="match_parent"
         android:id="@+id/newFlashcardForm"
-        android:orientation="vertical"
-        android:layout_centerVertical="true">
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerVertical="true"
+        android:orientation="vertical">
 
         <EditText
             android:id="@+id/flashcard_question"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_below="@id/new_flashcard_title"
+            android:layout_marginBottom="10dp"
             android:background="@android:color/white"
             android:hint="Question"
             android:padding="10dp"
-            android:layout_marginBottom="10dp"
             android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary_text"
             android:textSize="20sp" />
@@ -44,10 +45,10 @@
             android:id="@+id/flashcard_answer"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
             android:background="@android:color/white"
             android:hint="Answer"
             android:padding="10dp"
-            android:layout_marginBottom="10dp"
             android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary_text"
             android:textSize="20sp" />
@@ -57,11 +58,11 @@
 
     <Button
         android:id="@+id/new_flashcard_button"
-        android:text="Submit"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:textColor="@color/primary_text"
-        android:background="@color/colorPrimary" />
+        android:background="@color/colorPrimary"
+        android:text="Submit"
+        android:textColor="@color/primary_text" />
 </RelativeLayout>

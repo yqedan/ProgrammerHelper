@@ -12,6 +12,7 @@
         android:theme="@style/AppTheme">
         <activity
             android:name=".ui.LoginActivity"
+            android:launchMode="singleTop"
             android:screenOrientation="portrait"
             android:theme="@style/AppNoActionBarTheme">
             <intent-filter>
@@ -27,8 +28,11 @@
             android:theme="@style/AppNoActionBarTheme" />
         <activity
             android:name=".ui.CreateAccountActivity"
-            android:screenOrientation="portrait"
-            android:theme="@style/AppNoActionBarTheme" />
+            android:screenOrientation="portrait">
+            <meta-data
+                android:name="android.support.PARENT_ACTIVITY"
+                android:value="com.yusufqedan.programmerhelper.ui.LoginActivity" />
+        </activity>
         <activity
             android:name=".ui.FlashcardCategoriesActivity"
             android:launchMode="singleTop"

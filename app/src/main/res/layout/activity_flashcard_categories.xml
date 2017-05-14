@@ -4,25 +4,26 @@
     android:id="@+id/activity_flashcard_categories"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context="com.yusufqedan.programmerhelper.ui.FlashcardCategoriesActivity" >
+    tools:context="com.yusufqedan.programmerhelper.ui.FlashcardCategoriesActivity">
+
     <Button
-        android:text="Add Topic"
         android:id="@+id/flashcardAddTopic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:textColor="@color/primary_text"
-        android:background="@color/colorPrimary"
         android:layout_alignParentBottom="true"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true" />
+        android:layout_alignParentStart="true"
+        android:background="@color/colorPrimary"
+        android:text="Add Topic"
+        android:textColor="@color/primary_text" />
 
     <ListView
-        android:layout_alignParentTop="true"
+        android:id="@+id/flashcardTopicListView"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:id="@+id/flashcardTopicListView"
         android:layout_above="@id/flashcardAddTopic"
+        android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
-        android:layout_alignParentEnd="true" />
+        android:layout_alignParentTop="true" />
 
 </RelativeLayout>

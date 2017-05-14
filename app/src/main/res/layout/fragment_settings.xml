@@ -5,8 +5,8 @@
     tools:context="com.yusufqedan.programmerhelper.ui.SettingsFragment">
 
     <ListView
-        android:layout_height="match_parent"
+        android:id="@+id/settings_list"
         android:layout_width="match_parent"
-        android:id="@+id/settings_list"/>
+        android:layout_height="match_parent" />
 
 </FrameLayout>
