@@ -2,7 +2,6 @@ package com.yusufqedan.programmerhelper.ui;
 
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -28,7 +27,7 @@ import java.util.HashMap;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TriviaActivity extends AppCompatActivity implements View.OnClickListener {
+public class TriviaActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = TriviaActivity.class.getSimpleName();
     @Bind(R.id.question)
     TextView mQuestionTextView;

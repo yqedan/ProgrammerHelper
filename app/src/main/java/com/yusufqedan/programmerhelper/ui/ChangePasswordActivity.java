@@ -2,7 +2,6 @@ package com.yusufqedan.programmerhelper.ui;
 
 import android.os.Bundle;
 import android.support.annotation.NonNull;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,7 @@ import com.yusufqedan.programmerhelper.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ChangePasswordActivity extends AppCompatActivity implements View.OnClickListener {
+public class ChangePasswordActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = ChangePasswordActivity.class.getSimpleName();
     @Bind(R.id.currentPasswordEditText)
     EditText mCurrentPassword;

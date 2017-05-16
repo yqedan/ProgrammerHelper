@@ -9,7 +9,6 @@ import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
 import android.support.v7.app.ActionBarDrawerToggle;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
 import android.view.MenuItem;
 
@@ -20,7 +19,7 @@ import com.yusufqedan.programmerhelper.R;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends BaseActivityNoActionBar {
     //private static final String TAG = MainActivity.class.getSimpleName();
     @Bind(R.id.drawer_layout)
     DrawerLayout mDrawer;
@@ -59,8 +58,8 @@ public class MainActivity extends AppCompatActivity {
                     if (tabs[1] == null) {
                         tabs[1] = SettingsFragment.newInstance(context);
                     }
-                    getSupportActionBar().setTitle("Home");
-                    getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[position]).commit();
+                    MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_home_fragment);
+                    selectDrawerItem(menuItem);
                 }
             }
         };

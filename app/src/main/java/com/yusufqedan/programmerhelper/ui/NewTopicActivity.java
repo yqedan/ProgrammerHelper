@@ -2,7 +2,6 @@ package com.yusufqedan.programmerhelper.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -18,7 +17,7 @@ import org.parceler.Parcels;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class NewTopicActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewTopicActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = NewTopicActivity.class.getSimpleName();
     @Bind(R.id.new_topic_button)
     Button mNewTopicButton;

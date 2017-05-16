@@ -3,7 +3,6 @@ package com.yusufqedan.programmerhelper.ui;
 import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.view.Gravity;
 import android.view.View;
 import android.widget.Button;
@@ -30,7 +29,7 @@ import butterknife.ButterKnife;
 import static com.yusufqedan.programmerhelper.R.id.deleteTopic;
 import static com.yusufqedan.programmerhelper.R.id.flashcard;
 
-public class FlashcardsActivity extends AppCompatActivity implements View.OnClickListener {
+public class FlashcardsActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = FlashcardsActivity.class.getSimpleName();
     @Bind(flashcard)
     TextView mFlashcard;

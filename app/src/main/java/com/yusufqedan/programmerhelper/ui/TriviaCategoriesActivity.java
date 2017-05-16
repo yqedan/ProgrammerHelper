@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -25,7 +24,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class TriviaCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener {
+public class TriviaCategoriesActivity extends BaseActivity implements ListView.OnItemClickListener {
     //private static final String TAG = TriviaCategoriesActivity.class.getSimpleName();
     @Bind(R.id.triviaTopicListView)
     ListView mTriviaTopicListView;

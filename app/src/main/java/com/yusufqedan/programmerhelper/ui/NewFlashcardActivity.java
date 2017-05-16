@@ -2,7 +2,6 @@ package com.yusufqedan.programmerhelper.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -20,7 +19,7 @@ import java.util.List;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class NewFlashcardActivity extends AppCompatActivity implements View.OnClickListener {
+public class NewFlashcardActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = NewFlashcardActivity.class.getSimpleName();
     @Bind(R.id.new_flashcard_button)
     Button mNewFlashcardButton;

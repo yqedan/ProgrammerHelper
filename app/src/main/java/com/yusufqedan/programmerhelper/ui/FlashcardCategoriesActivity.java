@@ -4,7 +4,6 @@ import android.app.ProgressDialog;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
@@ -27,7 +26,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class FlashcardCategoriesActivity extends AppCompatActivity implements ListView.OnItemClickListener, View.OnClickListener {
+public class FlashcardCategoriesActivity extends BaseActivity implements ListView.OnItemClickListener, View.OnClickListener {
     //private static final String TAG = FlashcardCategoriesActivity.class.getSimpleName();
     @Bind(R.id.flashcardTopicListView)
     ListView mFlashcardTopicListView;

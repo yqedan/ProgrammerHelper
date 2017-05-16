@@ -3,8 +3,11 @@ package com.yusufqedan.programmerhelper.ui;
 
 import android.content.Context;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.Bundle;
+import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.content.IntentCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -19,6 +22,9 @@ import butterknife.ButterKnife;
 
 public class SettingsFragment extends Fragment implements ListView.OnItemClickListener {
     private static Context mContext;
+    private SharedPreferences mSharedPreferences;
+    private SharedPreferences.Editor mEditor;
+    private SharedPreferences.OnSharedPreferenceChangeListener mListener;
     @Bind(R.id.settings_list)
     ListView mSettingsList;
     private String[] mSettingsListItems = {"Change Password", "Theme"};
@@ -43,6 +49,8 @@ public class SettingsFragment extends Fragment implements ListView.OnItemClickLi
         ArrayAdapter adapter = new ArrayAdapter(mContext, android.R.layout.simple_list_item_1, mSettingsListItems);
         mSettingsList.setAdapter(adapter);
         mSettingsList.setOnItemClickListener(this);
+        mSharedPreferences = PreferenceManager.getDefaultSharedPreferences(mContext);
+        mEditor = mSharedPreferences.edit();
         return view;
     }
 
@@ -52,7 +60,12 @@ public class SettingsFragment extends Fragment implements ListView.OnItemClickLi
         if (position == 0) { //Change Password
             startActivity(new Intent(mContext, ChangePasswordActivity.class));
         } else if (position == 1) { //Theme
-            //Log.d(TAG, "onItemClick: Theme");
+            boolean toggle = mSharedPreferences.getBoolean("pref_dark_theme", false);
+            mEditor.putBoolean("pref_dark_theme",!toggle).apply();
+            getActivity().finish();
+            final Intent intent = getActivity().getIntent();
+            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
+            getActivity().startActivity(intent);
         }
     }
 }

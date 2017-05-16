@@ -3,7 +3,6 @@ package com.yusufqedan.programmerhelper.ui;
 import android.app.ProgressDialog;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 
@@ -23,7 +22,7 @@ import java.util.ArrayList;
 import butterknife.Bind;
 import butterknife.ButterKnife;
 
-public class ToDoActivity extends AppCompatActivity {
+public class ToDoActivity extends BaseActivity {
     //private static final String TAG = ToDoActivity.class.getSimpleName();
     @Bind(R.id.recyclerView)
     RecyclerView mRecyclerView;
