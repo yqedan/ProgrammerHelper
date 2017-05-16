@@ -7,7 +7,6 @@ import android.content.SharedPreferences;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
-import android.support.v4.content.IntentCompat;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -62,10 +61,8 @@ public class SettingsFragment extends Fragment implements ListView.OnItemClickLi
         } else if (position == 1) { //Theme
             boolean toggle = mSharedPreferences.getBoolean("pref_dark_theme", false);
             mEditor.putBoolean("pref_dark_theme",!toggle).apply();
-            getActivity().finish();
-            final Intent intent = getActivity().getIntent();
-            intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | IntentCompat.FLAG_ACTIVITY_CLEAR_TASK);
-            getActivity().startActivity(intent);
+            final MainActivity activity = (MainActivity) getActivity();
+            activity.recreate();
         }
     }
 }

@@ -33,7 +33,7 @@ public class MainActivity extends BaseActivityNoActionBar {
     private ActionBarDrawerToggle drawerToggle;
     private Fragment[] tabs = {null, null};
     private FirebaseUser mUser;
-    private int position;
+    private static int position;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -58,8 +58,13 @@ public class MainActivity extends BaseActivityNoActionBar {
                     if (tabs[1] == null) {
                         tabs[1] = SettingsFragment.newInstance(context);
                     }
-                    MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_home_fragment);
-                    selectDrawerItem(menuItem);
+                    if(position == 0){
+                        MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_home_fragment);
+                        selectDrawerItem(menuItem);
+                    }else if(position == 1){
+                        MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_settings_fragment);
+                        selectDrawerItem(menuItem);
+                    }
                 }
             }
         };
@@ -122,16 +127,17 @@ public class MainActivity extends BaseActivityNoActionBar {
         switch (menuItem.getItemId()) {
             case R.id.nav_home_fragment:
                 getSupportActionBar().setTitle("Home");
-                getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[0]).commit();
                 position = 0;
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[0]).commit();
                 break;
             case R.id.nav_settings_fragment:
                 getSupportActionBar().setTitle("Settings");
-                getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[1]).commit();
                 position = 1;
+                getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[1]).commit();
                 break;
             case R.id.nav_logout:
                 logout();
+                position = 0;
                 return;
             default:
                 //never should go here
