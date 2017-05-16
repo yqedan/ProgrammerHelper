@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.support.v4.content.res.ResourcesCompat;
 import android.view.Gravity;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -148,14 +149,24 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     public void onBackPressed() {
-        //update any changes to the topic in case the user added or removed flashcards
+        saveTopicsParcel();
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                saveTopicsParcel();
+        }
+        return super.onOptionsItemSelected(item);
+    }
+
+    private void saveTopicsParcel() {
         if (mTopic.getPushId() != null) {//is this a user created topic?
             Intent intent = new Intent();
             intent.putExtra("topic", Parcels.wrap(mTopic));
             setResult(3, intent);
-            finish();
-        } else {
-            finish();
         }
     }
 
