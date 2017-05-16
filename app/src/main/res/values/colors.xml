@@ -11,4 +11,11 @@
     <color name="divider">#BDBDBD</color>
     <color name="lightRed">#f8bbd0</color>
     <color name="lightYellow">#fff59d</color>
+
+    <color name="colorPrimaryHacker">#b2ff59</color>
+    <color name="colorPrimaryDarkHacker">#7ecb20</color>
+    <color name="colorAccentHacker">#ffeb3b</color>
+    <color name="colorAccentLightHacker">#ffff72</color>
+    <color name="primary_lightHacker">#e7ff8c</color>
+
 </resources>

@@ -59,7 +59,7 @@ public class MainActivity extends AppCompatActivity {
                     if (tabs[1] == null) {
                         tabs[1] = SettingsFragment.newInstance(context);
                     }
-                    getSupportActionBar().setTitle("");
+                    getSupportActionBar().setTitle("Home");
                     getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[position]).commit();
                 }
             }
@@ -122,7 +122,7 @@ public class MainActivity extends AppCompatActivity {
     public void selectDrawerItem(MenuItem menuItem) {
         switch (menuItem.getItemId()) {
             case R.id.nav_home_fragment:
-                getSupportActionBar().setTitle("");
+                getSupportActionBar().setTitle("Home");
                 getSupportFragmentManager().beginTransaction().replace(R.id.flContent, tabs[0]).commit();
                 position = 0;
                 break;

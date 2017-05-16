@@ -1,18 +1,79 @@
 <resources>
-
-    <!-- Base application theme. -->
-
+    <!--Themes-->
     <style name="AppTheme" parent="Theme.AppCompat.Light.DarkActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/primary_light</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fillColor">@android:color/white</item>
+        <item name="android:buttonStyle">@style/defaultButton</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:alertDialogTheme">@style/defaultProgressDialog</item>
     </style>
 
     <style name="AppNoActionBarTheme" parent="Theme.AppCompat.Light.NoActionBar">
-        <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
         <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
         <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:colorBackground">@color/primary_light</item>
+        <item name="android:textColor">@color/primary_text</item>
+        <item name="android:fillColor">@android:color/white</item>
+        <item name="android:buttonStyle">@style/defaultButton</item>
+        <item name="actionBarTheme">@style/ThemeOverlay.AppCompat.Dark.ActionBar</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDark</item>
+        <item name="android:alertDialogTheme">@style/defaultProgressDialog</item>
     </style>
+
+    <style name="AppHackerTheme" parent="AppTheme">
+        <item name="colorPrimary">@color/colorPrimaryHacker</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkHacker</item>
+        <item name="colorAccent">@color/colorAccentHacker</item>
+        <item name="android:colorBackground">@color/primary_text</item>
+        <item name="android:textColor">@color/colorPrimaryHacker</item>
+        <item name="android:fillColor">@color/secondary_text</item>
+        <item name="android:buttonStyle">@style/hackerButton</item>
+        <item name="actionBarTheme">@style/hackerActionBar</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkHacker</item>
+        <item name="android:alertDialogTheme">@style/hackerProgressDialog</item>
+    </style>
+
+    <style name="AppHackerNoActionBarTheme" parent="AppNoActionBarTheme">
+        <item name="colorPrimary">@color/colorPrimaryHacker</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDarkHacker</item>
+        <item name="colorAccent">@color/colorAccentHacker</item>
+        <item name="android:colorBackground">@color/primary_text</item>
+        <item name="android:textColor">@color/colorPrimaryHacker</item>
+        <item name="android:fillColor">@color/secondary_text</item>
+        <item name="android:buttonStyle">@style/hackerButton</item>
+        <item name="actionBarTheme">@style/hackerActionBar</item>
+        <item name="android:navigationBarColor">@color/colorPrimaryDarkHacker</item>
+        <item name="android:alertDialogTheme">@style/hackerProgressDialog</item>
+    </style>
+
+    <!--Buttons-->
+    <style name="defaultButton" parent="android:Widget.Material.Button">
+        <item name="android:background">@color/colorPrimary</item>
+    </style>
+
+    <style name="hackerButton" parent="android:Widget.Material.Button">
+        <item name="android:background">@color/colorPrimaryHacker</item>
+        <item name="android:textColor">@color/primary_text</item>
+    </style>
+
+    <!--Action bars-->
+    <style name="hackerActionBar" parent="Widget.AppCompat.ActionBar.Solid">
+        <item name="android:textColorPrimary">@color/primary_text</item>
+    </style>
+
+    <!--progress Dialogs-->
+    <style name="defaultProgressDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="colorAccent">@color/colorAccent</item>
+    </style>
+
+    <style name="hackerProgressDialog" parent="Theme.AppCompat.Light.Dialog">
+        <item name="android:windowBackground">@color/primary_text</item>
+        <item name="colorAccent">@color/colorAccentHacker</item>
+    </style>
+
 </resources>

@@ -22,11 +22,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-
-        android:background="@color/colorPrimary"
         android:padding="10dp"
         android:text="Start"
-        android:textColor="@color/primary_text"
         android:visibility="invisible" />
 
     <Button
@@ -34,10 +31,8 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginBottom="10dp"
-        android:background="@color/colorPrimary"
         android:padding="10dp"
-        android:text="Add Flashcard"
-        android:textColor="@color/primary_text" />
+        android:text="Add Flashcard" />
 
     <TextView
         android:id="@+id/qanda"
@@ -54,6 +49,7 @@
         android:layout_width="match_parent"
         android:layout_height="0dp"
         android:layout_weight="6"
+        android:textColor="@color/primary_text"
         android:background="@color/icons"
         android:gravity="center"
         android:padding="10dp"
@@ -70,18 +66,14 @@
         android:id="@+id/back"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:padding="10dp"
         android:text="Previous"
-        android:textColor="@color/primary_text"
         android:visibility="invisible" />
 
     <Button
         android:id="@+id/deleteTopic"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:background="@color/colorPrimary"
         android:padding="10dp"
-        android:text="Delete topic"
-        android:textColor="@color/primary_text" />
+        android:text="Delete topic" />
 </LinearLayout>

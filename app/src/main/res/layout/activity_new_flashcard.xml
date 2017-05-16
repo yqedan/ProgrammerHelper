@@ -4,7 +4,6 @@
     android:id="@+id/activity_new_flashcard"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
     android:padding="30dp"
     tools:context="com.yusufqedan.programmerhelper.ui.NewFlashcardActivity">
 
@@ -17,7 +16,6 @@
         android:layout_marginBottom="20dp"
         android:gravity="center"
         android:text="Enter the new flashcard details"
-        android:textColor="@color/primary_text"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -37,7 +35,6 @@
             android:background="@android:color/white"
             android:hint="Question"
             android:padding="10dp"
-            android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary_text"
             android:textSize="20sp" />
 
@@ -49,7 +46,6 @@
             android:background="@android:color/white"
             android:hint="Answer"
             android:padding="10dp"
-            android:textColor="@color/primary_text"
             android:textColorHint="@color/secondary_text"
             android:textSize="20sp" />
 
@@ -62,7 +58,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/colorPrimary"
-        android:text="Submit"
-        android:textColor="@color/primary_text" />
+        android:text="Submit" />
 </RelativeLayout>

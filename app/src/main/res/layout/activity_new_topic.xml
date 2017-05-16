@@ -4,7 +4,6 @@
     android:id="@+id/activity_new_topic"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/primary_light"
     android:orientation="vertical"
     android:padding="30dp"
     tools:context="com.yusufqedan.programmerhelper.ui.NewTopicActivity">
@@ -18,7 +17,6 @@
         android:layout_marginBottom="20dp"
         android:layout_marginTop="20dp"
         android:text="Enter the new topic name"
-        android:textColor="@color/primary_text"
         android:textSize="20dp"
         android:textStyle="bold" />
 
@@ -30,7 +28,6 @@
         android:background="@android:color/white"
         android:hint="Name"
         android:padding="10dp"
-        android:textColor="@color/primary_text"
         android:textColorHint="@color/secondary_text"
         android:textSize="20sp" />
 
@@ -40,7 +37,5 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
-        android:background="@color/colorPrimary"
-        android:text="Submit"
-        android:textColor="@color/primary_text" />
+        android:text="Submit" />
 </RelativeLayout>
