@@ -3,6 +3,7 @@
 #### By _**Yusuf Qedan**_
 
 <img src="screenshots/login_with_frame.png" width="474" height="763.5" />
+<img src="screenshots/new-theme-hamburger.png" width="474" height="763.5" />
 
 ## Description
 *	This is an Android application that will help software developers prepare for job interviews.
@@ -17,9 +18,10 @@
 
 ## Screenshots
 
+<img src="screenshots/default-theme.png" width="360" height="640" />
+<img src="screenshots/new-theme.png" width="360" height="640" />
 <img src="screenshots/card_front.png" width="360" height="640" />
 <img src="screenshots/card_back.png" width="360" height="640" />
-
 <img src="screenshots/question_correct.png" width="360" height="640" />
 <img src="screenshots/question_incorrect.png" width="360" height="640" />
 
