@@ -33,8 +33,8 @@ public class FlashcardCategoriesActivity extends BaseActivity implements ListVie
     @Bind(R.id.flashcardAddTopic)
     Button addTopicButton;
 
-    private ArrayList<Topic> mTopics;
-    private ArrayList<String> mTopicTitles;
+    private ArrayList<Topic> mTopics = new ArrayList<>();
+    private ArrayList<String> mTopicTitles = new ArrayList<>();
     private ProgressDialog mProgressDialog;
 
     @Override
@@ -65,19 +65,20 @@ public class FlashcardCategoriesActivity extends BaseActivity implements ListVie
     }
 
     private void getTopics() {
-        final ArrayList<Topic> topics = new ArrayList<>();
-        final ArrayList<String> topicTitles = new ArrayList<>();
-        final DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
+        DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
         // Read the built in topics
         topicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    topics.add(snapshot.getValue(Topic.class));
-                    topicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
+                    Topic topic = snapshot.getValue(Topic.class);
+                    if (topic.getFlashcards() != null) {
+                        mTopics.add(topic);
+                        mTopicTitles.add(topic.getTopicTitle());
+                    }
                 }
                 String uid = FirebaseAuth.getInstance().getCurrentUser().getUid();
-                final DatabaseReference topicReference = FirebaseDatabase.getInstance()
+                DatabaseReference topicReference = FirebaseDatabase.getInstance()
                         .getReference("users")
                         .child(uid)
                         .child("topics");
@@ -86,12 +87,11 @@ public class FlashcardCategoriesActivity extends BaseActivity implements ListVie
                     @Override
                     public void onDataChange(DataSnapshot dataSnapshot) {
                         for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                            topics.add(snapshot.getValue(Topic.class));
-                            topicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
+                            Topic topic = snapshot.getValue(Topic.class);
+                            mTopics.add(topic);
+                            mTopicTitles.add(topic.getTopicTitle());
                         }
-                        mTopicTitles = topicTitles;
-                        mTopics = topics;
-                        ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, topicTitles);
+                        ArrayAdapter adapter = new ArrayAdapter(FlashcardCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
                         mFlashcardTopicListView.setAdapter(adapter);
                         mFlashcardTopicListView.setOnItemClickListener(FlashcardCategoriesActivity.this);
                         if (mProgressDialog != null) mProgressDialog.dismiss();

@@ -7,6 +7,8 @@ import android.view.Gravity;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.LinearLayout;
+import android.widget.ScrollView;
 import android.widget.TextView;
 
 import com.google.firebase.auth.FirebaseAuth;
@@ -29,15 +31,22 @@ import butterknife.ButterKnife;
 
 import static com.yusufqedan.programmerhelper.R.id.deleteTopic;
 import static com.yusufqedan.programmerhelper.R.id.flashcard;
+import static com.yusufqedan.programmerhelper.R.id.flashcard_scroll;
 
 public class FlashcardsActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = FlashcardsActivity.class.getSimpleName();
     @Bind(flashcard)
     TextView mFlashcard;
+    @Bind(flashcard_scroll)
+    ScrollView mFlashcardScroll;
     @Bind(R.id.qanda)
     TextView mQAndA;
+    @Bind(R.id.navigationButtons)
+    LinearLayout mNavigationButtons;
     @Bind(R.id.back)
     Button mBack;
+    @Bind(R.id.forward)
+    Button mForward;
     @Bind(R.id.start)
     Button mStart;
     @Bind(R.id.add_flashcard)
@@ -61,8 +70,8 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
         mTopic = Parcels.unwrap(getIntent().getParcelableExtra("topic"));
         setTitle(mTopic.getTopicTitle());
         flashcards = mTopic.getFlashcards();
-        mFlashcard.setOnClickListener(this);
         mBack.setOnClickListener(this);
+        mForward.setOnClickListener(this);
         mStart.setOnClickListener(this);
         mAddFlashcard.setOnClickListener(this);
         mDeleteTopic.setOnClickListener(this);
@@ -88,7 +97,7 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
                 setViewsToAnswer();
             }
         }
-        if (v == mFlashcard) {
+        if (v == mForward) {
             if (mRoundOver == true) {
                 return;
             } else if (mQuestionVisible == true) {
@@ -100,7 +109,7 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
                 mFlashcard.setGravity(Gravity.CENTER);
                 mQAndA.setText(" ");
                 mFlashcard.setText("Round Over");
-                mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.icons, null));
+                mFlashcardScroll.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.icons, null));
                 mRoundOver = true;
             }
         }
@@ -140,11 +149,16 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
 
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent intent) {
-        flashcards = Parcels.unwrap(intent.getParcelableExtra("flashcards"));
-        Flashcard flashcard = Parcels.unwrap(intent.getParcelableExtra("flashcard"));
-        mTopic.addFlashcard(flashcard);
-        mStart.setVisibility(View.VISIBLE);
-        mNoFlashcards.setVisibility(View.GONE);
+        if(resultCode == -1){ //Flashcard added
+            flashcards = Parcels.unwrap(intent.getParcelableExtra("flashcards"));
+            Flashcard flashcard = Parcels.unwrap(intent.getParcelableExtra("flashcard"));
+            mTopic.addFlashcard(flashcard);
+            mStart.setVisibility(View.VISIBLE);
+            mNoFlashcards.setVisibility(View.GONE);
+        }
+        if(resultCode == 0){  //back or up button pressed
+
+        }
     }
 
     @Override
@@ -173,11 +187,11 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
     private void start() {
         Collections.shuffle(flashcards);
         mFlashcard.setText(flashcards.get(count).getQuestion());
-        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
+        mFlashcardScroll.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
         mStart.setVisibility(View.INVISIBLE);
         mAddFlashcard.setVisibility(View.INVISIBLE);
-        mFlashcard.setVisibility(View.VISIBLE);
-        mBack.setVisibility(View.VISIBLE);
+        mFlashcardScroll.setVisibility(View.VISIBLE);
+        mNavigationButtons.setVisibility(View.VISIBLE);
         mQAndA.setVisibility(View.VISIBLE);
         mDeleteTopic.setVisibility(View.GONE);
     }
@@ -188,7 +202,7 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
         String answer = flashcards.get(count).getAnswer();
         mFlashcard.setText(answer);
         setGravityBasedOnCharCount(answer.length());
-        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
+        mFlashcardScroll.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightYellow, null));
     }
 
     private void setViewsToQuestion() {
@@ -197,7 +211,7 @@ public class FlashcardsActivity extends BaseActivity implements View.OnClickList
         String question = flashcards.get(count).getQuestion();
         mFlashcard.setText(question);
         setGravityBasedOnCharCount(question.length());
-        mFlashcard.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
+        mFlashcardScroll.setBackgroundColor(ResourcesCompat.getColor(getResources(), R.color.lightRed, null));
     }
 
     private void setGravityBasedOnCharCount(int count) {

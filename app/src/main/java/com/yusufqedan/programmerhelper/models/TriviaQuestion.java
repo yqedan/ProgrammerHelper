@@ -10,6 +10,7 @@ public class TriviaQuestion {
     ArrayList<ChoiceWithAnswer> choiceWithAnswers = new ArrayList<>();
     String question;
     String explanation;
+    boolean shuffleChoices;
     int answer;
 
     public TriviaQuestion() {
@@ -29,6 +30,10 @@ public class TriviaQuestion {
 
     public String getExplanation() {
         return explanation;
+    }
+
+    public boolean isSuffleable() {
+        return shuffleChoices;
     }
 
     public int getAnswer() {

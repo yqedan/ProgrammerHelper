@@ -2,6 +2,7 @@ package com.yusufqedan.programmerhelper.ui;
 
 import android.content.Intent;
 import android.os.Bundle;
+import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -61,5 +62,21 @@ public class NewFlashcardActivity extends BaseActivity implements View.OnClickLi
         intent.putExtra("flashcard", Parcels.wrap(flashcard));
         setResult(RESULT_OK, intent);
         finish();
+    }
+    @Override
+    public void onBackPressed() {
+        setResult(RESULT_CANCELED);
+        finish();
+    }
+
+    @Override
+    public boolean onOptionsItemSelected(MenuItem item) {
+        switch (item.getItemId()) {
+            case android.R.id.home:
+                setResult(RESULT_CANCELED);
+                finish();
+                return true;
+        }
+        return super.onOptionsItemSelected(item);
     }
 }

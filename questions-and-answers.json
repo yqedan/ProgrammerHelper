@@ -9,10 +9,11 @@
           "False"
         ],
         "answer": 1,
-        "explanation": "Objects are allocated memory in heap memory space."
+        "explanation": "Objects are allocated memory in heap memory space.",
+        "shuffleChoices": false
       },
       {
-        "question": "What is the size of short variable?",
+        "question": "What is the size of a short variable?",
         "choices":[
           "8 bit",
           "16 bit",
@@ -20,7 +21,8 @@
           "64 bit"
         ],
         "answer": 1,
-        "explanation": "The short data type is represented by 16-bit signed two's complement integer"
+        "explanation": "The short data type is represented by 16-bit signed two's complement integer",
+        "shuffleChoices": true
       },
       {
         "question": "What is the default value of a short variable?",
@@ -31,7 +33,8 @@
           "not defined"
         ],
         "answer": 1,
-        "explanation": "A short variable has default value of 0 if defined as an instance or static variable."
+        "explanation": "A short variable has default value of 0 if defined as an instance or static variable.",
+        "shuffleChoices": true
       },
       {
         "question": "Which of the following is true about public access modifier?",
@@ -42,7 +45,8 @@
           "None of the above."
         ],
         "answer": 0,
-        "explanation": "Public access modifier is used to make variables, methods and constructors accessible to any class."
+        "explanation": "Public access modifier is used to make variables, methods and constructors accessible to any class.",
+        "shuffleChoices": false
       },
       {
         "question": "What is an immutable object?",
@@ -53,18 +57,20 @@
           "None of the above."
         ],
         "answer": 1,
-        "explanation": "An immutable object can't be changed once it is created. String objects are immutable."
+        "explanation": "An immutable object can't be changed once it is created. String objects are immutable.",
+        "shuffleChoices": false
       },
       {
         "question": "What is the JRE?",
         "choices":[
-          "JRE is a java based GUI application.",
+          "JRE is a Java based GUI application.",
           "JRE is an application development framework.",
           "JRE is an implementation of the Java Virtual Machine which executes Java programs.",
           "None of the above."
         ],
         "answer": 2,
-        "explanation": "Java Runtime Environment is an implementation of the Java Virtual Machine which executes Java programs. It provides the minimum requirements for executing a Java application."
+        "explanation": "Java Runtime Environment is an implementation of the Java Virtual Machine which executes Java programs. It provides the minimum requirements for executing a Java application.",
+        "shuffleChoices": false
       },
       {
         "question": "Method Overriding is an example of",
@@ -75,7 +81,8 @@
           "None of the above."
         ],
         "answer": 1,
-        "explanation": "Method Overriding is an example of dynamic Binding."
+        "explanation": "Method Overriding is an example of dynamic Binding.",
+        "shuffleChoices": false
       },
       {
         "question": "What is synchronization?",
@@ -86,7 +93,8 @@
           "None of the above."
         ],
         "answer": 0,
-        "explanation": "Synchronization is the capability to control the access of multiple threads to shared resources. The synchronized keyword in java provides locking which ensures mutual exclusive access of shared resource and prevent data race."
+        "explanation": "Synchronization is the capability to control the access of multiple threads to shared resources. The synchronized keyword in Java provides locking which ensures mutual exclusive access of shared resource and prevent data race.",
+        "shuffleChoices": false
       },
       {
         "question": "Can try statements be nested?",
@@ -95,7 +103,8 @@
           "False"
         ],
         "answer": 0,
-        "explanation": "Yes, try statements can be nested."
+        "explanation": "Yes, try statements can be nested.",
+        "shuffleChoices": false
       },
       {
         "question": "Which of the following is a marker interface?",
@@ -103,10 +112,11 @@
           "serializable",
           "comparable",
           "cloneable",
-          "none of the above."
+          "None of the above."
         ],
         "answer": 0,
-        "explanation": "Serializable is a marker interface."
+        "explanation": "Serializable is a marker interface.",
+        "shuffleChoices": false
       },
       {
         "question": "What is the size of byte variable?",
@@ -117,7 +127,8 @@
           "64 bit"
         ],
         "answer": 0,
-        "explanation": "The byte data type is represented by an 8-bit signed two's complement integer.\nMinimum value: -128\nMaximum value: 127"
+        "explanation": "The byte data type is represented by an 8-bit signed two's complement integer.\nMinimum value: -128\nMaximum value: 127",
+        "shuffleChoices": true
       },
       {
         "question": "Which of the following is true about private access modifier?",
@@ -128,7 +139,8 @@
           "None of the above."
         ],
         "answer": 0,
-        "explanation": "Private access modifier is used to restrict access to variables, methods and constructors to member of same class only."
+        "explanation": "Private access modifier is used to restrict access to variables, methods and constructors to member of same class only.",
+        "shuffleChoices": false
       },
       {
         "question": "What is local variable?",
@@ -139,7 +151,8 @@
           "None of the above."
         ],
         "answer": 0,
-        "explanation": "Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and it will be destroyed when the method has completed."
+        "explanation": "Variables defined inside methods, constructors or blocks are called local variables. The variable will be declared and initialized within the method and it will be destroyed when the method has completed.",
+        "shuffleChoices": false
       },
       {
         "question": "What is Serialization?",
@@ -150,7 +163,8 @@
           "None of the above."
         ],
         "answer": 1,
-        "explanation": "Serialization is the process of writing the state of an object to a byte stream."
+        "explanation": "Serialization is the process of writing the state of an object to a byte stream.",
+        "shuffleChoices": false
       },
       {
         "question": "Which arithmetic operations can result in the throwing of an ArithmeticException?",
@@ -161,7 +175,8 @@
           ">>, <<"
         ],
         "answer": 0,
-        "explanation": "Integer / and % can result in the throwing of an ArithmeticException."
+        "explanation": "Integer / and % can result in the throwing of an ArithmeticException.",
+        "shuffleChoices": true
       },
       {
         "question": "Static functions can be accessed using null reference.",
@@ -170,7 +185,8 @@
           "False"
         ],
         "answer": 0,
-        "explanation": "True, Static functions can be accessed via class name or via null reference."
+        "explanation": "True, Static functions can be accessed via class name or via null reference.",
+        "shuffleChoices": false
       },
       {
         "question": "What invokes a thread's run() method?",
@@ -181,7 +197,8 @@
           "None of the above."
         ],
         "answer": 0,
-        "explanation": "After a thread is started, via its start() method of the Thread class, the JVM invokes the thread's run() method when the thread is initially executed."
+        "explanation": "After a thread is started, via its start() method of the Thread class, the JVM invokes the thread's run() method when the thread is initially executed.",
+        "shuffleChoices": false
       }
     ],
     "flashcards":[
@@ -199,23 +216,23 @@
       },
       {
         "question":"What is the difference between continue and break statement?",
-        "answer":"Break and continue are two important keywords used in Loops. When a break keyword is used in a loop, loop is broken instantly while when continue keyword is used, current iteration is broken and loop continues with next iteration."
+        "answer":"Break and continue are two important keywords used in Loops. When the break keyword is used in a loop the execution block is broken and the loop is not itereated any further, when the continue keyword is used the current iteration is broken and loop continues with next iteration if the loop condition passes."
       },
       {
         "question":"What is the difference between double and float variables in Java?",
-        "answer":"In java, float takes 4 bytes in memory while Double takes 8 bytes in memory. Float is single precision floating point decimal number while Double is double precision decimal number."
+        "answer":"In Java, float takes 4 bytes in memory while double takes 8 bytes in memory. Float is single precision floating point decimal number while double is double precision decimal number."
       },
       {
         "question":"What’s the base class in Java from which all classes are derived?",
-        "answer":"java.lang.object"
+        "answer":"Java.lang.object"
       },
       {
         "question":"What’s the difference between an Abstract Class and Interface in Java?",
-        "answer":"The primary difference between an abstract class and interface is that an interface can only possess declaration of public static methods with no concrete implementation while an abstract class can have members with any access specifiers (public, private etc) with or without concrete implementation. Another key difference in the use of abstract classes and interfaces is that a class which implements an interface must implement all the methods of the interface while a class which inherits from an abstract class doesn’t require implementation of all the methods of its super class. A class can implement multiple interfaces but it can extend only one abstract class."
+        "answer":"The primary difference between an abstract class and interface is that an interface can only possess declaration of public static methods with no concrete implementation while an abstract class can have members with any access specifiers (public, private etc) with or without concrete implementation. Another key difference is that a class which implements an interface must implement all the methods of the interface while a class which inherits from an abstract class only requires implementation of abstract the methods of its super class. A class can implement multiple interfaces but it can extend only one abstract class."
       },
       {
         "question":"How can we pass argument to a function by reference instead of pass by value?",
-        "answer":"In java, we can pass argument to a function only by value and not by reference."
+        "answer":"In Java, we can pass argument to a function only by value and not by reference."
       },
       {
         "question":"Is it compulsory for a Try Block to be followed by a Catch Block in Java for Exception handling?",
@@ -231,7 +248,7 @@
       },
       {
         "question":"How is garbage collection done in Java?",
-        "answer":"In java, when an object is not referenced any more, garbage collection takes place and the object is destroyed automatically. For automatic garbage collection java calls either System.gc() method or Runtime.gc() method."
+        "answer":"In Java, when an object is not referenced any more, garbage collection takes place and the object is destroyed automatically. For automatic garbage collection Java calls either System.gc() method or Runtime.gc() method."
       },
       {
         "question":"Can we call the constructor of a class more than once for an object?",
@@ -266,8 +283,56 @@
         "answer":"Primitive data types like int can be handled as objects by the use of their respective wrapper classes. For example, Integer is a wrapper class for primitive data type int. We can apply different methods to a wrapper class, just like any other object."
       },
       {
-        "question":"What’s the benefit of using inheritance?",
-        "answer":"Key benefit of using inheritance is reusability of code as inheritance enables sub-classes to reuse the code of its super class. Polymorphism (Extensibility ) is another great benefit which allow new functionality to be introduced without effecting existing derived classes."
+        "question":"What is the benefit of using inheritance?",
+        "answer":"The key benefit of using inheritance is reusability of code as inheritance enables sub-classes to reuse the code of its super class. Polymorphism (Extensibility ) is another great benefit which allows new functionality to be introduced without effecting existing derived classes."
+      },
+      {
+        "question":"What is the difference between an Inner Class and a Sub-Class?",
+        "answer":" An Inner class is a class which is nested within another class. An Inner class has access rights for the class which is nesting it and it can access all variables and methods defined in the outer class. A sub-class is a class which inherits from another class called super class. Sub-class can access all public and protected methods and fields of its super class."
+      },
+      {
+        "question":"What is a singleton class? Give a practical example of its usage.",
+        "answer":"A singleton class in Java can have only one instance and hence all its methods and variables belong to just one instance. Singleton class concept is useful for the situations when there is a need to limit the number of objects for a class. The best example of singleton usage scenario is when there is a limit of having only one connection to a database due to some driver limitations or because of any licensing issues."
+      },
+      {
+        "question":"What is an infinite Loop? How is an infinite loop declared?",
+        "answer":"An infinite loop runs without any condition and runs infinitely. An infinite loop can be broken by defining any breaking logic in the body of the statement blocks.\nIt is implemented as follows:\n\nfor (;;){\n//loop body\n}"
+      },
+      {
+        "question":"What is final Keyword in Java?",
+        "answer":" In Java a constant is declared using the keyword final. The value of a final can only be assigned only once and the value of a constant can’t be changed."
+      },
+      {
+        "question":"Can the main() method in Java can return any data?",
+        "answer":"In Java, the main() method can’t return any data and hence, it’s always declared with a void return type."
+      },
+      {
+        "question":"Can we declare a class as Abstract without having any abstract method?",
+        "answer":"Yes we can create an abstract class by using abstract keyword before class name even if it doesn’t have any abstract method. However, if a class has even one abstract method, it must be declared as abstract otherwise it will give an error."
+      },
+      {
+        "question":"Can a class have multiple constructors?",
+        "answer":"Yes, a class can have multiple constructors with different parameters. Which constructor gets used for object creation depends on the arguments passed while creating the objects."
+      },
+      {
+        "question":"How are objects stored in Java?",
+        "answer":"In Java, when each object is created, memory is allocated from the heap. When an object is destroyed by the garbage collector the space allocated to it is re-allocated to the heap and becomes available for any new objects."
+      },
+      {
+        "question":"How can we find the actual size of an object on the heap?",
+        "answer":" In java, there is no way to find out the exact size of an object on the heap."
+      },
+      {
+        "question":"I have multiple constructors defined in a class. Is it possible to call a constructor from another constructor’s body?",
+        "answer":"If a class has multiple constructors, it’s possible to call one constructor from the body of another one using this()"
+      },
+      {
+        "question":"What’s the base class of all exception classes?",
+        "answer":"In Java, Java.Lang.throwable is the super class of all exception classes and all exception classes are derived from this base class."
+      },
+      {
+        "question":"Can we cast any other type to boolean Type with type casting?",
+        "answer":"No, we can neither cast any other primitive type to boolean data type nor can cast boolean data type to any other primitive data type."
       }
     ]
   },
@@ -283,7 +348,8 @@
           "None of the above."
         ],
         "answer": 2,
-        "explanation": "Both of the above options are correct."
+        "explanation": "Both of the above options are correct.",
+        "shuffleChoices": false
       },
       {
         "question": "Which of the following is the correct syntax to redirect a url using JavaScript?",
@@ -294,7 +360,8 @@
           "window.location='http://www.newlocation.com';"
         ],
         "answer": 3,
-        "explanation": "window.location='http://www.newlocation.com'; is the correct option."
+        "explanation": "window.location='http://www.newlocation.com'; is the correct option.",
+        "shuffleChoices": true
       },
       {
         "question": "Which built-in method calls a function for each element in the array?",
@@ -305,7 +372,8 @@
           "None of the above."
         ],
         "answer": 2,
-        "explanation": "forEach() method calls a function for each element in the array."
+        "explanation": "forEach() method calls a function for each element in the array.",
+        "shuffleChoices": false
       },
       {
         "question": "Which built-in method returns the calling string value converted to lower case?",
@@ -316,7 +384,8 @@
           "None of the above."
         ],
         "answer": 0,
-        "explanation": "toLowerCase() method returns the calling string value converted to lower case."
+        "explanation": "toLowerCase() method returns the calling string value converted to lower case.",
+        "shuffleChoices": false
       },
       {
         "question": "Which of the following function of Number object defines how many total digits to display of a number?",
@@ -327,7 +396,8 @@
           "toPrecision()"
         ],
         "answer": 3,
-        "explanation": "toPrecision() − Defines how many total digits (including digits to the left and right of the decimal) to display of a number."
+        "explanation": "toPrecision() − Defines how many total digits (including digits to the left and right of the decimal) to display of a number.",
+        "shuffleChoices": true
       },
       {
         "question": "Which of the following function of String object returns the index within the calling String object of the first occurrence of the specified value?",
@@ -338,7 +408,8 @@
           "indexOf()"
         ],
         "answer": 3,
-        "explanation": "indexOf() − Returns the index within the calling String object of the first occurrence of the specified value, or -1 if not found."
+        "explanation": "indexOf() − Returns the index within the calling String object of the first occurrence of the specified value, or -1 if not found.",
+        "shuffleChoices": true
       },
       {
         "question": "Which of the following function of String object returns the calling string value converted to lower case?",
@@ -349,7 +420,8 @@
           "substring()"
         ],
         "answer": 1,
-        "explanation": "toLowerCase() − Returns the calling string value converted to lower case."
+        "explanation": "toLowerCase() − Returns the calling string value converted to lower case.",
+        "shuffleChoices": true
       },
       {
         "question": "Which of the following function of String object creates an HTML hypertext link that requests another URL?",
@@ -360,7 +432,8 @@
           "small()"
         ],
         "answer": 0,
-        "explanation": "link() − Creates an HTML hypertext link that requests another URL."
+        "explanation": "link() − Creates an HTML hypertext link that requests another URL.",
+        "shuffleChoices": true
       },
       {
         "question": "Which of the following function of Array object applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value?",
@@ -371,7 +444,8 @@
           "reduceRight()"
         ],
         "answer": 2,
-        "explanation": "reduce() − Applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value."
+        "explanation": "reduce() − Applies a function simultaneously against two values of the array (from left-to-right) as to reduce it to a single value.",
+        "shuffleChoices": true
       },
       {
         "question": "Which of the following function of Array object extracts a section of an array and returns a new array?",
@@ -382,7 +456,8 @@
           "some()"
         ],
         "answer": 2,
-        "explanation": "Which of the following function of Array object extracts a section of an array and returns a new array?"
+        "explanation": "Which of the following function of Array object extracts a section of an array and returns a new array?",
+        "shuffleChoices": true
       }
     ],
     "flashcards":[
@@ -395,8 +470,8 @@
         "answer":"Number, String, Boolean, Function, Object, Null, Undefined"
       },
       {
-        "question":"What is ‘this’ keyword in JavaScript?",
-        "answer":"The \"this\" keyword refers to the object from where it was called."
+        "question":"What is the purpose of the \"this\" keyword in JavaScript?",
+        "answer":"The \"this\" keyword references the object instance that the member function or prototype was called on or the instance created by the constructor."
       },
       {
         "question":"What is === operator?",
@@ -411,7 +486,7 @@
         "answer":"Since 3 and 2 are integers, they will be added numerically. And since 7 is a string, its concatenation will be done. So the result would be 57."
       },
       {
-        "question":"What does the value null mean in Javascript?",
+        "question":"What does the value null mean in JavaScript?",
         "answer":"The null value is used to represent no value or no object.  It implies no object or null string, no valid boolean value, no number and no array object."
       },
       {
@@ -439,12 +514,12 @@
         "answer":"Events are the actions that result from activities, such as clicking a link or filling a form, by the user. An event handler is required to manage proper execution of all these events. Event handlers are an extra attribute of the object. This attribute includes event’s name and the action taken if the event takes place."
       },
       {
-        "question":"Where can we download JQuery?",
-        "answer":"jQuery javascript can be downloaded from jQuery official website – www.jquery.com"
+        "question":"Where can we download jQuery?",
+        "answer":"jQuery JavaScript can be downloaded from jQuery official website – www.jquery.com"
       },
       {
         "question":"What are the advantages of jQuery?",
-        "answer":"jQuery can be written along with javascript\nCoding is simple, clear, reusable\nRemoval of writing more complex conditions and loops"
+        "answer":"jQuery can be written along with JavaScript\nCoding is simple, clear, reusable\nRemoval of writing more complex conditions and loops"
       },
       {
         "question":"What is the use of jQuery each function?",
@@ -453,6 +528,80 @@
       {
         "question":"What is the advantage of using minimized version of jQuery?",
         "answer":"Efficiency of web page increases when minimized version of jQuery is used.min.js file will be more than 50% less than the normal js file. Reduction in the file size makes the web page faster."
+      }
+    ]
+  },
+  {
+    "topicTitle":"PHP",
+    "triviaQuestions":null,
+    "flashcards":[
+      {
+        "question":"How can we display the output directly to the browser?",
+        "answer":"To be able to display the output directly to the browser, we have to use the special tags <?= and ?>."
+      },
+      {
+        "question":"How comparison of objects is done in PHP5?",
+        "answer":"We use the operator ‘==’ to test is two object are instanced from the same class and have same attributes and equal values. We can test if two object are refering to the same instance of the same class by the use of the identity operator ‘===’."
+      },
+      {
+        "question":"Is multiple inheritance supported in PHP?",
+        "answer":"PHP includes only single inheritance, it means that a class can be extended from only one single class using the keyword ‘extended’."
+      },
+      {
+        "question":"How can we display the output directly to the browser?",
+        "answer":"To be able to display the output directly to the browser, we have to use the special tags <?= and ?>."
+      },
+      {
+        "question":"How can we display information of a variable and readable by human with PHP?",
+        "answer":"To be able to display a human-readable result we use print_r()."
+      },
+      {
+        "question":"How can PHP and Javascript interact?",
+        "answer":"PHP and Javascript cannot directly interacts since PHP is a server side language and Javascript is a client side language. However we can exchange variables since PHP is able to generate Javascript code to be executed by the browser and it is possible to pass specific variables back to PHP via the URL."
+      },
+      {
+        "question":"How can we check the value of a given variable is a number?",
+        "answer":"It is possible to use the dedicated function, is_numeric() to check whether it is a number or not."
+      },
+      {
+        "question":"How is a constant defined in a PHP?",
+        "answer":"The define() directive lets us declare a constant as follows:\n\ndefine(“ACONSTANT”, 123);"
+      },
+      {
+        "question":"How is the ternary conditional operator used in PHP?",
+        "answer":"It is composed of three expressions: a condition, and two operands describing what instruction should be performed when the specified condition is true or false as follows:\n\nExpression_1 ? Expression_2 : Expression_3;"
+      },
+      {
+        "question":"Are objects passed by value or by reference in PHP?",
+        "answer":"In PHP, objects passed by value."
+      },
+      {
+        "question":"What are the two main string operators?",
+        "answer":"The first is the concatenation operator (‘.’), which returns the concatenation of its right and left arguments.\n\nThe second is (‘.=’), which appends the argument on the right to the argument on the left."
+      },
+      {
+        "question":"How can we determine whether a PHP variable is an instantiated object of a certain class?",
+        "answer":"To be able to verify whether a PHP variable is an instantiated object of a certain class we use instanceof."
+      },
+      {
+        "question":"What is the goto statement useful for?",
+        "answer":"The goto statement can be placed to enable jumping inside the PHP program. The target is pointed by a label followed by a colon, and the instruction is specified as a goto statement followed by the desired target label."
+      },
+      {
+        "question":"What does the expression Exception::__toString means?",
+        "answer":"Exception::__toString gives the String representation of the exception."
+      },
+      {
+        "question":"What are the three classes of errors that can occur in PHP?",
+        "answer":"The three basic classes of errors are notices (non-critical), warnings (serious errors) and fatal errors (critical errors)."
+      },
+      {
+        "question":"Is it possible to extend the execution time of a php script?",
+        "answer":"The use of the set_time_limit(int seconds) enables us to extend the execution time of a php script. The default limit is 30 seconds."
+      },
+      {
+        "question":"Is it possible to destroy a cookie?",
+        "answer":"Yes, it is possible by setting the cookie with a past expiration time."
       }
     ]
   }

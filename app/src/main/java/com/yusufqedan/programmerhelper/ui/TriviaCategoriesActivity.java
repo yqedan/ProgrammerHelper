@@ -60,13 +60,16 @@ public class TriviaCategoriesActivity extends BaseActivity implements ListView.O
     }
 
     private void getTopics() {
-        final DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
+        DatabaseReference topicReference = FirebaseDatabase.getInstance().getReference("topics");
         topicReference.addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
             public void onDataChange(DataSnapshot dataSnapshot) {
                 for (DataSnapshot snapshot : dataSnapshot.getChildren()) {
-                    mTopics.add(snapshot.getValue(Topic.class));
-                    mTopicTitles.add(snapshot.getValue(Topic.class).getTopicTitle());
+                    Topic topic = snapshot.getValue(Topic.class);
+                    if (topic.getTriviaQuestions() != null) {
+                        mTopics.add(topic);
+                        mTopicTitles.add(topic.getTopicTitle());
+                    }
                 }
                 ArrayAdapter adapter = new ArrayAdapter(TriviaCategoriesActivity.this, android.R.layout.simple_list_item_1, mTopicTitles);
                 mTriviaTopicListView.setAdapter(adapter);

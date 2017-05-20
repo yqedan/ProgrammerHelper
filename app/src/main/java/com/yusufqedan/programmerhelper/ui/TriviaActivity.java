@@ -75,7 +75,9 @@ public class TriviaActivity extends BaseActivity implements View.OnClickListener
         }
         Collections.shuffle(triviaQuestions);
         for (TriviaQuestion triviaQuestion : triviaQuestions) {
-            Collections.shuffle(triviaQuestion.getChoiceWithAnswers());
+            if(triviaQuestion.isSuffleable()) {
+                Collections.shuffle(triviaQuestion.getChoiceWithAnswers());
+            }
         }
         setFields();
         mChoice1.setTransformationMethod(null);
