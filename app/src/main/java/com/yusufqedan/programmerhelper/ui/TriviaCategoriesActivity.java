@@ -21,12 +21,12 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TriviaCategoriesActivity extends BaseActivity implements ListView.OnItemClickListener {
     //private static final String TAG = TriviaCategoriesActivity.class.getSimpleName();
-    @Bind(R.id.triviaTopicListView)
+    @BindView(R.id.triviaTopicListView)
     ListView mTriviaTopicListView;
 
     private ArrayList<String> mTopicTitles = new ArrayList<>();

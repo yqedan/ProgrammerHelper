@@ -16,7 +16,7 @@ import android.widget.ListView;
 
 import com.yusufqedan.programmerhelper.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class SettingsFragment extends Fragment implements ListView.OnItemClickListener {
@@ -24,7 +24,7 @@ public class SettingsFragment extends Fragment implements ListView.OnItemClickLi
     private SharedPreferences mSharedPreferences;
     private SharedPreferences.Editor mEditor;
     private SharedPreferences.OnSharedPreferenceChangeListener mListener;
-    @Bind(R.id.settings_list)
+    @BindView(R.id.settings_list)
     ListView mSettingsList;
     private String[] mSettingsListItems = {"Change Password", "Theme"};
 

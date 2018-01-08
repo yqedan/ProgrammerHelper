@@ -19,20 +19,20 @@ import com.google.firebase.database.FirebaseDatabase;
 import com.yusufqedan.programmerhelper.R;
 import com.yusufqedan.programmerhelper.models.User;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class CreateAccountActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = CreateAccountActivity.class.getSimpleName();
-    @Bind(R.id.createUserButton)
+    @BindView(R.id.createUserButton)
     Button mCreateUserButton;
-    @Bind(R.id.nameEditText)
+    @BindView(R.id.nameEditText)
     EditText mNameEditText;
-    @Bind(R.id.emailEditText)
+    @BindView(R.id.emailEditText)
     EditText mEmailEditText;
-    @Bind(R.id.passwordEditText)
+    @BindView(R.id.passwordEditText)
     EditText mPasswordEditText;
-    @Bind(R.id.confirmPasswordEditText)
+    @BindView(R.id.confirmPasswordEditText)
     EditText mConfirmPasswordEditText;
 
     private FirebaseAuth mAuth;

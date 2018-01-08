@@ -19,20 +19,20 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.yusufqedan.programmerhelper.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class LoginActivity extends BaseActivityNoActionBar implements View.OnClickListener {
     //private static final String TAG = LoginActivity.class.getSimpleName();
-    @Bind(R.id.emailEditText)
+    @BindView(R.id.emailEditText)
     EditText mEmailEditText;
-    @Bind(R.id.passwordEditText)
+    @BindView(R.id.passwordEditText)
     EditText mPasswordEditText;
-    @Bind(R.id.passwordLoginButton)
+    @BindView(R.id.passwordLoginButton)
     Button mPasswordLoginButton;
-    @Bind(R.id.registerButton)
+    @BindView(R.id.registerButton)
     Button mRegisterButton;
-    @Bind(R.id.resetPasswordButton)
+    @BindView(R.id.resetPasswordButton)
     Button mResetPasswordButton;
 
     private FirebaseAuth mAuth;

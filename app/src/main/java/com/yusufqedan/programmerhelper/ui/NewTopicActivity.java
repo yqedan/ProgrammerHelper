@@ -14,14 +14,14 @@ import com.yusufqedan.programmerhelper.models.Topic;
 
 import org.parceler.Parcels;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class NewTopicActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = NewTopicActivity.class.getSimpleName();
-    @Bind(R.id.new_topic_button)
+    @BindView(R.id.new_topic_button)
     Button mNewTopicButton;
-    @Bind(R.id.topic_name)
+    @BindView(R.id.topic_name)
     EditText mTopicName;
 
     private Topic mTopic;

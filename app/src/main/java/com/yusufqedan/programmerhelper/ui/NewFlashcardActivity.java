@@ -17,16 +17,16 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.List;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class NewFlashcardActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = NewFlashcardActivity.class.getSimpleName();
-    @Bind(R.id.new_flashcard_button)
+    @BindView(R.id.new_flashcard_button)
     Button mNewFlashcardButton;
-    @Bind(R.id.flashcard_question)
+    @BindView(R.id.flashcard_question)
     EditText mFlashcardQuestion;
-    @Bind(R.id.flashcard_answer)
+    @BindView(R.id.flashcard_answer)
     EditText mFlashcardAnswer;
 
     @Override

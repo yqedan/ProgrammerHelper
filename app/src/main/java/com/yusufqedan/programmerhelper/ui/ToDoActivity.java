@@ -19,12 +19,12 @@ import com.yusufqedan.programmerhelper.models.Task;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ToDoActivity extends BaseActivity {
     //private static final String TAG = ToDoActivity.class.getSimpleName();
-    @Bind(R.id.recyclerView)
+    @BindView(R.id.recyclerView)
     RecyclerView mRecyclerView;
 
     private ArrayList<Task> mToDoList;

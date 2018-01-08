@@ -13,19 +13,19 @@ import android.widget.TextView;
 
 import com.yusufqedan.programmerhelper.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainFragment extends Fragment implements View.OnClickListener {
     private static Context mContext;
     private static String mUserName;
-    @Bind(R.id.quiz)
+    @BindView(R.id.quiz)
     Button mQuizButton;
-    @Bind(R.id.todo)
+    @BindView(R.id.todo)
     Button mTodoButton;
-    @Bind(R.id.flashcards)
+    @BindView(R.id.flashcards)
     Button mFlashcardButton;
-    @Bind(R.id.welcome)
+    @BindView(R.id.welcome)
     TextView mWelcomeText;
 
     public MainFragment() {

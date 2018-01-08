@@ -12,7 +12,7 @@ import com.yusufqedan.programmerhelper.models.Task;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ToDoListViewHolder> {
@@ -40,9 +40,9 @@ public class TodoListAdapter extends RecyclerView.Adapter<TodoListAdapter.ToDoLi
     }
 
     public class ToDoListViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
-        @Bind(R.id.checkedTextView)
+        @BindView(R.id.checkedTextView)
         CheckedTextView mCheckedTextView;
-        @Bind(R.id.checkBoxImageView)
+        @BindView(R.id.checkBoxImageView)
         ImageView mCheckBoxImageView;
 
         public ToDoListViewHolder(View itemView) {

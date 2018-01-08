@@ -23,14 +23,14 @@ import org.parceler.Parcels;
 
 import java.util.ArrayList;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class FlashcardCategoriesActivity extends BaseActivity implements ListView.OnItemClickListener, View.OnClickListener {
     //private static final String TAG = FlashcardCategoriesActivity.class.getSimpleName();
-    @Bind(R.id.flashcardTopicListView)
+    @BindView(R.id.flashcardTopicListView)
     ListView mFlashcardTopicListView;
-    @Bind(R.id.flashcardAddTopic)
+    @BindView(R.id.flashcardAddTopic)
     Button addTopicButton;
 
     private ArrayList<Topic> mTopics = new ArrayList<>();

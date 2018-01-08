@@ -24,24 +24,24 @@ import java.util.ArrayList;
 import java.util.Collections;
 import java.util.HashMap;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class TriviaActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = TriviaActivity.class.getSimpleName();
-    @Bind(R.id.question)
+    @BindView(R.id.question)
     TextView mQuestionTextView;
-    @Bind(R.id.status)
+    @BindView(R.id.status)
     TextView mStatusTextView;
-    @Bind(R.id.choice1)
+    @BindView(R.id.choice1)
     Button mChoice1;
-    @Bind(R.id.choice2)
+    @BindView(R.id.choice2)
     Button mChoice2;
-    @Bind(R.id.choice3)
+    @BindView(R.id.choice3)
     Button mChoice3;
-    @Bind(R.id.choice4)
+    @BindView(R.id.choice4)
     Button mChoice4;
-    @Bind(R.id.next)
+    @BindView(R.id.next)
     Button mNext;
 
     private ArrayList<TriviaQuestion> triviaQuestions;

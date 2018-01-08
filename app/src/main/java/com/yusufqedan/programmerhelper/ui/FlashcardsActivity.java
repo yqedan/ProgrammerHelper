@@ -26,7 +26,7 @@ import org.parceler.Parcels;
 import java.util.ArrayList;
 import java.util.Collections;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 import static com.yusufqedan.programmerhelper.R.id.deleteTopic;
@@ -35,25 +35,25 @@ import static com.yusufqedan.programmerhelper.R.id.flashcard_scroll;
 
 public class FlashcardsActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = FlashcardsActivity.class.getSimpleName();
-    @Bind(flashcard)
+    @BindView(flashcard)
     TextView mFlashcard;
-    @Bind(flashcard_scroll)
+    @BindView(flashcard_scroll)
     ScrollView mFlashcardScroll;
-    @Bind(R.id.qanda)
+    @BindView(R.id.qanda)
     TextView mQAndA;
-    @Bind(R.id.navigationButtons)
+    @BindView(R.id.navigationButtons)
     LinearLayout mNavigationButtons;
-    @Bind(R.id.back)
+    @BindView(R.id.back)
     Button mBack;
-    @Bind(R.id.forward)
+    @BindView(R.id.forward)
     Button mForward;
-    @Bind(R.id.start)
+    @BindView(R.id.start)
     Button mStart;
-    @Bind(R.id.add_flashcard)
+    @BindView(R.id.add_flashcard)
     Button mAddFlashcard;
-    @Bind(deleteTopic)
+    @BindView(deleteTopic)
     Button mDeleteTopic;
-    @Bind(R.id.no_flashcards_message)
+    @BindView(R.id.no_flashcards_message)
     TextView mNoFlashcards;
 
     private ArrayList<Flashcard> flashcards;

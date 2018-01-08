@@ -16,16 +16,16 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.yusufqedan.programmerhelper.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class MainActivity extends BaseActivityNoActionBar {
     //private static final String TAG = MainActivity.class.getSimpleName();
-    @Bind(R.id.drawer_layout)
+    @BindView(R.id.drawer_layout)
     DrawerLayout mDrawer;
-    @Bind(R.id.toolbar)
+    @BindView(R.id.toolbar)
     Toolbar toolbar;
-    @Bind(R.id.nvView)
+    @BindView(R.id.nvView)
     NavigationView nvDrawer;
 
     private FirebaseAuth mAuth;

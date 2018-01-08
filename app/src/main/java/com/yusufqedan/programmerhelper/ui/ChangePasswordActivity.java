@@ -14,18 +14,18 @@ import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.yusufqedan.programmerhelper.R;
 
-import butterknife.Bind;
+import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class ChangePasswordActivity extends BaseActivity implements View.OnClickListener {
     //private static final String TAG = ChangePasswordActivity.class.getSimpleName();
-    @Bind(R.id.currentPasswordEditText)
+    @BindView(R.id.currentPasswordEditText)
     EditText mCurrentPassword;
-    @Bind(R.id.newPasswordEditText)
+    @BindView(R.id.newPasswordEditText)
     EditText mNewPassword;
-    @Bind(R.id.confirmNewPasswordEditText)
+    @BindView(R.id.confirmNewPasswordEditText)
     EditText mConfirmNewPassword;
-    @Bind(R.id.newPasswordSubmitButton)
+    @BindView(R.id.newPasswordSubmitButton)
     Button mNewPasswordSubmitButton;
 
     private FirebaseAuth mAuth;
