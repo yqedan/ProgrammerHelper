@@ -46,7 +46,11 @@ public class LoginActivity extends BaseActivityNoActionBar implements View.OnCli
 
         ButterKnife.bind(this);
 
-        mAuth = FirebaseAuth.getInstance();
+        try{
+            mAuth = FirebaseAuth.getInstance();
+        }catch (IllegalStateException e){ //need to catch this as Robolectric unit test will throw exception when the database access is not needed
+
+        }
 
         mAuthListener = new FirebaseAuth.AuthStateListener() {
 
@@ -72,7 +76,9 @@ public class LoginActivity extends BaseActivityNoActionBar implements View.OnCli
     @Override
     public void onStart() {
         super.onStart();
-        mAuth.addAuthStateListener(mAuthListener);
+        if (mAuth != null) {
+            mAuth.addAuthStateListener(mAuthListener);
+        }
     }
 
     @Override
