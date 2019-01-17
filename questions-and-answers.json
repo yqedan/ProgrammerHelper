@@ -604,5 +604,55 @@
         "answer":"Yes, it is possible by setting the cookie with a past expiration time."
       }
     ]
+  },
+  {
+    "topicTitle":"Spark",
+    "triviaQuestions":null,
+    "flashcards":[
+      {
+        "question":"How does Spark use Hadoop?",
+        "answer":"Spark has its own cluster management computation and mainly uses Hadoop for storage."
+      },
+      {
+        "question":"What is an RDD?",
+        "answer":"1. RDDs (Resilient Distributed Datasets) are a basic abstraction in Apache Spark that represent the data coming into the system in object format.\n2. RDDs are used for in-memory computations on large clusters, in a fault tolerant manner.\n3. RDDs are read-only and partitioned collection of records that are immutable and resilient.\n4. RDDs are basically parts of data that are stored in the memory distributed across many nodes.\n5. RDDs are lazily evaluated in Spark. This lazy evaluation is what contributes to Spark’s speed."
+      },
+      {
+        "question":"What are Spark Transformations?",
+        "answer":"Transformations are functions executed on demand, to produce a new RDD or DataFrame. All transformations are followed by actions. Some examples of transformations include map(), filter() and spark.sql() queries."
+      },
+      {
+        "question":"What are Spark Actions?",
+        "answer":"Actions are the results of RDD/DataFrame computations or transformations. After an action is performed, the data from RDD/DataFrame moves back to the local machine. Some examples of actions include reduce(), collect(), first(), show(), count(), and take()."
+      },
+      {
+        "question":"Spark is lazy evaluated, explain this concept.",
+        "answer":"When you tell Spark to operate on a given dataset it makes a note of the instructions but it does nothing until asked for the final result. Transformations in Spark like map() are not evaluated until you perform an action like show(). This helps optimize the overall data processing workflow."
+      },
+      {
+        "question":"What is the default level of parallelism in apache spark?",
+        "answer":"If the user does not explicitly specify then the number of partitions is used as default."
+      },
+      {
+        "question":"What is Apache Spark?",
+        "answer":"Apache Spark is an open-source cluster computing framework for real-time processing. It provides an interface for programming entire clusters with implicit data parallelism and fault-tolerance. It also supports in-memory processing."
+      },
+      {
+        "question":"What are benefits of Spark over MapReduce?",
+        "answer":"1. Due to the availability of in-memory processing, Spark implements the processing around 10 to 100 times faster than Hadoop MapReduce whereas MapReduce makes use of persistence storage for any of the data processing tasks.\n 2. Unlike Hadoop, Spark provides inbuilt libraries to perform multiple tasks from the same core like batch processing, Steaming, Machine learning, Interactive SQL queries. However, Hadoop only supports batch processing.\n 3. Hadoop is highly disk-dependent whereas Spark promotes caching and in-memory data storage.\n 4. Spark is capable of performing computations multiple times on the same dataset. This is called iterative computation while there is no iterative computing implemented by Hadoop."
+      },
+      {
+        "question":"What is YARN?",
+        "answer":"Similar to Hadoop, YARN is one of the key features in Spark, providing a central and resource management platform to deliver scalable operations across the cluster. YARN is a distributed container manager, like Mesos for example, whereas Spark is a data processing tool. Spark can run on YARN, the same way Hadoop Map Reduce can run on YARN. Running Spark on YARN necessitates a binary distribution of Spark as built on YARN support."
+      },
+      {
+        "question":"What is Executor Memory?",
+        "answer":"Every Spark application has same fixed heap size and fixed number of cores for a spark executor. The heap size is what referred to as the Spark executor memory which is controlled with the spark.executor.memory property or the –executor-memory flag. Every spark application will have at least one executor on each worker node. The executor memory is basically a measure on how much memory of the worker node will the application utilize."
+      },
+      {
+        "question":"What is Driver Memory?",
+        "answer":"Amount of memory to use for the driver process, i.e. where SparkContext is initialized. Only one driver JVM is created."
+      }
+    ]
   }
 ]
