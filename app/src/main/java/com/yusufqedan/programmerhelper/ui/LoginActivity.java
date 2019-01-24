@@ -1,20 +1,15 @@
 package com.yusufqedan.programmerhelper.ui;
 
 import android.app.ProgressDialog;
-import android.content.DialogInterface;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.v7.app.AlertDialog;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.RuntimeExecutionException;
-import com.google.android.gms.tasks.Task;
-import com.google.firebase.auth.AuthResult;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
 import com.yusufqedan.programmerhelper.R;
@@ -46,23 +41,19 @@ public class LoginActivity extends BaseActivityNoActionBar implements View.OnCli
 
         ButterKnife.bind(this);
 
-        try{
+        try {
             mAuth = FirebaseAuth.getInstance();
-        }catch (IllegalStateException e){ //need to catch this as Robolectric unit test will throw exception when the database access is not needed
+        } catch (IllegalStateException e) { //need to catch this as Robolectric unit test will throw exception when the database access is not needed
 
         }
 
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                FirebaseUser user = firebaseAuth.getCurrentUser();
-                if (user != null) {
-                    Intent intent = new Intent(LoginActivity.this, MainActivity.class);
-                    intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
-                    startActivity(intent);
-                    finish();
-                }
+        mAuthListener = (firebaseAuth) -> {
+            FirebaseUser user = firebaseAuth.getCurrentUser();
+            if (user != null) {
+                Intent intent = new Intent(LoginActivity.this, MainActivity.class);
+                intent.setFlags(Intent.FLAG_ACTIVITY_NEW_TASK | Intent.FLAG_ACTIVITY_CLEAR_TASK);
+                startActivity(intent);
+                finish();
             }
         };
 
@@ -135,45 +126,30 @@ public class LoginActivity extends BaseActivityNoActionBar implements View.OnCli
             return;
         }
         mAuthProgressDialog.show();
-        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, new OnCompleteListener<AuthResult>() {
-            @Override
-            public void onComplete(@NonNull Task<AuthResult> task) {
+        mAuth.signInWithEmailAndPassword(email, password).addOnCompleteListener(this, (task) -> {
                 mAuthProgressDialog.dismiss();
                 if (!task.isSuccessful()) {
                     Toast.makeText(LoginActivity.this, "Authentication failed.", Toast.LENGTH_SHORT).show();
                 }
             }
-        });
+        );
     }
 
     private void confirmResetDialog(final String email) {
         AlertDialog.Builder builder = new AlertDialog.Builder(this);
         builder.setMessage("Reset password for " + email + " ?")
-                .setPositiveButton("Yes", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        resetPassword(email);
-                    }
-                })
-                .setNegativeButton("No", new DialogInterface.OnClickListener() {
-                    @Override
-                    public void onClick(DialogInterface dialog, int which) {
-                        dialog.cancel();
-                    }
-                })
+                .setPositiveButton("Yes", (dialog, which) -> resetPassword(email))
+                .setNegativeButton("No", (dialog, which) -> dialog.cancel())
                 .show();
     }
 
     private void resetPassword(String email) {
-        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(this, new OnCompleteListener<Void>() {
-            @Override
-            public void onComplete(@NonNull Task<Void> task) {
-                try {
-                    task.getResult();
-                    Toast.makeText(LoginActivity.this, "Password reset email sent", Toast.LENGTH_SHORT).show();
-                } catch (RuntimeExecutionException e) {
-                    Toast.makeText(LoginActivity.this, "No user found with that email", Toast.LENGTH_SHORT).show();
-                }
+        mAuth.sendPasswordResetEmail(email).addOnCompleteListener(this, (task) -> {
+            try {
+                task.getResult();
+                Toast.makeText(LoginActivity.this, "Password reset email sent", Toast.LENGTH_SHORT).show();
+            } catch (RuntimeExecutionException e) {
+                Toast.makeText(LoginActivity.this, "No user found with that email", Toast.LENGTH_SHORT).show();
             }
         });
     }

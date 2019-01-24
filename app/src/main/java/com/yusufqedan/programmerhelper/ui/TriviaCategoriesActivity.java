@@ -44,16 +44,13 @@ public class TriviaCategoriesActivity extends BaseActivity implements ListView.O
 
     private void displayTopicsAndProgress() {
         //only show progress if nothing loads within 2 seconds
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (mTopics == null) {
-                    mProgressDialog = new ProgressDialog(TriviaCategoriesActivity.this);
-                    mProgressDialog.setTitle("Loading...");
-                    mProgressDialog.setMessage("Fetching Data...");
-                    mProgressDialog.setCancelable(false);
-                    mProgressDialog.show();
-                }
+        new Handler().postDelayed(() -> {
+            if (mTopics == null) {
+                mProgressDialog = new ProgressDialog(TriviaCategoriesActivity.this);
+                mProgressDialog.setTitle("Loading...");
+                mProgressDialog.setMessage("Fetching Data...");
+                mProgressDialog.setCancelable(false);
+                mProgressDialog.show();
             }
         }, 2000);
         getTopics();

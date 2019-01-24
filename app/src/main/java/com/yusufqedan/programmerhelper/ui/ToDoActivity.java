@@ -37,16 +37,13 @@ public class ToDoActivity extends BaseActivity {
         setContentView(R.layout.activity_to_do);
         ButterKnife.bind(this);
         //only show progress if nothing loads within 2 seconds
-        new Handler().postDelayed(new Runnable() {
-            @Override
-            public void run() {
-                if (mToDoList == null) {
-                    mProgressDialog = new ProgressDialog(ToDoActivity.this);
-                    mProgressDialog.setTitle("Loading...");
-                    mProgressDialog.setMessage("Fetching Data...");
-                    mProgressDialog.setCancelable(false);
-                    mProgressDialog.show();
-                }
+        new Handler().postDelayed(() -> {
+            if (mToDoList == null) {
+                mProgressDialog = new ProgressDialog(ToDoActivity.this);
+                mProgressDialog.setTitle("Loading...");
+                mProgressDialog.setMessage("Fetching Data...");
+                mProgressDialog.setCancelable(false);
+                mProgressDialog.show();
             }
         }, 2000);
 

@@ -4,7 +4,6 @@ import android.content.Context;
 import android.content.Intent;
 import android.content.res.Configuration;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
 import android.support.design.widget.NavigationView;
 import android.support.v4.app.Fragment;
 import android.support.v4.widget.DrawerLayout;
@@ -47,24 +46,21 @@ public class MainActivity extends BaseActivityNoActionBar {
 
         mAuth = FirebaseAuth.getInstance();
         final Context context = this;
-        mAuthListener = new FirebaseAuth.AuthStateListener() {
-            @Override
-            public void onAuthStateChanged(@NonNull FirebaseAuth firebaseAuth) {
-                mUser = firebaseAuth.getCurrentUser();
-                if (mUser != null) {
-                    if (tabs[0] == null) {
-                        tabs[0] = MainFragment.newInstance(context, mUser.getDisplayName());
-                    }
-                    if (tabs[1] == null) {
-                        tabs[1] = SettingsFragment.newInstance(context);
-                    }
-                    if(position == 0){
-                        MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_home_fragment);
-                        selectDrawerItem(menuItem);
-                    }else if(position == 1){
-                        MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_settings_fragment);
-                        selectDrawerItem(menuItem);
-                    }
+        mAuthListener = (firebaseAuth) -> {
+            mUser = firebaseAuth.getCurrentUser();
+            if (mUser != null) {
+                if (tabs[0] == null) {
+                    tabs[0] = MainFragment.newInstance(context, mUser.getDisplayName());
+                }
+                if (tabs[1] == null) {
+                    tabs[1] = SettingsFragment.newInstance(context);
+                }
+                if (position == 0) {
+                    MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_home_fragment);
+                    selectDrawerItem(menuItem);
+                } else if (position == 1) {
+                    MenuItem menuItem = nvDrawer.getMenu().findItem(R.id.nav_settings_fragment);
+                    selectDrawerItem(menuItem);
                 }
             }
         };
@@ -113,14 +109,11 @@ public class MainActivity extends BaseActivityNoActionBar {
     }
 
     private void setupDrawerContent(NavigationView navigationView) {
-        navigationView.setNavigationItemSelectedListener(
-                new NavigationView.OnNavigationItemSelectedListener() {
-                    @Override
-                    public boolean onNavigationItemSelected(MenuItem menuItem) {
-                        selectDrawerItem(menuItem);
-                        return true;
-                    }
-                });
+        navigationView.setNavigationItemSelectedListener((MenuItem menuItem) -> {
+                selectDrawerItem(menuItem);
+                return true;
+            }
+        );
     }
 
     public void selectDrawerItem(MenuItem menuItem) {
